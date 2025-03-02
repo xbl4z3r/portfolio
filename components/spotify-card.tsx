@@ -1,0 +1,185 @@
+import React, {useEffect, useState} from "react";
+import {Card, CardContent} from "@/components/ui/card";
+import {Progress} from "@/components/ui/progress";
+import {Vibrant} from "node-vibrant/browser";
+import {MagicCard} from "@/components/magicui/magic-card";
+
+const SERVER_REFRESH_INTERVAL = 10000;
+const REFRESH_INTERVAL = 1000;
+
+export const SpotifyCard = () => {
+    const [result, setResult] = useState({
+        initialized: false,
+        isPlaying: false,
+        track: {
+            title: "Not Playing",
+            artist: [{name: "No Artist", url: ""}],
+            album: {name: "No Album", url: ""},
+            duration: 1,
+            artUrl: "https://placehold.co/200",
+            url: "",
+        },
+        progress: 0,
+    });
+    const [accentColor, setAccentColor] = useState("");
+    const [isArtistHovered, setIsArtistHovered] = useState(false);
+    const [isTitleHovered, setIsTitleHovered] = useState(false);
+
+    useEffect(() => {
+        const fetchSpotifyData = async () => {
+            try {
+                const response = await fetch("/api/v3/spotify");
+                const data = await response.json();
+                setResult(data);
+                Vibrant.from(data.track.artUrl).getPalette().then((palette) => {
+                    // @ts-ignore
+                    setAccentColor(palette.Vibrant.hex.toUpperCase());
+                }).catch((error) => {
+                    console.error("Failed to fetch artwork colors", error);
+                });
+            } catch (error) {
+                console.error("Failed to fetch Spotify data", error);
+            }
+        };
+
+        fetchSpotifyData();
+        const interval = setInterval(fetchSpotifyData, SERVER_REFRESH_INTERVAL);
+        return () => clearInterval(interval);
+    }, []);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (result.initialized && result.isPlaying) {
+                setResult((prev) => ({
+                    ...prev,
+                    progress: prev.progress + REFRESH_INTERVAL,
+                }));
+
+                if (result.progress >= result.track.duration) {
+                    setResult((prev) => ({
+                        ...prev,
+                        progress: result.track.duration,
+                        isPlaying: false,
+                    }));
+                }
+            }
+        }, REFRESH_INTERVAL);
+
+        return () => clearInterval(interval);
+    }, [result]);
+
+    const safeDuration = Math.max(1, result.track.duration);
+
+    const formatTime = (ms: number) => {
+        const minutes = Math.floor(ms / 60000);
+        const seconds = Math.floor((ms % 60000) / 1000);
+        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    };
+
+    return (
+        <Card
+            className="overflow-hidden backdrop-blur-md bg-black/5 dark:bg-zinc-700/70 border-none w-full max-w-3xl mx-auto">
+            <MagicCard
+                gradientSize={300}
+                gradientFrom={accentColor}
+                gradientTo={accentColor}
+                gradientColor={accentColor}>
+                {/*<ShineBorder shineColor={accentColor}/>*/}
+                <CardContent className="p-0">
+                    <div className="flex flex-col md:flex-row">
+                        {/* Album Cover - Optimized for both layouts */}
+                        <div className="p-4 flex items-center justify-center">
+                            <div
+                                className="relative w-48 h-48 md:w-52 md:h-52 lg:w-64 lg:h-64 xl:w-72 xl:h-72 rounded-lg overflow-hidden shrink-0 group">
+                                <div
+                                    className="absolute inset-0 z-10 bg-gradient-to-r from-black/30 via-transparent to-transparent md:bg-gradient-to-b md:from-transparent md:via-black/30 md:to-black/80"
+                                    aria-hidden="true"/>
+
+                                <img
+                                    src={result.track.artUrl}
+                                    alt={`${result.track.title} album art`}
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
+
+                                {/* Spotify Logo (only visible on mobile) */}
+                                <div className="absolute top-2 left-2 z-20 md:hidden">
+                                    <svg className="w-5 h-5" style={{color: accentColor}} viewBox="0 0 24 24"
+                                         fill="currentColor">
+                                        <path
+                                            d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.8-.179-.92-.6-.12-.421.18-.8.6-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.48.659.24 1.08zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Content - Vertical layout optimized */}
+                        <div className="flex flex-col justify-between w-full p-4 md:py-6 md:px-8 lg:py-8 lg:px-10">
+                            {/* Status Badge - Now visible in both layouts */}
+                            <div className="flex items-center space-x-2 mb-3">
+                                <svg className="w-5 h-5" style={{color: accentColor}} viewBox="0 0 24 24"
+                                     fill="currentColor">
+                                    <path
+                                        d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.8-.179-.92-.6-.12-.421.18-.8.6-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.48.659.24 1.08zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                                </svg>
+                                <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                        {result.isPlaying ? "Currently Playing" : "Recently Played"}
+                    </span>
+                            </div>
+
+                            <div className="flex-grow">
+                                {/* Song Title */}
+                                <a href={result.track.url}
+                                   target="_blank"
+                                   rel="noreferrer"
+                                   className="block"
+                                   onMouseEnter={() => setIsTitleHovered(true)}
+                                   onMouseLeave={() => setIsTitleHovered(false)}>
+                                    <h3 className="font-bold text-xl md:text-2xl lg:text-3xl line-clamp-1 transition-colors"
+                                        style={isTitleHovered ? {color: accentColor} : {}}>
+                                        {result.track.title}
+                                    </h3>
+                                </a>
+
+                                {/* Artist and Album - More compact vertical layout */}
+                                <div className="mt-2 space-y-1">
+                                    <a href={result.track.artist[0].url}
+                                       target="_blank"
+                                       rel="noreferrer"
+                                       className="text-sm md:text-base lg:text-lg text-muted-foreground transition-colors"
+                                       onMouseEnter={() => setIsArtistHovered(true)}
+                                       onMouseLeave={() => setIsArtistHovered(false)}
+                                       style={isArtistHovered ? {color: accentColor} : {}}>
+                                        {result.track.artist[0].name}
+                                    </a>
+
+                                    <p className="text-xs md:text-sm text-muted-foreground/70 block">
+                                        {result.track.album.name}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Progress Bar */}
+                            <div className="mt-4 md:mt-6 lg:mt-8">
+                                <Progress
+                                    aria-label={"Song Progress"}
+                                    value={(result.progress / safeDuration) * 100}
+                                    max={100}
+                                    className="h-1.5 bg-muted/50 [&>div]:!bg-current"
+                                    style={{
+                                        "--progress-color": accentColor,
+                                        color: accentColor
+                                    } as React.CSSProperties}
+                                />
+
+                                <div className="flex justify-between mt-2 text-xs md:text-sm text-muted-foreground">
+                                    <span>{formatTime(result.progress)}</span>
+                                    <span>{formatTime(safeDuration)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </CardContent>
+            </MagicCard>
+        </Card>
+    );
+};
