@@ -30,7 +30,18 @@ export const SpotifyCard = () => {
     });
     const [isArtistHovered, setIsArtistHovered] = useState(false);
     const [isTitleHovered, setIsTitleHovered] = useState(false);
-    const { colors, updateColors } = useColor();
+    const [gradientPosition, setGradientPosition] = useState("circle at 20% 50%");
+    const {colors, updateColors} = useColor();
+
+    useEffect(() => {
+        const updateGradientPosition = () => {
+            if (window.innerWidth < 768) setGradientPosition("circle at 50% 25%");
+            else setGradientPosition("circle at 25% 50%");
+        };
+        updateGradientPosition();
+        window.addEventListener('resize', updateGradientPosition);
+        return () => window.removeEventListener('resize', updateGradientPosition);
+    }, []);
 
     useEffect(() => {
         const fetchSpotifyData = async () => {
@@ -38,7 +49,6 @@ export const SpotifyCard = () => {
                 const response = await fetch("/api/v3/spotify");
                 const data = await response.json();
                 if (data.track.title == result.track.title) return;
-
                 setResult(data);
                 Vibrant.from(data.track.artUrl).getPalette().then((palette) => {
                     if (palette.Vibrant === null || palette.Muted === null || palette.LightVibrant === null || palette.LightMuted === null || palette.DarkVibrant === null || palette.DarkMuted === null) return;
@@ -90,13 +100,14 @@ export const SpotifyCard = () => {
     return (
         <Card
             className="overflow-hidden backdrop-blur-md w-full max-w-3xl mx-auto relative">
-            <ShineBorder shineColor={[colors.vibrant, colors.muted, colors.light_vibrant, colors.light_muted, colors.dark_vibrant, colors.dark_muted]}
-                         className="absolute inset-0 rounded-lg"/>
+            <ShineBorder
+                shineColor={[colors.vibrant, colors.muted, colors.light_vibrant, colors.light_muted, colors.dark_vibrant, colors.dark_muted]}
+                className="absolute inset-0 rounded-lg"/>
             <div
                 className="absolute inset-0 w-full h-full"
                 style={{
                     background: `
-                radial-gradient(circle at 20% 50%,
+                radial-gradient(${gradientPosition},
                 ${colors.vibrant}50 0%,
                 ${colors.muted}20 40%,
                 transparent 100%)
@@ -106,7 +117,6 @@ export const SpotifyCard = () => {
             />
             <CardContent className="p-0">
                 <div className="flex flex-col md:flex-row">
-                    {/* Album Cover - Optimized for both layouts */}
                     <div className="p-4 flex items-center justify-center">
                         <div
                             className="relative w-48 h-48 md:w-52 md:h-52 lg:w-64 lg:h-64 xl:w-72 xl:h-72 rounded-lg overflow-hidden shrink-0 group">
@@ -130,10 +140,7 @@ export const SpotifyCard = () => {
                             </div>
                         </div>
                     </div>
-
-                    {/* Content - Vertical layout optimized */}
                     <div className="flex flex-col justify-between w-full p-4 md:py-6 md:px-8 lg:py-8 lg:px-10">
-                        {/* Status Badge - Now visible in both layouts */}
                         <div className="flex items-center space-x-2 mb-3">
                             <svg className="w-5 h-5" style={{color: colors.vibrant}} viewBox="0 0 24 24"
                                  fill="currentColor">
@@ -144,9 +151,7 @@ export const SpotifyCard = () => {
                         {result.isPlaying ? "Currently Playing" : "Recently Played"}
                     </span>
                         </div>
-
                         <div className="flex-grow">
-                            {/* Song Title */}
                             <a href={result.track.url}
                                target="_blank"
                                rel="noreferrer"
@@ -158,8 +163,6 @@ export const SpotifyCard = () => {
                                     {result.track.title}
                                 </h3>
                             </a>
-
-                            {/* Artist and Album - More compact vertical layout */}
                             <div className="mt-2 space-y-1">
                                 <a href={result.track.artist[0].url}
                                    target="_blank"
@@ -170,14 +173,11 @@ export const SpotifyCard = () => {
                                    style={isArtistHovered ? {color: colors.vibrant} : {}}>
                                     {result.track.artist[0].name}
                                 </a>
-
                                 <p className="text-xs md:text-sm text-muted-foreground/70 block">
                                     {result.track.album.name}
                                 </p>
                             </div>
                         </div>
-
-                        {/* Progress Bar */}
                         <div className="mt-4 md:mt-6 lg:mt-8">
                             <Progress
                                 aria-label={"Song Progress"}
@@ -189,7 +189,6 @@ export const SpotifyCard = () => {
                                     color: colors.vibrant
                                 } as React.CSSProperties}
                             />
-
                             <div className="flex justify-between mt-2 text-xs md:text-sm text-muted-foreground">
                                 <span>{formatTime(result.progress)}</span>
                                 <span>{formatTime(safeDuration)}</span>

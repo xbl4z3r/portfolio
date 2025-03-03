@@ -8,6 +8,9 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import {ColorProvider} from "@/hooks/useColor";
 
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -45,6 +48,8 @@ export default function RootLayout({
             <ColorProvider>
               {children}
             </ColorProvider>
+            <SpeedInsights />
+            <Analytics />
           </div>
         </Providers>
       </body>

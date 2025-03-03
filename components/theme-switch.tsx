@@ -1,11 +1,11 @@
 "use client";
 
-import { FC, useState, useEffect } from "react";
-import { VisuallyHidden } from "@react-aria/visually-hidden";
-import { useTheme } from "next-themes";
+import {FC, useState, useEffect} from "react";
+import {VisuallyHidden} from "@react-aria/visually-hidden";
+import {useTheme} from "next-themes";
 import clsx from "clsx";
 
-import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
+import {SunFilledIcon, MoonFilledIcon} from "@/components/icons";
 
 export interface ThemeSwitchProps {
     className?: string;
@@ -20,7 +20,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
                                                       classNames,
                                                   }) => {
     const [isMounted, setIsMounted] = useState(false);
-    const { theme, setTheme } = useTheme();
+    const {theme, setTheme} = useTheme();
     const isLight = theme === "light";
 
     const handleToggle = () => {
@@ -32,7 +32,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     }, []); // Fixed dependency array
 
     // Prevent Hydration Mismatch
-    if (!isMounted) return <div className="w-6 h-6" />;
+    if (!isMounted) return <div className="w-6 h-6"/>;
 
     return (
         <button
@@ -45,11 +45,10 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
             )}
         >
             <VisuallyHidden>
-                <label><input
-                    type="checkbox"
-                    checked={isLight}
-                    onChange={handleToggle}
-                /></label>
+                <input type="checkbox"
+                       aria-label="Toggle theme"
+                       checked={isLight}
+                       onChange={handleToggle}/>
             </VisuallyHidden>
             <div
                 className={clsx(
@@ -68,9 +67,9 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
                 )}
             >
                 {isLight ? (
-                    <MoonFilledIcon size={24} />
+                    <MoonFilledIcon size={24}/>
                 ) : (
-                    <SunFilledIcon size={24} />
+                    <SunFilledIcon size={24}/>
                 )}
             </div>
         </button>

@@ -25,7 +25,6 @@ interface ColorContextProps {
     updateColors: (newColors: Partial<Colors>) => void;
 }
 
-// Fix: Add the proper type parameter to createContext
 const ColorContext = createContext<ColorContextProps | undefined>(undefined);
 
 export const ColorProvider = ({children}: { children: ReactNode }) => {
