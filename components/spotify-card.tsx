@@ -114,7 +114,7 @@ export const SpotifyCard = () => {
             style={{
                 opacity: opacity,
                 transition: "opacity 3s ease-in-out",
-                hidden: !loaded
+                visibility: loaded ? 'visible' : 'hidden',
             }}>
             <ShineBorder
                 shineColor={[colors.vibrant, colors.muted, colors.light_vibrant, colors.light_muted, colors.dark_vibrant, colors.dark_muted]}
