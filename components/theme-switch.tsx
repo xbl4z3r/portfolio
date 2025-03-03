@@ -68,9 +68,9 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
                 )}
             >
                 {isLight ? (
-                    <MoonFilledIcon size={22} />
+                    <MoonFilledIcon size={24} />
                 ) : (
-                    <SunFilledIcon size={22} />
+                    <SunFilledIcon size={24} />
                 )}
             </div>
         </button>

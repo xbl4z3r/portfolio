@@ -25,7 +25,7 @@ export const Navbar = ({
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-      <nav className="w-full border-b border-border sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <nav className="w-full border-b border-border sticky top-0 z-50 backdrop-blur">
         <div className="container flex h-16 items-center justify-between mx-auto max-w-7xl">
           {/* Logo and brand */}
           <div className="flex items-center gap-3">
@@ -67,7 +67,7 @@ export const Navbar = ({
                   className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label="Discord"
               >
-                <DiscordIcon className="h-5 w-5" />
+                <DiscordIcon className="h-auto w-auto" />
                 <span className="sr-only">Discord</span>
               </a>
               <a
@@ -77,7 +77,7 @@ export const Navbar = ({
                   className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="GitHub"
               >
-                <GithubIcon className="h-5 w-5" />
+                <GithubIcon className="h-auto w-auto" />
                 <span className="sr-only">GitHub</span>
               </a>
               <ThemeSwitch />
@@ -111,7 +111,7 @@ export const Navbar = ({
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              <GithubIcon className="h-5 w-5" />
+              <GithubIcon className="h-auto w-auto" />
             </a>
             <ThemeSwitch />
             <button
@@ -119,7 +119,7 @@ export const Navbar = ({
                 onClick={toggleMenu}
                 aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMenuOpen ? <X className="h-auto w-auto" /> : <Menu className="h-auto w-auto" />}
             </button>
           </div>
         </div>

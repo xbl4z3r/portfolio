@@ -80,7 +80,8 @@ module.exports = {
   			'accordion-up': 'accordion-up 0.2s ease-out',
   			appear: 'appear 0.6s forwards ease-out',
   			'appear-zoom': 'appear-zoom 0.6s forwards ease-out',
-  			'pulse-hover': 'pulse-hover 6s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+  			'pulse-hover': 'pulse-hover 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+  			meteor: 'meteor 5s linear infinite'
   		},
   		keyframes: {
   			shine: {
@@ -189,6 +190,19 @@ module.exports = {
   				'100%': {
   					opacity: '1'
   				}
+  			},
+  			meteor: {
+  				'0%': {
+  					transform: 'rotate(var(--angle)) translateX(0)',
+  					opacity: '1'
+  				},
+  				'70%': {
+  					opacity: '1'
+  				},
+  				'100%': {
+  					transform: 'rotate(var(--angle)) translateX(-500px)',
+  					opacity: '0'
+  				}
   			}
   		},
   		spacing: {
@@ -205,6 +219,6 @@ module.exports = {
   		}
   	}
   },
-  darkMode: ["class", 'class'],
+  darkMode: ["selector", 'class'],
   plugins: [require("tailwindcss-animate")],
 }
