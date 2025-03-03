@@ -30,8 +30,18 @@ export const SpotifyCard = () => {
     });
     const [isArtistHovered, setIsArtistHovered] = useState(false);
     const [isTitleHovered, setIsTitleHovered] = useState(false);
+    const [loaded, setLoaded] = useState(false);
     const [gradientPosition, setGradientPosition] = useState("circle at 20% 50%");
+    const [opacity, setOpacity] = useState(0);
     const {colors, updateColors} = useColor();
+
+    useEffect(() => {
+        if (!loaded) return;
+        const timer = setTimeout(() => {
+            setOpacity(1);
+        }, 100);
+        return () => clearTimeout(timer);
+    }, [loaded]);
 
     useEffect(() => {
         const updateGradientPosition = () => {
@@ -50,6 +60,7 @@ export const SpotifyCard = () => {
                 const data = await response.json();
                 if (data.track.title == result.track.title) return;
                 setResult(data);
+                if(!loaded) setLoaded(true);
                 Vibrant.from(data.track.artUrl).getPalette().then((palette) => {
                     if (palette.Vibrant === null || palette.Muted === null || palette.LightVibrant === null || palette.LightMuted === null || palette.DarkVibrant === null || palette.DarkMuted === null) return;
                     updateColors({
@@ -99,7 +110,12 @@ export const SpotifyCard = () => {
 
     return (
         <Card
-            className="overflow-hidden backdrop-blur-md w-full max-w-3xl mx-auto relative">
+            className="overflow-hidden backdrop-blur-md w-full max-w-3xl mx-auto relative"
+            style={{
+                opacity: opacity,
+                transition: "opacity 3s ease-in-out",
+                hidden: !loaded
+            }}>
             <ShineBorder
                 shineColor={[colors.vibrant, colors.muted, colors.light_vibrant, colors.light_muted, colors.dark_vibrant, colors.dark_muted]}
                 className="absolute inset-0 rounded-lg"/>

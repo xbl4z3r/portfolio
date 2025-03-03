@@ -31,64 +31,126 @@ function MeteorsComponent({
                               className,
                           }: MeteorsProps) {
     const [meteorStyles, setMeteorStyles] = useState<MeteorStyle[]>([]);
-    const prevNumberRef = useRef<number>(0);
     const initializedRef = useRef<boolean>(false);
+    const [meteorCount, setMeteorCount] = useState(number);
+    const [opacity, setOpacity] = useState(0);
+    const prevNumberRef = useRef<number>(0);
+    const pendingUpdates = useRef<number[]>([]);
+    const updateTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    let defaultColors = true;
+    colors.forEach((color) => {
+        if(color != "#000000") defaultColors = false;
+    });
+    const isUsingDefaultColors = defaultColors;
+
+    useEffect(() => {
+        if (isUsingDefaultColors) return;
+        const timer = setTimeout(() => {
+            setOpacity(1);
+        }, 100);
+        return () => clearTimeout(timer);
+    }, [isUsingDefaultColors]);
+
+    useEffect(() => {
+        const updateMeteorCount = () => {
+            const width = window.innerWidth;
+            const baseCount = number;
+
+            if (width < 640) { // Mobile
+                setMeteorCount(Math.floor(baseCount * 0.5));
+            } else if (width < 1024) { // Tablet
+                setMeteorCount(Math.floor(baseCount * 0.75));
+            } else { // Desktop
+                setMeteorCount(baseCount);
+            }
+        };
+
+        updateMeteorCount();
+        window.addEventListener('resize', updateMeteorCount);
+        return () => window.removeEventListener('resize', updateMeteorCount);
+    }, [number]);
 
     const createMeteorStyle = (useColors: string[]): MeteorStyle => {
         const color = useColors[Math.floor(Math.random() * useColors.length)];
         return {
             "--angle": angle + "deg",
+            position: "absolute",
+            transform: `rotate(${angle}deg)`,
             top: `${Math.floor((Math.random() - 0.1) * 50)}%`,
             left: `${Math.floor((Math.random() - 0.5) * 200)}%`,
             animationDelay: Math.random() * (maxDelay - minDelay) + minDelay + "s",
-            animationDuration: Math.floor(Math.random() * (maxDuration - minDuration) + minDuration) + "s",
+            animationDuration: Math.floor(Math.random() * 2 * (maxDuration - minDuration) + minDuration) + "s",
             backgroundColor: color,
-            boxShadow: `0 0 0 1px ${color}10`,
+            boxShadow: `0 0 10px ${color}, 0 0 20px ${color}, 0 0 30px ${color}`,
             originalColor: color,
+            willChange: "transform, opacity",
         } as MeteorStyle;
     };
 
-    const updateMeteorStyle = (idx: number) => {
-        setMeteorStyles((prev) => {
-            const newMeteorStyles = [...prev];
-            newMeteorStyles[idx] = createMeteorStyle(colors);
-            return newMeteorStyles;
-        });
+    const scheduleMeteorUpdate = (idx: number) => {
+        pendingUpdates.current.push(idx);
+        if (!updateTimeoutRef.current) {
+            updateTimeoutRef.current = setTimeout(() => {
+                if (pendingUpdates.current.length > 0) {
+                    const newStyles = pendingUpdates.current.map(() => createMeteorStyle(colors));
+
+                    setMeteorStyles(prev => {
+                        const updatedStyles = [...prev];
+                        pendingUpdates.current.forEach((i, index) => {
+                            updatedStyles[i] = newStyles[index];
+                        });
+                        return updatedStyles;
+                    });
+
+                    pendingUpdates.current = [];
+                }
+                updateTimeoutRef.current = null;
+            }, 50);
+        }
     };
 
-    // Initialize and handle number changes
     useEffect(() => {
-        if (typeof window === "undefined") return;
+        if (typeof window === "undefined" || isUsingDefaultColors) return;
 
         if (!initializedRef.current) {
-            setMeteorStyles(Array.from({length: number}, () => createMeteorStyle(colors)));
-            prevNumberRef.current = number;
+            setMeteorStyles(Array.from({length: meteorCount}, () => createMeteorStyle(colors)));
+            prevNumberRef.current = meteorCount;
             initializedRef.current = true;
             return;
         }
 
-        // Handle number changes
-        if (number > prevNumberRef.current) {
-            // Add new meteors with current colors
+        if (meteorCount > prevNumberRef.current) {
             const newMeteors = Array.from(
-                {length: number - prevNumberRef.current},
+                {length: meteorCount - prevNumberRef.current},
                 () => createMeteorStyle(colors)
             );
             setMeteorStyles(prev => [...prev, ...newMeteors]);
-        } else if (number < prevNumberRef.current) {
-            // Remove excess meteors
-            setMeteorStyles(prev => prev.slice(0, number));
+        } else if (meteorCount < prevNumberRef.current) {
+            setMeteorStyles(prev => prev.slice(0, meteorCount));
         }
-        prevNumberRef.current = number;
-    }, [number, colors]);
+        prevNumberRef.current = meteorCount;
+    }, [meteorCount, colors, isUsingDefaultColors]);
+
+    if(defaultColors) return (<></>);
 
     return (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+            className="absolute inset-0 overflow-hidden pointer-events-none"
+            style={{
+                opacity: opacity,
+                transition: "opacity 3s ease-in-out"
+            }}
+        >
             {meteorStyles.map((style, idx) => (
                 <span
                     key={idx}
-                    style={style}
-                    onAnimationIteration={() => updateMeteorStyle(idx)}
+                    style={{
+                        ...style,
+                        "--meteor-delay": style.animationDelay,
+                        "--meteor-duration": style.animationDuration,
+                    } as React.CSSProperties}
+                    onAnimationIteration={() => scheduleMeteorUpdate(idx)}
                     className={cn(
                         "pointer-events-none absolute size-0.5 rotate-[var(--angle)] animate-meteor rounded-full",
                         className

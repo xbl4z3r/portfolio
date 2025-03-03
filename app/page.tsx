@@ -93,9 +93,9 @@ export default function Home() {
     const {colors} = useColor();
     return (
         <>
-            <Navbar navbarData={siteConfig.navItems.portfolio}/>
+            <Navbar navbarData={siteConfig.navItems.portfolio} accentColors={[colors.vibrant, colors.muted]}/>
             <main className="container mx-auto max-w-7xl pt-6 px-6 flex-grow h-full">
-                <Meteors number={100} colors={[colors.vibrant, colors.muted, colors.light_vibrant, colors.light_muted, colors.dark_vibrant, colors.dark_muted]}/>
+                <Meteors number={250} colors={[colors.vibrant, colors.muted, colors.light_vibrant, colors.light_muted, colors.dark_vibrant, colors.dark_muted]}/>
                 <section
                     className="flex flex-col items-center justify-evenly bg-background min-h-screen"
                     id="home"
@@ -112,7 +112,18 @@ export default function Home() {
                 </section>
                 <section
                     className="flex flex-col items-center justify-evenly bg-background min-h-full py-16 gap-y-8"
-                    id="skills"
+                    id="about"
+                >
+                    <h2 className="text-4xl font-bold text-center">My Skills</h2>
+                    <BentoGrid className="lg:grid-rows-3 lg:grid-cols-3 gap-4 w-full">
+                        {skills.map((skill) => (
+                            <BentoCard key={skill.name} {...skill} />
+                        ))}
+                    </BentoGrid>
+                </section>
+                <section
+                    className="flex flex-col items-center justify-evenly bg-background min-h-full py-16 gap-y-8"
+                    id="projects"
                 >
                     <h2 className="text-4xl font-bold text-center">My Skills</h2>
                     <BentoGrid className="lg:grid-rows-3 lg:grid-cols-3 gap-4 w-full">
