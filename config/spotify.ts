@@ -98,7 +98,6 @@ const getNowPlaying = async (
         });
     } catch (err) {
         await getAccessToken(true);
-
         return getNowPlaying(true);
     }
 };

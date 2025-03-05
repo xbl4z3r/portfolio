@@ -30,6 +30,7 @@ export const SpotifyCard = () => {
     });
     const [isArtistHovered, setIsArtistHovered] = useState(false);
     const [isTitleHovered, setIsTitleHovered] = useState(false);
+    const [isCardHovered, setIsCardHovered] = useState(false);
     const [loaded, setLoaded] = useState(false);
     const [gradientPosition, setGradientPosition] = useState("circle at 20% 50%");
     const [opacity, setOpacity] = useState(0);
@@ -56,7 +57,7 @@ export const SpotifyCard = () => {
     useEffect(() => {
         const fetchSpotifyData = async () => {
             try {
-                const response = await fetch("/api/v3/spotify");
+                const response = await fetch("/api/spotify");
                 const data = await response.json();
                 if (data.track.title == result.track.title) return;
                 setResult(data);
@@ -110,12 +111,19 @@ export const SpotifyCard = () => {
 
     return (
         <Card
-            className="overflow-hidden backdrop-blur-md w-full max-w-3xl mx-auto relative"
+            className="overflow-hidden backdrop-blur-md w-full max-w-3xl mx-auto relative transition-all duration-300"
             style={{
                 opacity: opacity,
-                transition: "opacity 3s ease-in-out",
+                transition: "opacity 3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
                 visibility: loaded ? 'visible' : 'hidden',
-            }}>
+                transform: isCardHovered ? 'translateY(-8px) scale(1.01)' : 'translateY(0) scale(1)',
+                boxShadow: isCardHovered
+                    ? `0 20px 30px -10px ${colors.vibrant}30, 0 10px 20px -10px ${colors.muted}40`
+                    : '0 10px 15px -5px rgba(0,0,0,0.1)'
+            }}
+            onMouseEnter={() => setIsCardHovered(true)}
+            onMouseLeave={() => setIsCardHovered(false)}
+        >
             <ShineBorder
                 shineColor={[colors.vibrant, colors.muted, colors.light_vibrant, colors.light_muted, colors.dark_vibrant, colors.dark_muted]}
                 className="absolute inset-0 rounded-lg"/>

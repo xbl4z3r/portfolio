@@ -15,6 +15,7 @@ interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   background: ReactNode;
   Icon: React.ElementType;
   description: string;
+  category: string;
   href: string;
   cta: string;
 }
@@ -39,6 +40,7 @@ const BentoCard = ({
   background,
   Icon,
   description,
+  category,
   href,
   cta,
   ...props
@@ -56,12 +58,16 @@ const BentoCard = ({
     {...props}
   >
     <div>{background}</div>
+    <div className="absolute p-3 flex flex-col w-full">
+        <p className="text-xs font-semibold dark:text-neutral-300 text-neutral-700">
+            {(category || "").toUpperCase()}
+        </p>
+        <p className="text-4xl font-semibold">
+            {name}
+        </p>
+    </div>
     <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
-      <Icon className="h-12 w-12 origin-left transform-gpu text-neutral-700 transition-all duration-300 ease-in-out group-hover:scale-75" />
-      <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-300">
-        {name}
-      </h3>
-      <p className="max-w-lg text-neutral-400">{description}</p>
+      <p className="max-w-lg text-neutral-700">{description}</p>
     </div>
 
     <div
