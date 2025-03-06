@@ -10,21 +10,89 @@ import {TextAnimate} from "@/components/magicui/text-animate";
 import {useColor} from "@/hooks/useColor";
 import {Meteors} from "@/components/magicui/meteors";
 import {BentoCard, BentoGrid} from "@/components/magicui/bento-grid";
-import {CodeIcon, FrameIcon, LayersIcon, LaptopIcon} from "@radix-ui/react-icons";
 import {BookHeartIcon} from "lucide-react";
 import {SpinningText} from "@/components/magicui/spinning-text";
-import {projects} from "@/config/projects";
+import {Badge} from "@/components/ui/badge";
 
 const TaglineAnimation = memo(() => (
     <TextAnimate
         animation="blurInUp"
         by="character"
         once={true}
-        className="animation-persistent" // Add a persistent class
+        className="animation-persistent"
     >
         Software Engineer. Game Developer. Guitarist.
     </TextAnimate>
 ));
+
+const projects = [
+    {
+        name: "Hyper Bot",
+        description: "Discord bot with moderation, utility, and fun commands for your server",
+        className: "lg:row-start-1 lg:row-end-3 lg:col-start-1 lg:col-end-2",
+        background: (
+            <div className="absolute inset-0 rounded-lg bg-black">
+                <img
+                    src="/stock_discord.webp"
+                    className="w-full h-full object-cover opacity-80"
+                    alt="Discord"
+                />
+            </div>
+        ),
+        category: "Multipurpose Discord Application",
+        tooltip: "Credits to Shutterstock for the thumbnail",
+        href: "/hyperbot",
+        cta: "Learn more"
+    },
+    {
+        name: "SpoTuya",
+        description: "Tuya smart home integration with Spotify to sync your lights with your music and live the music",
+        className: "lg:row-start-1 lg:row-end-2 lg:col-start-2 lg:col-end-4",
+        background: <div className="absolute inset-0 rounded-lg bg-black">
+            <img
+                src="https://www.techhive.com/wp-content/uploads/2023/04/philips-hue-spotify-image-2-100901041-orig.jpeg?quality=50&strip=all"
+                className="w-full h-full object-cover opacity-80"
+                alt="Discord"
+            />
+        </div>,
+        category: "IOT Utility",
+        tooltip: "Credits to Tech Hive for the thumbnail",
+        href: "/spotuya",
+        cta: "Learn more"
+    },
+    {
+        name: "Hyper Client",
+        description: "Minecraft client with advanced features and performance optimizations",
+        className: "lg:row-start-2 lg:row-end-3 lg:col-start-2 lg:col-end-3",
+        background: <div className="absolute inset-0 rounded-lg bg-black">
+            <img
+                src="https://i.ytimg.com/vi/VOL1PHXM-Kg/maxresdefault.jpg"
+                className="w-full h-full object-cover opacity-80"
+                alt="Discord"
+            />
+        </div>,
+        category: "Advanced Minecraft Client",
+        tooltip: "Credits to zKevsh for the thumbnail",
+        href: "/hyperclient",
+        cta: "Learn more"
+    },
+    {
+        name: "RoadPlanner",
+        description: "Java application designed to help FTC teams plan their autonomous paths",
+        className: "lg:row-start-2 lg:row-end-3 lg:col-start-3 lg:col-end-4",
+        background: <div className="absolute inset-0 rounded-lg bg-black">
+            <img
+                src="https://www.firstinspires.org/sites/all/themes/first/assets/images/2020/ftc/event-experience.jpg"
+                className="w-full h-full object-cover opacity-80"
+                alt="Discord"
+            />
+        </div>,
+        category: "FTC Utility",
+        tooltip: "Credits to FIRST Inspires for the thumbnail",
+        href: "/roadplanner",
+        cta: "Learn more"
+    }
+]
 
 export default function Home() {
     const {colors} = useColor();
@@ -79,17 +147,26 @@ export default function Home() {
                     </div>
 
                     <div className={"flex flex-wrap items-center justify-between"}>
-                        <p className="text-left max-w-3xl text-sm sm:text-md md:text-xl lg:text-xl font-normal">
-                            I'm a software engineer and game developer with a passion for creating interactive
-                            experiences.
-                            I've always been fascinated by physics, mathematics, and computer science, and I love to
-                            experiment with new technologies and tools. I'm currently working on a variety of projects,
-                            including game development, web development, and backend services, all part of my journey to
-                            become a better developer. I'm also the guitarist of a band I started with some friends. I'm
-                            always looking for new opportunities to learn and grow, so feel free to reach out if you'd
-                            like
-                            to chat!
-                        </p>
+                        <div className={"flex flex-col gap-3"}>
+                            <p className="text-left max-w-3xl text-sm sm:text-md md:text-xl lg:text-xl font-normal">
+                                I'm a software engineer and game developer with a passion for creating interactive
+                                experiences.
+                                I've always been fascinated by physics, mathematics, and computer science, and I love to
+                                experiment with new technologies and tools. I'm currently working on a variety of projects,
+                                including game development, web development, and backend services, all part of my journey to
+                                become a better developer. I'm also the guitarist of a band I started with some friends. I'm
+                                always looking for new opportunities to learn and grow, so feel free to reach out if you'd
+                                like
+                                to chat!
+                            </p>
+                            <div className={"flex flex-row gap-3"}>
+                                <Badge>C#</Badge>
+                                <Badge>Java</Badge>
+                                <Badge>C++</Badge>
+                                <Badge>TypeScript/JavaScript</Badge>
+                            </div>
+                        </div>
+
                         <div className="relative items-center justify-center w-48 h-48 hidden lg:flex">
                             <div className="absolute bg-gradient-to-br from-vibrant to-muted rounded-lg">
                                 <SpinningText radius={10} className="absolute">
@@ -102,7 +179,7 @@ export default function Home() {
                     </div>
                 </section>
                 <section
-                    className="flex flex-col items-left justify-evenly bg-background min-h-full py-16 gap-y-8 my-24"
+                    className="flex flex-col items-left justify-evenly bg-background min-h-full py-16 gap-y-8 my-36"
                     id="projects"
                 >
                     <div className="flex flex-row items-left justify-left gap-4">

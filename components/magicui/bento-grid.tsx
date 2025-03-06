@@ -3,6 +3,8 @@ import { ComponentPropsWithoutRef, ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import {Info} from "lucide-react";
+import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
 
 interface BentoGridProps extends ComponentPropsWithoutRef<"div"> {
   children: ReactNode;
@@ -13,9 +15,9 @@ interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   name: string;
   className: string;
   background: ReactNode;
-  Icon: React.ElementType;
   description: string;
   category: string;
+  tooltip: string;
   href: string;
   cta: string;
 }
@@ -38,9 +40,9 @@ const BentoCard = ({
   name,
   className,
   background,
-  Icon,
   description,
   category,
+  tooltip,
   href,
   cta,
   ...props
@@ -58,16 +60,30 @@ const BentoCard = ({
     {...props}
   >
     <div>{background}</div>
-    <div className="absolute p-3 flex flex-col w-full">
-        <p className="text-xs font-semibold dark:text-neutral-300 text-neutral-700">
-            {(category || "").toUpperCase()}
+    <div className="absolute p-3 flex flex-wrap w-full justify-between items-center z-10">
+      <div className="flex flex-col gap-1">
+        <p className="text-xs font-semibold text-white/70">
+          {(category || "").toUpperCase()}
         </p>
-        <p className="text-4xl font-semibold">
-            {name}
+        <p className="text-4xl font-semibold text-white">
+          {name}
         </p>
+      </div>
+      <div className="mr-3">
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <Info color="#BBBBBB" />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{tooltip}</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
     </div>
     <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
-      <p className="max-w-lg text-neutral-700">{description}</p>
+      <p className="max-w-lg text-white/90">{description}</p>
     </div>
 
     <div
@@ -76,7 +92,7 @@ const BentoCard = ({
       )}
     >
       <Button variant="ghost" asChild size="sm" className="pointer-events-auto">
-        <a href={href}>
+        <a href={href} className="text-white/90">
           {cta}
           <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
         </a>
