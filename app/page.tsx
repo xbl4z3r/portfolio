@@ -14,6 +14,13 @@ import {BookHeartIcon} from "lucide-react";
 import {SpinningText} from "@/components/magicui/spinning-text";
 import {Badge} from "@/components/ui/badge";
 import {MagicCard} from "@/components/magicui/magic-card";
+import {
+    Expandable,
+    ExpandableCard, ExpandableCardContent,
+    ExpandableCardHeader,
+    ExpandableContent,
+    ExpandableTrigger
+} from "@/components/expandable-card";
 
 const TaglineAnimation = memo(() => (
     <TextAnimate
@@ -98,27 +105,33 @@ const projects = [
 const skills = [
     {
         category: "Languages",
-        values: ["C#", "Java", "C++", "TypeScript", "JavaScript", "Python", "SQL"]
+        values: ["C#", "Java", "C++", "TypeScript/JavaScript"],
+        detailed: <p>Lorem ipsum</p>
     },
     {
         category: "Frontend",
-        values: ["React", "Next.js", "Tailwind CSS", "HTML/CSS", "Framer Motion"]
+        values: ["React", "Next.js", "Tailwind CSS"],
+        detailed: <p>Lorem ipsum</p>
     },
     {
         category: "Game Development",
-        values: ["Unity", "Unreal Engine", "Godot", "OpenGL"]
+        values: ["Unity", "OpenGL", "LWJGL"],
+        detailed: <p>Lorem ipsum</p>
     },
     {
         category: "Backend",
-        values: ["Node.js", "Express", "Spring Boot", "ASP.NET", "REST APIs"]
+        values: ["Node.js", "Express", "MongoDB", "WebSockets"],
+        detailed: <p>Lorem ipsum</p>
     },
     {
         category: "Tools & DevOps",
-        values: ["Git", "Docker", "GitHub Actions", "Azure", "VS Code", "WebStorm"]
+        values: ["Git", "Docker", "GitHub Actions", "JetBrains IDEs"],
+        detailed: <p>Lorem ipsum</p>
     },
     {
         category: "Other",
-        values: ["Agile Development", "CI/CD", "System Design", "Algorithms & Data Structures", "Database Design"]
+        values: ["CI/CD", "System Design", "Robotics", "IOT"],
+        detailed: <p>Lorem ipsum</p>
     }
 ]
 
@@ -177,15 +190,13 @@ export default function Home() {
                     <div className={"flex flex-wrap items-center justify-between"}>
                         <div className={"flex flex-col gap-3"}>
                             <p className="text-left max-w-3xl text-sm sm:text-md md:text-xl lg:text-xl font-normal">
-                                I'm a software engineer and game developer with a passion for creating interactive
-                                experiences.
-                                I've always been fascinated by physics, mathematics, and computer science, and I love to
-                                experiment with new technologies and tools. I'm currently working on a variety of projects,
-                                including game development, web development, and backend services, all part of my journey to
-                                become a better developer. I'm also the guitarist of a band I started with some friends. I'm
-                                always looking for new opportunities to learn and grow, so feel free to reach out if you'd
-                                like
-                                to chat!
+                                I'm a self-taught software engineer and game developer with a passion for creating
+                                interactive experiences. I've always been fascinated by physics, mathematics, and
+                                computer science, and I love to experiment with new technologies and tools. I'm
+                                currently working on a variety of projects, including game development, web development,
+                                and backend services, all part of my journey to become a better developer. I'm also the
+                                guitarist of a band I started with some friends. I'm always looking for new
+                                opportunities to learn and grow, so feel free to reach out if you'd like to chat!
                             </p>
                         </div>
 
@@ -213,26 +224,56 @@ export default function Home() {
                                         backgroundImage: `linear-gradient(to right, ${colors.vibrant}, ${colors.muted})`,
                                     }}
                                 >•</h2>
-                                <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-left justify-center">My Skills</h2>
+                                <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-left justify-center">My
+                                    Skills</h2>
                             </div>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
                         {skills.map((skill, index) => (
-                            <MagicCard
+                            <Expandable
+                                className={"relative"}
                                 key={index}
-                                className="rounded-xl p-6"
-                                gradientFrom={colors.vibrant}
-                                gradientTo={colors.muted}
+                                expandDirection="vertical"
+                                expandBehavior="replace"
+                                initialDelay={0.2}
                             >
-                                <h3 className="text-xl font-bold mb-3">{skill.category}</h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {skill.values.map((value, valueIndex) => (
-                                        <Badge key={valueIndex}>{value}</Badge>
-                                    ))}
-                                </div>
-                            </MagicCard>
+                                {({isExpanded}) => (
+                                    <ExpandableTrigger>
+                                        <ExpandableCard
+                                            className="w-full relative p-0 m-0 b-0 transform transition-transform duration-300 hover:scale-105 cursor-pointer duration-200"
+                                            hoverToExpand={false}
+                                            expandDelay={200}
+                                            collapseDelay={500}
+                                            collapsedSize={{ width: 440, height: 140 }}
+                                        >
+                                            <MagicCard
+                                                key={index}
+                                                className="relative rounded-xl w-full h-full"
+                                                gradientFrom={colors.vibrant}
+                                                gradientTo={colors.muted}
+                                            >
+                                                <ExpandableCardHeader>
+                                                    <h3 className="text-xl font-bold mb-3">{skill.category}</h3>
+                                                </ExpandableCardHeader>
+                                                <ExpandableContent>
+                                                    <div className="px-6">{skill.detailed}</div>
+                                                </ExpandableContent>
+                                                <ExpandableCardContent>
+                                                    {!isExpanded && (
+                                                        <div className="flex flex-wrap gap-2">
+                                                            {skill.values.map((value, valueIndex) => (
+                                                                <Badge key={valueIndex}>{value}</Badge>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                </ExpandableCardContent>
+                                            </MagicCard>
+                                        </ExpandableCard>
+                                    </ExpandableTrigger>
+                                )}
+                            </Expandable>
                         ))}
                     </div>
                 </section>
