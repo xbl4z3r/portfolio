@@ -13,6 +13,7 @@ import {BentoCard, BentoGrid} from "@/components/magicui/bento-grid";
 import {BookHeartIcon} from "lucide-react";
 import {SpinningText} from "@/components/magicui/spinning-text";
 import {Badge} from "@/components/ui/badge";
+import {MagicCard} from "@/components/magicui/magic-card";
 
 const TaglineAnimation = memo(() => (
     <TextAnimate
@@ -34,7 +35,7 @@ const projects = [
             <div className="absolute inset-0 rounded-lg bg-black">
                 <img
                     src="/stock_discord.webp"
-                    className="w-full h-full object-cover opacity-80"
+                    className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
                     alt="Discord"
                 />
             </div>
@@ -51,7 +52,7 @@ const projects = [
         background: <div className="absolute inset-0 rounded-lg bg-black">
             <img
                 src="https://www.techhive.com/wp-content/uploads/2023/04/philips-hue-spotify-image-2-100901041-orig.jpeg?quality=50&strip=all"
-                className="w-full h-full object-cover opacity-80"
+                className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
                 alt="Discord"
             />
         </div>,
@@ -67,7 +68,7 @@ const projects = [
         background: <div className="absolute inset-0 rounded-lg bg-black">
             <img
                 src="https://i.ytimg.com/vi/VOL1PHXM-Kg/maxresdefault.jpg"
-                className="w-full h-full object-cover opacity-80"
+                className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
                 alt="Discord"
             />
         </div>,
@@ -83,7 +84,7 @@ const projects = [
         background: <div className="absolute inset-0 rounded-lg bg-black">
             <img
                 src="https://www.firstinspires.org/sites/all/themes/first/assets/images/2020/ftc/event-experience.jpg"
-                className="w-full h-full object-cover opacity-80"
+                className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
                 alt="Discord"
             />
         </div>,
@@ -91,6 +92,33 @@ const projects = [
         tooltip: "Credits to FIRST Inspires for the thumbnail",
         href: "/roadplanner",
         cta: "Learn more"
+    }
+]
+
+const skills = [
+    {
+        category: "Languages",
+        values: ["C#", "Java", "C++", "TypeScript", "JavaScript", "Python", "SQL"]
+    },
+    {
+        category: "Frontend",
+        values: ["React", "Next.js", "Tailwind CSS", "HTML/CSS", "Framer Motion"]
+    },
+    {
+        category: "Game Development",
+        values: ["Unity", "Unreal Engine", "Godot", "OpenGL"]
+    },
+    {
+        category: "Backend",
+        values: ["Node.js", "Express", "Spring Boot", "ASP.NET", "REST APIs"]
+    },
+    {
+        category: "Tools & DevOps",
+        values: ["Git", "Docker", "GitHub Actions", "Azure", "VS Code", "WebStorm"]
+    },
+    {
+        category: "Other",
+        values: ["Agile Development", "CI/CD", "System Design", "Algorithms & Data Structures", "Database Design"]
     }
 ]
 
@@ -159,12 +187,6 @@ export default function Home() {
                                 like
                                 to chat!
                             </p>
-                            <div className={"flex flex-row gap-3"}>
-                                <Badge>C#</Badge>
-                                <Badge>Java</Badge>
-                                <Badge>C++</Badge>
-                                <Badge>TypeScript/JavaScript</Badge>
-                            </div>
                         </div>
 
                         <div className="relative items-center justify-center w-48 h-48 hidden lg:flex">
@@ -176,6 +198,42 @@ export default function Home() {
                             <BookHeartIcon color={colors.vibrant}
                                            className="absolute w-12 h-12 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"/>
                         </div>
+                    </div>
+                </section>
+                <section
+                    className="flex flex-col items-left justify-evenly bg-background min-h-full py-16 md:gap-y-4 lg:gap-y-8 my-24"
+                    id="skills"
+                >
+                    <div className="flex flex-wrap items-left gap-8">
+                        <div className="flex flex-col items-left justify-center">
+                            <div className="flex flex-row items-center justify-center gap-4">
+                                <h2
+                                    className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-left justify-center bg-clip-text text-transparent"
+                                    style={{
+                                        backgroundImage: `linear-gradient(to right, ${colors.vibrant}, ${colors.muted})`,
+                                    }}
+                                >•</h2>
+                                <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-left justify-center">My Skills</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                        {skills.map((skill, index) => (
+                            <MagicCard
+                                key={index}
+                                className="rounded-xl p-6"
+                                gradientFrom={colors.vibrant}
+                                gradientTo={colors.muted}
+                            >
+                                <h3 className="text-xl font-bold mb-3">{skill.category}</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {skill.values.map((value, valueIndex) => (
+                                        <Badge key={valueIndex}>{value}</Badge>
+                                    ))}
+                                </div>
+                            </MagicCard>
+                        ))}
                     </div>
                 </section>
                 <section
