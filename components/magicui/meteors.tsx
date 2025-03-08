@@ -159,7 +159,7 @@ function MeteorsComponent({
                     <div
                         className="pointer-events-none absolute top-1/2 -z-10 h-px w-[50px] -translate-y-1/2"
                         style={{
-                            background: `linear-gradient(to right, ${style.backgroundColor}, transparent)`,
+                            background: `linear-gradient(to right, ${style?.backgroundColor || "#000000"}, transparent)`,
                         }}
                     />
                 </span>
