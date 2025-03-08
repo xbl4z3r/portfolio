@@ -106,32 +106,65 @@ const skills = [
     {
         category: "Languages",
         values: ["C#", "Java", "C++", "TypeScript/JavaScript"],
-        detailed: <p>Lorem ipsum</p>
+        detailed: <p>
+            I believe that learning new languages is a great way to expand your horizons and improve your problem-solving
+            as every language has its own unique features and quirks to suit different use cases. I'm most proficient in
+            C# and Java, as I've used them the most in my projects. I've also had my fair share of projects done in
+            TypeScript and JavaScript, especially in the frontend and backend web development space. I've also dabbled in
+            C++ for game development and systems programming.
+        </p>
     },
     {
         category: "Frontend",
-        values: ["React", "Next.js", "Tailwind CSS"],
-        detailed: <p>Lorem ipsum</p>
+        values: ["React", "Next.js", "Tailwind CSS", "ShadCN"],
+        detailed: <p>
+            I've always been a fan of creating beautiful and interactive user interfaces, and I've experimented with
+            various frontend technologies to achieve that goal. I'm most proficient in React and Next.js, as I've used
+            them the most in my projects. To style my components, I mainly use Tailwind CSS and ShadCN, as they allow me
+            to quickly prototype and style my components without having to write a lot of CSS.
+        </p>
     },
     {
         category: "Game Development",
-        values: ["Unity", "OpenGL", "LWJGL"],
-        detailed: <p>Lorem ipsum</p>
+        values: ["Unity", "OpenGL", "LWJGL", "Unreal Engine"],
+        detailed: <p>
+            Game development has always been a passion of mine, and I've worked on various game projects to improve my
+            skills in this area. I started my journey with Unreal, but I quickly switched to Unity due to its ease of use
+            and vast community support. I've also experimented with OpenGL and LWJGL for more low-level game development.
+            This has allowed me to understand the inner workings of game engines and graphics programming.
+        </p>
     },
     {
         category: "Backend",
         values: ["Node.js", "Express", "MongoDB", "WebSockets"],
-        detailed: <p>Lorem ipsum</p>
+        detailed: <p>
+            I've always been fascinated by the backend side of things. I love designing and implementing scalable and
+            efficient backend services to support my frontend applications. I'm most proficient in Node.js and Express,
+            as I've used them the most in my projects. I've also worked with MongoDB as my database of choice due to its
+            flexibility and scalability. I've also experimented with WebSockets for real-time communication between
+            clients and servers.
+        </p>
     },
     {
         category: "Tools & DevOps",
         values: ["Git", "Docker", "GitHub Actions", "JetBrains IDEs"],
-        detailed: <p>Lorem ipsum</p>
+        detailed: <p>
+            I believe that having the right tools and workflows is essential to being a productive developer. I've
+            adopted Git as my version control system of choice, and I use it in all my projects to keep track of changes
+            and collaborate with others. I've also worked with Docker to containerize my applications and GitHub Actions
+            for CI/CD pipelines. I'm a big fan of JetBrains IDEs, as they provide powerful features and integrations to
+            make my development process smoother.
+        </p>
     },
     {
         category: "Other",
         values: ["CI/CD", "System Design", "Robotics", "IOT"],
-        detailed: <p>Lorem ipsum</p>
+        detailed: <p>
+            I'm always looking to expand my skill set and learn new things. I've worked on various projects that have
+            allowed me to gain experience in CI/CD pipelines, system design, robotics, and IOT. I believe that having a
+            diverse skill set is essential in today's fast-paced and ever-changing tech landscape, and I'm always looking
+            for new opportunities to learn and grow.
+        </p>
     }
 ]
 
@@ -189,7 +222,7 @@ export default function Home() {
 
                     <div className={"flex flex-wrap items-center justify-between"}>
                         <div className={"flex flex-col gap-3"}>
-                            <p className="text-left max-w-3xl text-sm sm:text-md md:text-xl lg:text-xl font-normal">
+                            <p className="text-left max-w-3xl text-md sm:text-xl md:text-xl lg:text-xl font-normal">
                                 I'm a self-taught software engineer and game developer with a passion for creating
                                 interactive experiences. I've always been fascinated by physics, mathematics, and
                                 computer science, and I love to experiment with new technologies and tools. I'm
@@ -230,10 +263,10 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-6 w-full">
                         {skills.map((skill, index) => (
                             <Expandable
-                                className={"relative"}
+                                className="relative w-full"
                                 key={index}
                                 expandDirection="vertical"
                                 expandBehavior="replace"
@@ -246,7 +279,6 @@ export default function Home() {
                                             hoverToExpand={false}
                                             expandDelay={200}
                                             collapseDelay={500}
-                                            collapsedSize={{ width: 440, height: 140 }}
                                         >
                                             <MagicCard
                                                 key={index}
@@ -255,7 +287,7 @@ export default function Home() {
                                                 gradientTo={colors.muted}
                                             >
                                                 <ExpandableCardHeader>
-                                                    <h3 className="text-xl font-bold mb-3">{skill.category}</h3>
+                                                    <h3 className="text-xl lg:text-2xl font-bold mb-3">{skill.category}</h3>
                                                 </ExpandableCardHeader>
                                                 <ExpandableContent>
                                                     <div className="px-6">{skill.detailed}</div>

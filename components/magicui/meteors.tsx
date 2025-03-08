@@ -147,8 +147,8 @@ function MeteorsComponent({
                     key={idx}
                     style={{
                         ...style,
-                        "--meteor-delay": style.animationDelay,
-                        "--meteor-duration": style.animationDuration,
+                        "--meteor-delay": style?.animationDelay || "0s",
+                        "--meteor-duration": style?.animationDuration || "0s",
                     } as React.CSSProperties}
                     onAnimationIteration={() => scheduleMeteorUpdate(idx)}
                     className={cn(

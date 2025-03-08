@@ -355,8 +355,8 @@ const ExpandableCard = React.forwardRef<HTMLDivElement, ExpandableCardProps>(
         {
             children,
             className = "",
-            collapsedSize = { width: 320, height: 211 },
-            expandedSize = { width: 480, height: undefined },
+            collapsedSize = { width: undefined, height: undefined },
+            expandedSize = { width: undefined, height: undefined },
             hoverToExpand = false,
             expandDelay = 0,
             collapseDelay = 0,
@@ -477,7 +477,7 @@ const ExpandableCardHeader = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
     <div
         ref={ref}
-        className={cn("flex flex-col space-y-1.5 p-6", className)}
+        className={cn("flex flex-col space-y-1.5 px-6 pt-6", className)}
         {...props}
     >
         <motion.div layout className="flex justify-between items-start">
