@@ -324,7 +324,7 @@ export default function Home() {
 
     return (
         <>
-            <Navbar navbarData={siteConfig.navItems.portfolio} accentColors={[colors.vibrant, colors.muted]}/>
+            <Navbar navbarData={siteConfig.pages.portfolio} accentColors={[colors.vibrant, colors.muted]}/>
             <main className="container mx-auto max-w-7xl pt-6 px-6 flex-grow h-full">
                 <Meteors number={250}
                          colors={[colors.vibrant, colors.muted, colors.light_vibrant, colors.light_muted, colors.dark_vibrant, colors.dark_muted]}/>
@@ -508,15 +508,12 @@ export default function Home() {
                                                             {skill.badges.map((badge, valueIndex) => (
                                                                 <Badge key={valueIndex}
                                                                        className="border-transparent transition-colors duration-200 hover:opacity-90"
-                                                                       style={{
-                                                                           backgroundColor: colors.muted,
-                                                                           "--hover-color": colors.light_muted
-                                                                       } as React.CSSProperties}
                                                                        onMouseEnter={(e) => {
+                                                                           e.currentTarget.style.backup = e.currentTarget.style.backgroundColor;
                                                                            e.currentTarget.style.backgroundColor = colors.light_muted;
                                                                        }}
                                                                        onMouseLeave={(e) => {
-                                                                           e.currentTarget.style.backgroundColor = colors.muted;
+                                                                           e.currentTarget.style.backgroundColor = e.currentTarget.style.backup;
                                                                        }}
                                                                 >
                                                                     <div className="flex flex-row gap-2">

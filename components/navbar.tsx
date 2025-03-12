@@ -16,7 +16,7 @@ import {Menu, X} from "lucide-react";
 export const Navbar = ({
                            navbarData, accentColors
                        }: {
-    navbarData: { href: string; label: string }[];
+    navbarData: {title: string, icon: string, navItems: { href: string; label: string }[]};
     accentColors: string[];
 }) => {
     const [activeSection, setActiveSection] = useState("");
@@ -39,7 +39,7 @@ export const Navbar = ({
 
     useEffect(() => {
         const handleScroll = () => {
-            const sections = navbarData.map(item => {
+            const sections = navbarData.navItems.map(item => {
                 const [, id] = item.href.split("#");
                 return document.getElementById(id);
             }).filter(Boolean);
@@ -75,12 +75,12 @@ export const Navbar = ({
         <nav className="w-full border-b border-border sticky top-0 z-50 backdrop-blur-sm">
             <div className="container flex h-16 items-center justify-between mx-auto max-w-7xl bg-background/80">
                 <div className="flex items-center gap-3">
-                    <NextLink className="flex justify-start items-center gap-1" href="/">
-                        <Logo/>
-                        <p className="font-bold text-inherit">xbl4z3r</p>
+                    <NextLink className="flex justify-start items-center gap-1" href="#">
+                        <img src={navbarData.icon} alt={navbarData.title} className="h-10 w-auto"/>
+                        <p className="font-bold text-inherit">{navbarData.title}</p>
                     </NextLink>
                     <div className="hidden sm:flex gap-4 justify-start ml-2">
-                        {navbarData.map((item) => {
+                        {navbarData.navItems.map((item) => {
                             const [, id] = item.href.split("#");
                             const isActive = id === activeSection;
 
@@ -192,7 +192,7 @@ export const Navbar = ({
             <div
                 className={`sm:hidden absolute left-0 right-0 top-full border-t border-border z-50 backdrop-blur shadow-lg overflow-hidden transition-all duration-300 ${isMenuOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0 border-t-0'}`}>
                 <div className="container py-4 mx-auto space-y-3 overflow-y-auto bg-background/80">
-                    {navbarData.map((item, index) => {
+                    {navbarData.navItems.map((item, index) => {
                         const [, id] = item.href.split("#");
                         const isActive = id === activeSection;
 
