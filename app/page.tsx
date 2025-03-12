@@ -1,6 +1,6 @@
 "use client";
 
-import React, {memo} from "react";
+import React, {memo, useEffect, useState} from "react";
 
 import {SpotifyCard} from "@/components/spotify-card";
 import {siteConfig} from "@/config/site";
@@ -11,11 +11,11 @@ import {useColor} from "@/hooks/useColor";
 import {Meteors} from "@/components/magicui/meteors";
 import {BentoCard, BentoGrid} from "@/components/magicui/bento-grid";
 import {
-    BookHeartIcon, CalendarIcon,
+    BookHeartIcon,
     Code2Icon, ComputerIcon,
     DatabaseZapIcon,
     GamepadIcon, KeyboardIcon,
-    LayoutIcon, SquareMenuIcon, TwitterIcon, WifiIcon,
+    LayoutIcon, SquareMenuIcon, WifiIcon,
     WorkflowIcon
 } from "lucide-react";
 import {SpinningText} from "@/components/magicui/spinning-text";
@@ -35,14 +35,10 @@ import {
     SiGradle, SiJetbrains, SiMongodb,
     SiNextdotjs, SiNodedotjs, SiOpengl,
     SiReact, SiShadcnui, SiSocketdotio, SiTailwindcss,
-    SiTypescript, SiUnity, SiUnrealengine, SiX, SiXdotorg
+    SiTypescript, SiUnity, SiUnrealengine, SiX
 } from "@icons-pack/react-simple-icons";
-import {
-    HoverCard,
-    HoverCardContent,
-    HoverCardTrigger,
-} from "@/components/ui/hover-card"
 import {ShineBorder} from "@/components/magicui/shine-border";
+import {PopoverContent, PopoverTrigger, Popover} from "@/components/ui/popover";
 import {Card} from "@/components/ui/card";
 
 const TaglineAnimation = memo(() => (
@@ -306,6 +302,19 @@ const skillsData = [
 
 export default function Home() {
     const {colors} = useColor();
+    const [isOpen, setIsOpen] = useState(false);
+    const [isHovering, setIsHovering] = useState(false);
+
+    useEffect(() => {
+        if (isHovering) {
+            setIsOpen(true);
+        } else {
+            const timer = setTimeout(() => {
+                setIsOpen(false);
+            }, 300);
+            return () => clearTimeout(timer);
+        }
+    }, [isHovering]);
 
     const skills = skillsData.map(skill => ({
         ...skill,
@@ -372,47 +381,65 @@ export default function Home() {
                                 currently working on a variety of projects, including game development, web development,
                                 and backend services, all part of my journey to become a better developer. I'm also the
                                 guitarist of a band I started with some friends. I'm always looking for new
-                                opportunities to learn and grow, so feel free to <HoverCard>
-                                <HoverCardTrigger asChild>
-                                    <span className="underline cursor-pointer">reach out</span>
-                                </HoverCardTrigger>
-                                <HoverCardContent className="w-80">
-                                    <Card className="flex justify-between">
-                                        <ShineBorder
-                                            shineColor={[colors.vibrant, colors.muted, colors.light_vibrant, colors.light_muted, colors.dark_vibrant, colors.dark_muted]}
-                                            className="absolute inset-0 rounded-lg"/>
-                                        <div className="space-y-1">
-                                            <h4 className="text-md font-semibold">xbl4z3r</h4>
-                                            <p className="text-sm">
-                                                Software Engineer
-                                            </p>
-                                            <div className="flex items-center pt-2">
-                                                <SiX className="mr-2 h-4 w-4 opacity-70"/>{" "}
-                                                <span className="text-xs text-muted-foreground">
+                                opportunities to learn and grow, so feel free to{" "}
+                                <Popover
+                                    open={isOpen}
+                                    onOpenChange={(open) => {
+                                        setIsOpen(open);
+                                        if (!open) setIsHovering(false);
+                                    }}
+                                >
+                                    <PopoverTrigger asChild>
+                                    <span
+                                        className="underline cursor-pointer"
+                                        onMouseEnter={() => setIsHovering(true)}
+                                        onMouseLeave={() => setIsHovering(false)}
+                                    >
+                                        reach out
+                                    </span>
+                                    </PopoverTrigger>
+                                    <PopoverContent
+                                        className="w-80"
+                                        onMouseEnter={() => setIsHovering(true)}
+                                        onMouseLeave={() => setIsHovering(false)}
+                                    >
+                                        <Card className="flex justify-between">
+                                            <ShineBorder
+                                                shineColor={[colors.vibrant, colors.muted, colors.light_vibrant, colors.light_muted, colors.dark_vibrant, colors.dark_muted]}
+                                                className="absolute inset-0 rounded-lg"
+                                            />
+                                            <div className="space-y-1">
+                                                <h4 className="text-md font-semibold">xbl4z3r</h4>
+                                                <p className="text-sm">
+                                                    Software Engineer
+                                                </p>
+                                                <div className="flex items-center pt-2">
+                                                    <SiX className="mr-2 h-4 w-4 opacity-70"/>{" "}
+                                                    <span className="text-xs text-muted-foreground">
                                                     <a href={siteConfig.links.x} target="_blank">@xbl4z3r</a>
                                                 </span>
-                                            </div>
-                                            <div className="flex items-center pt-2">
-                                                <SiDiscord className="mr-2 h-4 w-4 opacity-70"/>{" "}
-                                                <span className="text-xs text-muted-foreground">
+                                                </div>
+                                                <div className="flex items-center pt-2">
+                                                    <SiDiscord className="mr-2 h-4 w-4 opacity-70"/>{" "}
+                                                    <span className="text-xs text-muted-foreground">
                                                     <a href={siteConfig.links.discord} target="_blank">@xbl4z3r</a>
                                                 </span>
-                                            </div>
-                                            <div className="flex items-center pt-2">
-                                                <SiGithub className="mr-2 h-4 w-4 opacity-70"/>{" "}
-                                                <span className="text-xs text-muted-foreground">
+                                                </div>
+                                                <div className="flex items-center pt-2">
+                                                    <SiGithub className="mr-2 h-4 w-4 opacity-70"/>{" "}
+                                                    <span className="text-xs text-muted-foreground">
                                                     <a href={siteConfig.links.github} target="_blank">@xbl4z3r</a>
                                                 </span>
+                                                </div>
+                                                <p className="pt-2 text-sm text-muted-foreground">These are the only
+                                                    ways to
+                                                    contact me. I don't use any other platforms.</p>
                                             </div>
-                                            <p className="pt-2 text-sm text-muted-foreground">These are the only ways to
-                                                contact me. I don't use any other platforms.</p>
-                                        </div>
-                                    </Card>
-                                </HoverCardContent>
-                            </HoverCard> if you'd like to chat!
+                                        </Card>
+                                    </PopoverContent>
+                                </Popover> if you'd like to chat!
                             </p>
                         </div>
-
                         <div className="relative items-center justify-center w-48 h-48 hidden lg:flex">
                             <div className="absolute bg-gradient-to-br from-vibrant to-muted rounded-lg">
                                 <SpinningText radius={10} className="absolute">
