@@ -10,7 +10,14 @@ import {TextAnimate} from "@/components/magicui/text-animate";
 import {useColor} from "@/hooks/useColor";
 import {Meteors} from "@/components/magicui/meteors";
 import {BentoCard, BentoGrid} from "@/components/magicui/bento-grid";
-import {BookHeartIcon} from "lucide-react";
+import {
+    BookHeartIcon, CalendarIcon,
+    Code2Icon, ComputerIcon,
+    DatabaseZapIcon,
+    GamepadIcon, KeyboardIcon,
+    LayoutIcon, SquareMenuIcon, TwitterIcon, WifiIcon,
+    WorkflowIcon
+} from "lucide-react";
 import {SpinningText} from "@/components/magicui/spinning-text";
 import {Badge} from "@/components/ui/badge";
 import {MagicCard} from "@/components/magicui/magic-card";
@@ -21,6 +28,22 @@ import {
     ExpandableContent,
     ExpandableTrigger
 } from "@/components/expandable-card";
+import {
+    SiCplusplus, SiDiscord, SiDocker,
+    SiDotnet, SiExpress, SiFirst, SiGit,
+    SiGithub, SiGithubactions,
+    SiGradle, SiJetbrains, SiMongodb,
+    SiNextdotjs, SiNodedotjs, SiOpengl,
+    SiReact, SiShadcnui, SiSocketdotio, SiTailwindcss,
+    SiTypescript, SiUnity, SiUnrealengine, SiX, SiXdotorg
+} from "@icons-pack/react-simple-icons";
+import {
+    HoverCard,
+    HoverCardContent,
+    HoverCardTrigger,
+} from "@/components/ui/hover-card"
+import {ShineBorder} from "@/components/magicui/shine-border";
+import {Card} from "@/components/ui/card";
 
 const TaglineAnimation = memo(() => (
     <TextAnimate
@@ -102,21 +125,59 @@ const projects = [
     }
 ]
 
-const skills = [
+const skillsData = [
     {
         category: "Languages",
-        values: ["C#", "Java", "C++", "TypeScript/JavaScript"],
+        icon: Code2Icon,
+        badges: [
+            {
+                text: "C#",
+                icon: SiDotnet,
+            },
+            {
+                text: "Java",
+                icon: SiGradle
+            },
+            {
+                text: "C++",
+                icon: SiCplusplus
+            },
+            {
+                text: "TypeScript/JavaScript",
+                icon: SiTypescript
+            }
+        ],
         detailed: <p>
-            I believe that learning new languages is a great way to expand your horizons and improve your problem-solving
+            I believe that learning new languages is a great way to expand your horizons and improve your
+            problem-solving
             as every language has its own unique features and quirks to suit different use cases. I'm most proficient in
             C# and Java, as I've used them the most in my projects. I've also had my fair share of projects done in
-            TypeScript and JavaScript, especially in the frontend and backend web development space. I've also dabbled in
+            TypeScript and JavaScript, especially in the frontend and backend web development space. I've also dabbled
+            in
             C++ for game development and systems programming.
         </p>
     },
     {
         category: "Frontend",
-        values: ["React", "Next.js", "Tailwind CSS", "ShadCN"],
+        icon: LayoutIcon,
+        badges: [
+            {
+                text: "React",
+                icon: SiReact,
+            },
+            {
+                text: "Next.js",
+                icon: SiNextdotjs
+            },
+            {
+                text: "Tailwind CSS",
+                icon: SiTailwindcss
+            },
+            {
+                text: "ShadCN",
+                icon: SiShadcnui
+            }
+        ],
         detailed: <p>
             I've always been a fan of creating beautiful and interactive user interfaces, and I've experimented with
             various frontend technologies to achieve that goal. I'm most proficient in React and Next.js, as I've used
@@ -126,17 +187,55 @@ const skills = [
     },
     {
         category: "Game Development",
-        values: ["Unity", "OpenGL", "LWJGL", "Unreal Engine"],
+        icon: GamepadIcon,
+        badges: [
+            {
+                text: "Unity",
+                icon: SiUnity
+            },
+            {
+                text: "OpenGL",
+                icon: SiOpengl
+            },
+            {
+                text: "LWJGL",
+                icon: KeyboardIcon
+            },
+            {
+                text: "Unreal Engine",
+                icon: SiUnrealengine
+            }
+        ],
         detailed: <p>
             Game development has always been a passion of mine, and I've worked on various game projects to improve my
-            skills in this area. I started my journey with Unreal, but I quickly switched to Unity due to its ease of use
-            and vast community support. I've also experimented with OpenGL and LWJGL for more low-level game development.
+            skills in this area. I started my journey with Unreal, but I quickly switched to Unity due to its ease of
+            use
+            and vast community support. I've also experimented with OpenGL and LWJGL for more low-level game
+            development.
             This has allowed me to understand the inner workings of game engines and graphics programming.
         </p>
     },
     {
         category: "Backend",
-        values: ["Node.js", "Express", "MongoDB", "WebSockets"],
+        icon: DatabaseZapIcon,
+        badges: [
+            {
+                text: "Node.js",
+                icon: SiNodedotjs,
+            },
+            {
+                text: "Express",
+                icon: SiExpress
+            },
+            {
+                text: "MongoDB",
+                icon: SiMongodb
+            },
+            {
+                text: "WebSockets",
+                icon: SiSocketdotio
+            }
+        ],
         detailed: <p>
             I've always been fascinated by the backend side of things. I love designing and implementing scalable and
             efficient backend services to support my frontend applications. I'm most proficient in Node.js and Express,
@@ -147,7 +246,25 @@ const skills = [
     },
     {
         category: "Tools & DevOps",
-        values: ["Git", "Docker", "GitHub Actions", "JetBrains IDEs"],
+        icon: WorkflowIcon,
+        badges: [
+            {
+                text: "Git",
+                icon: SiGit
+            },
+            {
+                text: "Docker",
+                icon: SiDocker
+            },
+            {
+                text: "GitHub Actions",
+                icon: SiGithubactions
+            },
+            {
+                text: "JetBrains IDEs",
+                icon: SiJetbrains
+            }
+        ],
         detailed: <p>
             I believe that having the right tools and workflows is essential to being a productive developer. I've
             adopted Git as my version control system of choice, and I use it in all my projects to keep track of changes
@@ -158,11 +275,30 @@ const skills = [
     },
     {
         category: "Other",
-        values: ["CI/CD", "System Design", "Robotics", "IOT"],
+        icon: SquareMenuIcon,
+        badges: [
+            {
+                text: "CI/CD",
+                icon: SiGithub
+            },
+            {
+                text: "System Design",
+                icon: ComputerIcon
+            },
+            {
+                text: "Robotics",
+                icon: SiFirst
+            },
+            {
+                text: "IOT",
+                icon: WifiIcon
+            }
+        ],
         detailed: <p>
             I'm always looking to expand my skill set and learn new things. I've worked on various projects that have
             allowed me to gain experience in CI/CD pipelines, system design, robotics, and IOT. I believe that having a
-            diverse skill set is essential in today's fast-paced and ever-changing tech landscape, and I'm always looking
+            diverse skill set is essential in today's fast-paced and ever-changing tech landscape, and I'm always
+            looking
             for new opportunities to learn and grow.
         </p>
     }
@@ -170,6 +306,13 @@ const skills = [
 
 export default function Home() {
     const {colors} = useColor();
+
+    const skills = skillsData.map(skill => ({
+        ...skill,
+        // Replace the icon component with the styled version
+        icon: <skill.icon className="w-6 h-6" style={{color: colors.vibrant}}/>
+    }));
+
     return (
         <>
             <Navbar navbarData={siteConfig.navItems.portfolio} accentColors={[colors.vibrant, colors.muted]}/>
@@ -229,7 +372,44 @@ export default function Home() {
                                 currently working on a variety of projects, including game development, web development,
                                 and backend services, all part of my journey to become a better developer. I'm also the
                                 guitarist of a band I started with some friends. I'm always looking for new
-                                opportunities to learn and grow, so feel free to reach out if you'd like to chat!
+                                opportunities to learn and grow, so feel free to <HoverCard>
+                                <HoverCardTrigger asChild>
+                                    <span className="underline cursor-pointer">reach out</span>
+                                </HoverCardTrigger>
+                                <HoverCardContent className="w-80">
+                                    <Card className="flex justify-between">
+                                        <ShineBorder
+                                            shineColor={[colors.vibrant, colors.muted, colors.light_vibrant, colors.light_muted, colors.dark_vibrant, colors.dark_muted]}
+                                            className="absolute inset-0 rounded-lg"/>
+                                        <div className="space-y-1">
+                                            <h4 className="text-md font-semibold">xbl4z3r</h4>
+                                            <p className="text-sm">
+                                                Software Engineer
+                                            </p>
+                                            <div className="flex items-center pt-2">
+                                                <SiX className="mr-2 h-4 w-4 opacity-70"/>{" "}
+                                                <span className="text-xs text-muted-foreground">
+                                                    <a href={siteConfig.links.x} target="_blank">@xbl4z3r</a>
+                                                </span>
+                                            </div>
+                                            <div className="flex items-center pt-2">
+                                                <SiDiscord className="mr-2 h-4 w-4 opacity-70"/>{" "}
+                                                <span className="text-xs text-muted-foreground">
+                                                    <a href={siteConfig.links.discord} target="_blank">@xbl4z3r</a>
+                                                </span>
+                                            </div>
+                                            <div className="flex items-center pt-2">
+                                                <SiGithub className="mr-2 h-4 w-4 opacity-70"/>{" "}
+                                                <span className="text-xs text-muted-foreground">
+                                                    <a href={siteConfig.links.github} target="_blank">@xbl4z3r</a>
+                                                </span>
+                                            </div>
+                                            <p className="pt-2 text-sm text-muted-foreground">These are the only ways to
+                                                contact me. I don't use any other platforms.</p>
+                                        </div>
+                                    </Card>
+                                </HoverCardContent>
+                            </HoverCard> if you'd like to chat!
                             </p>
                         </div>
 
@@ -287,16 +467,36 @@ export default function Home() {
                                                 gradientTo={colors.muted}
                                             >
                                                 <ExpandableCardHeader>
-                                                    <h3 className="text-xl lg:text-2xl font-bold mb-3">{skill.category}</h3>
+                                                    <div className="flex items-center gap-3">
+                                                        {skill.icon}
+                                                        <h3 className="text-xl lg:text-2xl font-bold">{skill.category}</h3>
+                                                    </div>
                                                 </ExpandableCardHeader>
                                                 <ExpandableContent>
-                                                    <div className="px-6">{skill.detailed}</div>
+                                                    <div className="px-6 pt-2">{skill.detailed}</div>
                                                 </ExpandableContent>
                                                 <ExpandableCardContent>
                                                     {!isExpanded && (
-                                                        <div className="flex flex-wrap gap-2">
-                                                            {skill.values.map((value, valueIndex) => (
-                                                                <Badge key={valueIndex}>{value}</Badge>
+                                                        <div className="flex flex-wrap gap-2 pt-2">
+                                                            {skill.badges.map((badge, valueIndex) => (
+                                                                <Badge key={valueIndex}
+                                                                       className="border-transparent transition-colors duration-200 hover:opacity-90"
+                                                                       style={{
+                                                                           backgroundColor: colors.muted,
+                                                                           "--hover-color": colors.light_muted
+                                                                       } as React.CSSProperties}
+                                                                       onMouseEnter={(e) => {
+                                                                           e.currentTarget.style.backgroundColor = colors.light_muted;
+                                                                       }}
+                                                                       onMouseLeave={(e) => {
+                                                                           e.currentTarget.style.backgroundColor = colors.muted;
+                                                                       }}
+                                                                >
+                                                                    <div className="flex flex-row gap-2">
+                                                                        <badge.icon className="w-4 h-4"/>
+                                                                        <p>{badge.text}</p>
+                                                                    </div>
+                                                                </Badge>
                                                             ))}
                                                         </div>
                                                     )}

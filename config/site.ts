@@ -57,6 +57,7 @@ export const siteConfig = {
   links: {
     github: "/github",
     discord: "/discord",
+    x: "/x",
     sponsor: "/sponsor",
   },
 };

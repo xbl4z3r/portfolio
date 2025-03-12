@@ -7,6 +7,26 @@ const nextConfig = {
                 destination: 'https://github.com/xbl4z3r/roadplanner',
                 permanent: true,
             },
+            {
+                source: '/discord',
+                destination: 'https://discord.com/users/678559901789978624',
+                permanent: true,
+            },
+            {
+                source: '/github',
+                destination: 'https://github.com/xbl4z3r/',
+                permanent: true,
+            },
+            {
+                source: '/x',
+                destination: 'https://x.com/xbl4z3r/',
+                permanent: true,
+            },
+            {
+                source: '/sponsor',
+                destination: 'https://patreon.com/xbl4z3r/',
+                permanent: true,
+            }
         ];
     }
 };
