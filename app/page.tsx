@@ -314,7 +314,16 @@ const ProjectCard = ({
                          href,
                          cta,
                          ...props
-                     }: BentoCardProps) => {
+                     }: {
+    name: string;
+    className: string;
+    background: React.ReactNode;
+    description: string;
+    category: string;
+    tooltip: string;
+    href: string;
+    cta: string;
+}) => {
     const [isTooltipVisible, setTooltipVisible] = useState(false);
     const [tooltipTimer, setTooltipTimer] = useState<NodeJS.Timeout | null>(null);
 

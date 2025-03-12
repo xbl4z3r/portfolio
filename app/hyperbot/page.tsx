@@ -1,6 +1,6 @@
 "use client";
 
-import React, {memo, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import {siteConfig} from "@/config/site";
 import {Navbar} from "@/components/navbar";
@@ -10,6 +10,55 @@ import {LineShadowText} from "@/components/magicui/line-shadow-text";
 import {useTheme} from "next-themes";
 import {InteractiveHoverButton} from "@/components/magicui/interactive-hover-button";
 import {RippleButton} from "@/components/magicui/ripple-button";
+import {VelocityScroll} from "@/components/magicui/scroll-based-velocity";
+import {BitcoinIcon, GaugeIcon, HammerIcon, MessageCircleHeartIcon, MusicIcon} from "lucide-react";
+import {FeatureCard} from "@/components/magicui/feature-card";
+import {BentoGrid} from "@/components/magicui/bento-grid";
+
+const features = [
+    {
+        name: "Fast",
+        description: "Hyper Bot is sharded and hosted around the world to ensure that it responds quickly to your commands and never goes down.",
+        className: "lg:row-start-1 lg:row-end-3 lg:col-start-1 lg:col-end-2",
+        background: (<div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-lg"/>),
+        icon: <GaugeIcon/>
+    },
+    {
+        name: "Economy",
+        description: "Hyper Bot has a fully-featured economy system, with a variety of ways to earn and spend money, helping server admins to establish a market economy. This also rewards active members for their participation.",
+        className: "lg:row-start-1 lg:row-end-2 lg:col-start-2 lg:col-end-4",
+        background: (<div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-transparent rounded-lg"/>),
+        icon: <BitcoinIcon/>
+    },
+    {
+        name: "Music",
+        description: "Hyper Bot has a powerful music system that allows you to play music from YouTube, Spotify, SoundCloud, and more. You can also create playlists, queue songs, and more to keep your server entertained and the voice channels lively.",
+        className: "lg:row-start-2 lg:row-end-3 lg:col-start-2 lg:col-end-3",
+        background: (<div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent rounded-lg"/>),
+        icon: <MusicIcon/>
+    },
+    {
+        name: "Leveling",
+        description: "Hyper Bot has a leveling system that rewards active members with experience points and levels. You can also set up custom roles for each level, making it easy to reward your most active members.",
+        className: "lg:row-start-3 lg:row-end-4 lg:col-start-1 lg:col-end-2",
+        background: (<div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-transparent rounded-lg"/>),
+        icon: <MessageCircleHeartIcon/>
+    },
+    {
+        name: "Moderation",
+        description: "Hyper Bot has a variety of moderation commands to help you keep your server safe and clean. You can ban, kick, mute, and more with ease.",
+        className: "lg:row-start-3 lg:row-end-4 lg:col-start-2 lg:col-end-3",
+        background: (<div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-transparent rounded-lg"/>),
+        icon: <HammerIcon/>
+    },
+    {
+        name: "Fun",
+        description: "Hyper Bot has a variety of fun commands to keep your server entertained. You can play games, roll dice, and more.",
+        className: "lg:row-start-2 lg:row-end-4 lg:col-start-3 lg:col-end-4",
+        background: (<div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent rounded-lg"/>),
+        icon: <MessageCircleHeartIcon/>
+    }
+]
 
 export default function HyperBotPage() {
     const theme = useTheme();
@@ -22,9 +71,9 @@ export default function HyperBotPage() {
     return (
         <>
             <Navbar navbarData={siteConfig.pages.hyperbot} accentColors={["#c754fb", "#db7dfa"]}/>
-            <main className="container mx-auto max-w-7xl px-6 grow h-full">
+            <main className="container mx-auto px-6 max-w-7xl grow h-full">
                 <section
-                    className="flex flex-col items-center justify-evenly bg-background min-h-screen"
+                    className="relative flex flex-col items-center justify-evenly bg-background min-h-screen"
                     id="home"
                 >
                     <AnimatedGridPattern
@@ -52,13 +101,47 @@ export default function HyperBotPage() {
                         </div>
                         <div className="flex flex-col gap-4 w-full p-10">
                             <div className="flex flex-row justify-between w-full">
-                                <InteractiveHoverButton className="bg-[#c754fb]" onClick={() => window.open("/hyperbot/invite", "_blank")}>
+                                <InteractiveHoverButton className="bg-[#c754fb]"
+                                                        onClick={() => window.open("/hyperbot/invite", "_blank")}>
                                     Invite Hyper Bot
                                 </InteractiveHoverButton>
-                                <RippleButton rippleColor="#C754fB" className="hover:scale-105 transition duration-300 bg-muted" onClick={() => window.open("/hyperbot/vote", "_blank")}>
+                                <RippleButton rippleColor="#C754fB"
+                                              className="hover:scale-105 transition duration-300 bg-muted"
+                                              onClick={() => window.open("/hyperbot/vote", "_blank")}>
                                     Vote for Hyper Bot
                                 </RippleButton>
                             </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+                <VelocityScroll>Hyper Bot</VelocityScroll>
+                <div
+                    className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
+                <div
+                    className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
+            </div>
+            <main className="container mx-auto px-6 max-w-7xl grow h-full">
+                <section
+                    className="flex flex-col items-center justify-evenly bg-background min-h-screen"
+                    id="features"
+                >
+                    <div className="relative flex flex-col items-center justify-evenly bg-background h-screen my-20 lg:my-30 gap-10">
+                        <div className="flex flex-col gap-2 max-w-2xl pr-10">
+                            <h1 className="text-6xl text-center font-bold gradient text-transparent bg-clip-text bg-linear-to-r from-[#c754fb] to-[#db7dfa]">
+                                Features
+                            </h1>
+                            <p className="text-lg text-center text-white/90">
+                                Hyper Bot has a variety of features that can help you manage your server and make it more fun.
+                            </p>
+                        </div>
+                        <div>
+                            <BentoGrid className="gap-4 grid-cols-3">
+                                {features.map((feature) => (
+                                    <FeatureCard key={feature.name} {...feature} />
+                                ))}
+                            </BentoGrid>
                         </div>
                     </div>
                 </section>

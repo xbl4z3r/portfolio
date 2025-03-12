@@ -72,8 +72,8 @@ export const Navbar = ({
     }, [activeSection, navbarData]);
 
     return (
-        <nav className="w-full border-b border-border sticky top-0 z-50 backdrop-blur-xs">
-            <div className="container flex h-16 items-center justify-between mx-auto max-w-7xl bg-background/80">
+        <nav className="w-full border-b border-border sticky top-0 z-50 backdrop-blur-xs bg-background/80">
+            <div className="container flex h-16 items-center justify-between mx-auto max-w-7xl">
                 <div className="flex items-center gap-3">
                     <NextLink className="flex justify-start items-center gap-1" href="#">
                         <img src={navbarData.icon} alt={navbarData.title} className="h-10 w-auto"/>

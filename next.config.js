@@ -26,6 +26,16 @@ const nextConfig = {
                 source: '/sponsor',
                 destination: 'https://patreon.com/xbl4z3r/',
                 permanent: true,
+            },
+            {
+                source: '/hyperbot/invite',
+                destination: 'https://discord.com/oauth2/authorize?client_id=710425933391200276',
+                permanent: true,
+            },
+            {
+                source: '/hyperbot/vote',
+                destination: 'https://top.gg/bot/710425933391200276/vote',
+                permanent: true,
             }
         ];
     }
