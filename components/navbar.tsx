@@ -16,7 +16,7 @@ import {Menu, X} from "lucide-react";
 export const Navbar = ({
                            navbarData, accentColors
                        }: {
-    navbarData: {title: string, icon: string, navItems: { href: string; label: string }[]};
+    navbarData: { title: string, icon: string, navItems: { href: string; label: string }[] };
     accentColors: string[];
 }) => {
     const [activeSection, setActiveSection] = useState("");
@@ -75,10 +75,14 @@ export const Navbar = ({
         <nav className="w-full border-b border-border sticky top-0 z-50 backdrop-blur-xs bg-background/80">
             <div className="container flex h-16 items-center justify-between mx-auto max-w-7xl">
                 <div className="flex items-center gap-3">
-                    <NextLink className="flex justify-start items-center gap-1" href="#">
+                    <div className="flex justify-start items-center gap-1 cursor-pointer gap-3" onClick={() => {
+                        const element = document.getElementById("home");
+                        if (element) element.scrollIntoView({behavior: "smooth"});
+                        else window.location.href = "/";
+                    }}>
                         <img src={navbarData.icon} alt={navbarData.title} className="h-10 w-auto"/>
                         <p className="font-bold text-inherit">{navbarData.title}</p>
-                    </NextLink>
+                    </div>
                     <div className="hidden sm:flex gap-4 justify-start ml-2">
                         {navbarData.navItems.map((item) => {
                             const [, id] = item.href.split("#");
