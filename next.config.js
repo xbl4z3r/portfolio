@@ -36,6 +36,11 @@ const nextConfig = {
                 source: '/hyperbot/vote',
                 destination: 'https://top.gg/bot/710425933391200276/vote',
                 permanent: true,
+            },
+            {
+                source: '/spotuya/download',
+                destination: 'https://github.com/xbl4z3r/spotuya/releases',
+                permanent: true,
             }
         ];
     }

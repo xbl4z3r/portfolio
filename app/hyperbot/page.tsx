@@ -93,7 +93,7 @@ export default function HyperBotPage() {
                                 Hyper Bot
                             </h1>
                             <div className="flex flex-wrap items-center justify-center">
-                                <p className={"text-xl md:text-2xl lg:text-4xl"}>
+                                <p className={"text-xl md:text-2xl lg:text-4xl text-center"}>
                                     A <LineShadowText className="italic" shadowColor={shadowColor}>fast</LineShadowText>
                                     {" "}multipurpose Discord application.
                                 </p>
@@ -127,7 +127,7 @@ export default function HyperBotPage() {
                     className="flex flex-col items-center justify-evenly bg-background min-h-screen"
                     id="features"
                 >
-                    <div className="relative flex flex-col items-center justify-evenly bg-background h-screen my-20 lg:my-30 gap-10">
+                    <div className="relative flex flex-col items-center justify-evenly bg-background h-screen my-20 lg:my-30 gap-20 lg:gap-30">
                         <div className="flex flex-col gap-2 max-w-2xl pr-10">
                             <h1 className="text-6xl text-center font-bold gradient text-transparent bg-clip-text bg-linear-to-r from-[#c754fb] to-[#db7dfa]">
                                 Features

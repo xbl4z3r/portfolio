@@ -65,6 +65,24 @@ export const siteConfig = {
                     href: "/hyperclient/store",
                 },
             ],
+        },
+        spotuya: {
+            title: "Spotuya",
+            icon: "/spotuya.png",
+            navItems: [
+                {
+                    label: "Home",
+                    href: "/spotuya#home",
+                },
+                {
+                    label: "About",
+                    href: "/spotuya/#about",
+                },
+                {
+                    label: "Download",
+                    href: "/spotuya/#download",
+                },
+            ],
         }
     },
     links: {
