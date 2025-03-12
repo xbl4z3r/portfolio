@@ -509,10 +509,12 @@ export default function Home() {
                                                                 <Badge key={valueIndex}
                                                                        className="border-transparent transition-colors duration-200 hover:opacity-90"
                                                                        onMouseEnter={(e) => {
+                                                                           // @ts-expect-error
                                                                            e.currentTarget.style.backup = e.currentTarget.style.backgroundColor;
                                                                            e.currentTarget.style.backgroundColor = colors.light_muted;
                                                                        }}
                                                                        onMouseLeave={(e) => {
+                                                                           // @ts-expect-error
                                                                            e.currentTarget.style.backgroundColor = e.currentTarget.style.backup;
                                                                        }}
                                                                 >

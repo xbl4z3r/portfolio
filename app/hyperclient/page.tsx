@@ -4,26 +4,18 @@ import React, {memo, useEffect, useState} from "react";
 
 import {siteConfig} from "@/config/site";
 import {Navbar} from "@/components/navbar";
-import {AnimatedGridPattern} from "@/components/magicui/animated-grid-pattern";
-import {cn} from "@/lib/utils";
 import {LineShadowText} from "@/components/magicui/line-shadow-text";
 import {useTheme} from "next-themes";
-import {InteractiveHoverButton} from "@/components/magicui/interactive-hover-button";
-import {RippleButton} from "@/components/magicui/ripple-button";
 import {Ripple} from "@/components/magicui/ripple";
 import {AuroraText} from "@/components/magicui/aurora-text";
 import {TextReveal} from "@/components/magicui/text-reveal";
 
-export default function Home() {
+export default function HyperClientPage() {
     const theme = useTheme();
-
     const [mounted, setMounted] = useState(false);
-
-    // Wait for client-side hydration to complete
     useEffect(() => {
         setMounted(true);
     }, []);
-
     const shadowColor = mounted ? (theme.resolvedTheme === "dark" ? "white" : "black") : "transparent";
 
     return (

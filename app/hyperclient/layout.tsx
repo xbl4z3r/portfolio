@@ -1,4 +1,4 @@
-export default function HyperbotLayout({
+export default function HyperClientLayout({
    children,
  }: {
    children: React.ReactNode;

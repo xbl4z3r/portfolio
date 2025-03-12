@@ -3,7 +3,6 @@ module.exports = {
     content: [
         './components/**/*.{js,ts,jsx,tsx,mdx}',
         './app/**/*.{js,ts,jsx,tsx,mdx}',
-        "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}"
     ],
     theme: {
         extend: {
@@ -235,9 +234,9 @@ module.exports = {
                 'glow-md': '0 0 32px 0 hsla(var(--foreground) / 0.08) inset',
                 'glow-lg': '0 0 64px 0 hsla(var(--foreground) / 0.06) inset',
                 mockup: '-12px 16px 48px var(--shadow-strong)'
-            }
+            },
         }
     },
-    darkMode: ["selector", 'class'],
+    darkMode: 'class',
     plugins: [require("tailwindcss-animate")],
 }

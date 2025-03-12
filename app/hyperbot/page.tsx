@@ -11,16 +11,12 @@ import {useTheme} from "next-themes";
 import {InteractiveHoverButton} from "@/components/magicui/interactive-hover-button";
 import {RippleButton} from "@/components/magicui/ripple-button";
 
-export default function Home() {
+export default function HyperBotPage() {
     const theme = useTheme();
-
     const [mounted, setMounted] = useState(false);
-
-    // Wait for client-side hydration to complete
     useEffect(() => {
         setMounted(true);
     }, []);
-
     const shadowColor = mounted ? (theme.resolvedTheme === "dark" ? "white" : "black") : "transparent";
 
     return (
@@ -42,7 +38,7 @@ export default function Home() {
                         )}
                     />
                     <div
-                        className="flex flex-col max-w-5xl justify-evenly h-screen">
+                        className="flex flex-col max-w-5xl justify-evenly h-screen relative x-20">
                         <div className="gap-2">
                             <h1 className={"text-6xl md:text-7xl lg:text-9xl text-center font-bold gradient text-transparent bg-clip-text bg-gradient-to-r from-[#c754fb] to-[#db7dfa] p-3 md:p-4 lg:p-5"}>
                                 Hyper Bot
@@ -56,10 +52,10 @@ export default function Home() {
                         </div>
                         <div className="flex flex-col gap-4 w-full p-10">
                             <div className="flex flex-row justify-between w-full">
-                                <InteractiveHoverButton className="bg-[#c754fb]">
+                                <InteractiveHoverButton className="bg-[#c754fb]" onClick={() => window.open("/hyperbot/invite", "_blank")}>
                                     Invite Hyper Bot
                                 </InteractiveHoverButton>
-                                <RippleButton rippleColor="#C754fB" className="hover:scale-105 transition duration-300 bg-muted">
+                                <RippleButton rippleColor="#C754fB" className="hover:scale-105 transition duration-300 bg-muted" onClick={() => window.open("/hyperbot/vote", "_blank")}>
                                     Vote for Hyper Bot
                                 </RippleButton>
                             </div>
