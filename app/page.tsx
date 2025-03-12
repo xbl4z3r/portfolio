@@ -9,12 +9,12 @@ import {SparklesText} from "@/components/magicui/sparkles-text";
 import {TextAnimate} from "@/components/magicui/text-animate";
 import {useColor} from "@/hooks/useColor";
 import {Meteors} from "@/components/magicui/meteors";
-import {BentoCard, BentoGrid} from "@/components/magicui/bento-grid";
+import {BentoGrid} from "@/components/magicui/bento-grid";
 import {
     BookHeartIcon,
     Code2Icon, ComputerIcon,
     DatabaseZapIcon,
-    GamepadIcon, KeyboardIcon,
+    GamepadIcon, Info, KeyboardIcon,
     LayoutIcon, SquareMenuIcon, WifiIcon,
     WorkflowIcon
 } from "lucide-react";
@@ -40,6 +40,10 @@ import {
 import {ShineBorder} from "@/components/magicui/shine-border";
 import {PopoverContent, PopoverTrigger, Popover} from "@/components/ui/popover";
 import {Card} from "@/components/ui/card";
+import {cn} from "@/lib/utils";
+import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
+import {Button} from "@/components/ui/button";
+import {ArrowRightIcon} from "@radix-ui/react-icons";
 
 const TaglineAnimation = memo(() => (
     <TextAnimate
@@ -300,6 +304,102 @@ const skillsData = [
     }
 ]
 
+const ProjectCard = ({
+                         name,
+                         className,
+                         background,
+                         description,
+                         category,
+                         tooltip,
+                         href,
+                         cta,
+                         ...props
+                     }: BentoCardProps) => {
+    const [isTooltipVisible, setTooltipVisible] = useState(false);
+    const [tooltipTimer, setTooltipTimer] = useState<NodeJS.Timeout | null>(null);
+
+    const handleTooltipClick = () => {
+        setTooltipVisible(!isTooltipVisible);
+    };
+
+    const handleMouseEnter = () => {
+        const timer = setTimeout(() => {
+            setTooltipVisible(true);
+        }, 300);
+        setTooltipTimer(timer);
+    };
+
+    const handleMouseLeave = () => {
+        if (tooltipTimer) {
+            clearTimeout(tooltipTimer);
+            setTooltipTimer(null);
+        }
+        setTooltipVisible(false);
+    };
+
+    return (
+        <div
+            key={name}
+            className={cn(
+                "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl",
+                "bg-background [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
+                "transform-gpu dark:bg-background dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
+                className,
+            )}
+            {...props}
+        >
+            <div>{background}</div>
+            <div className="absolute p-3 flex flex-wrap w-full justify-between items-center z-10">
+                <div className="flex flex-col gap-1">
+                    <p className="text-xs font-semibold text-white/70">
+                        {(category || "").toUpperCase()}
+                    </p>
+                    <p className="text-4xl font-semibold text-white">
+                        {name}
+                    </p>
+                </div>
+                {tooltip && (
+                    <div className="mr-3">
+                        <TooltipProvider>
+                            <Tooltip open={isTooltipVisible}>
+                                <TooltipTrigger
+                                    onClick={handleTooltipClick}
+                                    onMouseEnter={handleMouseEnter}
+                                    onMouseLeave={handleMouseLeave}
+                                >
+                                    <Info color="#BBBBBB"/>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>{tooltip}</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                    </div>
+                )}
+            </div>
+            <div
+                className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
+                <p className="max-w-lg text-white/90">{description}</p>
+            </div>
+
+            <div
+                className={cn(
+                    "pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100",
+                )}
+            >
+                <Button variant="ghost" asChild size="sm" className="pointer-events-auto">
+                    <a href={href} className="text-white/90">
+                        {cta}
+                        <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180"/>
+                    </a>
+                </Button>
+            </div>
+            <div
+                className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03] dark:group-hover:bg-neutral-800/10"/>
+        </div>
+    );
+};
+
 export default function Home() {
     const {colors} = useColor();
     const [isOpen, setIsOpen] = useState(false);
@@ -550,7 +650,7 @@ export default function Home() {
                     </div>
                     <BentoGrid className="gap-4 w-full">
                         {projects.map((project) => (
-                            <BentoCard key={project.name} {...project} />
+                            <ProjectCard key={project.name} {...project} />
                         ))}
                     </BentoGrid>
                 </section>

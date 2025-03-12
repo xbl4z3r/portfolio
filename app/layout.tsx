@@ -10,6 +10,7 @@ import {ColorProvider} from "@/hooks/useColor";
 
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
+import {Footer} from "@/components/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -48,6 +49,7 @@ export default function RootLayout({
             <ColorProvider>
               {children}
             </ColorProvider>
+            <Footer/>
             <SpeedInsights />
             <Analytics />
           </div>
