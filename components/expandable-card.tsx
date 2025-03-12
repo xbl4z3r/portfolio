@@ -181,7 +181,7 @@ const ANIMATION_PRESETS: Record<string, AnimationPreset> = {
         animate: { opacity: 1, rotate: 0 },
         exit: { opacity: 0, rotate: -10 },
     },
-    "blur-sm": {
+    "blur-xs": {
         initial: { opacity: 0, filter: "blur(4px)" },
         animate: { opacity: 1, filter: "blur(0px)" },
         exit: { opacity: 0, filter: "blur(4px)" },
@@ -494,7 +494,7 @@ const ExpandableCardContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
     <div
         ref={ref}
-        className={cn("p-6 pt-0 px-4 overflow-hidden flex-grow", className)}
+        className={cn("p-6 pt-0 px-4 overflow-hidden grow", className)}
         {...props}
     >
         <motion.div layout>{children}</motion.div>

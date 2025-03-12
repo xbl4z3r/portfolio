@@ -22,7 +22,7 @@ export default function HyperBotPage() {
     return (
         <>
             <Navbar navbarData={siteConfig.pages.hyperbot} accentColors={["#c754fb", "#db7dfa"]}/>
-            <main className="container mx-auto max-w-7xl px-6 flex-grow h-full">
+            <main className="container mx-auto max-w-7xl px-6 grow h-full">
                 <section
                     className="flex flex-col items-center justify-evenly bg-background min-h-screen"
                     id="home"
@@ -40,7 +40,7 @@ export default function HyperBotPage() {
                     <div
                         className="flex flex-col max-w-5xl justify-evenly h-screen relative x-20">
                         <div className="gap-2">
-                            <h1 className={"text-6xl md:text-7xl lg:text-9xl text-center font-bold gradient text-transparent bg-clip-text bg-gradient-to-r from-[#c754fb] to-[#db7dfa] p-3 md:p-4 lg:p-5"}>
+                            <h1 className={"text-6xl md:text-7xl lg:text-9xl text-center font-bold gradient text-transparent bg-clip-text bg-linear-to-r from-[#c754fb] to-[#db7dfa] p-3 md:p-4 lg:p-5"}>
                                 Hyper Bot
                             </h1>
                             <div className="flex flex-wrap items-center justify-center">

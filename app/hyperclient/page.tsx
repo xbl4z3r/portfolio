@@ -21,7 +21,7 @@ export default function HyperClientPage() {
     return (
         <>
             <Navbar navbarData={siteConfig.pages.hyperclient} accentColors={["#3398db", "#a3f4ff"]}/>
-            <main className="container mx-auto max-w-7xl px-6 flex-grow h-full">
+            <main className="container mx-auto max-w-7xl px-6 grow h-full">
                 <section
                     className="relative flex flex-col items-center justify-center bg-background h-[calc(100vh-4rem)]"
                     id="home"
@@ -32,7 +32,7 @@ export default function HyperClientPage() {
                     />
                     <div
                         className="relative z-10 flex flex-col max-w-5xl w-full items-center justify-center">
-                        <h1 className="text-6xl md:text-7xl lg:text-7xl text-center font-bold gradient text-transparent bg-clip-text bg-gradient-to-r from-[#3398db] to-[#a3f4ff] p-3 md:p-4 lg:p-5">
+                        <h1 className="text-6xl md:text-7xl lg:text-7xl text-center font-bold gradient text-transparent bg-clip-text bg-linear-to-r from-[#3398db] to-[#a3f4ff] p-3 md:p-4 lg:p-5">
                             Hyper Client
                         </h1>
                         <div className="flex flex-wrap items-center justify-center">

@@ -145,7 +145,7 @@ export const SpotifyCard = () => {
                         <div
                             className="relative w-48 h-48 md:w-52 md:h-52 lg:w-64 lg:h-64 xl:w-72 xl:h-72 rounded-lg overflow-hidden shrink-0 group">
                             <div
-                                className="absolute inset-0 z-10 bg-gradient-to-r from-black/30 via-transparent to-transparent md:bg-gradient-to-b md:from-transparent md:via-black/30 md:to-black/80"
+                                className="absolute inset-0 z-10 bg-linear-to-r from-black/30 via-transparent to-transparent md:bg-linear-to-b md:from-transparent md:via-black/30 md:to-black/80"
                                 aria-hidden="true"/>
 
                             <img
@@ -175,7 +175,7 @@ export const SpotifyCard = () => {
                         {result.isPlaying ? "Currently Playing" : "Recently Played"}
                     </span>
                         </div>
-                        <div className="flex-grow">
+                        <div className="grow">
                             <a href={result.track.url}
                                target="_blank"
                                rel="noreferrer"
@@ -207,7 +207,7 @@ export const SpotifyCard = () => {
                                 aria-label={"Song Progress"}
                                 value={(result.progress / safeDuration) * 100}
                                 max={100}
-                                className="h-1.5 [&>div]:!bg-current bg-primary/20"
+                                className="h-1.5 [&>div]:bg-current! bg-primary/20"
                                 style={{
                                     "--progress-color": colors.vibrant,
                                     color: colors.vibrant

@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import React, { useState, useEffect, useRef } from "react";
+import {cn} from "@/lib/utils";
+import React, {useState, useEffect, useRef} from "react";
 
 interface MeteorsProps {
     number?: number;
@@ -26,7 +26,7 @@ function MeteorsComponent({
                               maxDelay = 1.2,
                               minDuration = 2,
                               maxDuration = 10,
-                              angle = 215,
+                              angle = 120,
                               colors = ["#ffffff"],
                               className,
                           }: MeteorsProps) {
@@ -40,7 +40,7 @@ function MeteorsComponent({
 
     let defaultColors = true;
     colors.forEach((color) => {
-        if(color != "#000000") defaultColors = false;
+        if (color != "#000000") defaultColors = false;
     });
     const isUsingDefaultColors = defaultColors;
 
@@ -132,7 +132,7 @@ function MeteorsComponent({
         prevNumberRef.current = meteorCount;
     }, [meteorCount, colors, isUsingDefaultColors]);
 
-    if(defaultColors) return (<></>);
+    if (defaultColors) return (<></>);
 
     return (
         <div
@@ -156,13 +156,14 @@ function MeteorsComponent({
                         className
                     )}
                 >
-                    <div
-                        className="pointer-events-none absolute top-1/2 -z-10 h-px w-[50px] -translate-y-1/2"
-                        style={{
-                            background: `linear-gradient(to right, ${style?.backgroundColor || "#000000"}, transparent)`,
-                        }}
-                    />
-                </span>
+        <div
+            className="pointer-events-none absolute top-1/2 -z-10 h-px w-[50px] -translate-y-1/2"
+            style={{
+                background: `linear-gradient(to right, ${style?.backgroundColor || "#000000"}, transparent)`,
+            }}
+        />
+    </span>
+
             ))}
         </div>
     );

@@ -72,7 +72,7 @@ export const Navbar = ({
     }, [activeSection, navbarData]);
 
     return (
-        <nav className="w-full border-b border-border sticky top-0 z-50 backdrop-blur-sm">
+        <nav className="w-full border-b border-border sticky top-0 z-50 backdrop-blur-xs">
             <div className="container flex h-16 items-center justify-between mx-auto max-w-7xl bg-background/80">
                 <div className="flex items-center gap-3">
                     <NextLink className="flex justify-start items-center gap-1" href="#">
@@ -190,7 +190,7 @@ export const Navbar = ({
                 </div>
             </div>
             <div
-                className={`sm:hidden absolute left-0 right-0 top-full border-t border-border z-50 backdrop-blur shadow-lg overflow-hidden transition-all duration-300 ${isMenuOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0 border-t-0'}`}>
+                className={`sm:hidden absolute left-0 right-0 top-full border-t border-border z-50 backdrop-blur-xs shadow-lg overflow-hidden transition-all duration-300 ${isMenuOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0 border-t-0'}`}>
                 <div className="container py-4 mx-auto space-y-3 overflow-y-auto bg-background/80">
                     {navbarData.navItems.map((item, index) => {
                         const [, id] = item.href.split("#");

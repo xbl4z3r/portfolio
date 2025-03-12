@@ -325,7 +325,7 @@ export default function Home() {
     return (
         <>
             <Navbar navbarData={siteConfig.pages.portfolio} accentColors={[colors.vibrant, colors.muted]}/>
-            <main className="container mx-auto max-w-7xl pt-6 px-6 flex-grow h-full">
+            <main className="container mx-auto max-w-7xl pt-6 px-6 grow h-full">
                 <Meteors number={250}
                          colors={[colors.vibrant, colors.muted, colors.light_vibrant, colors.light_muted, colors.dark_vibrant, colors.dark_muted]}/>
                 <section
@@ -361,7 +361,7 @@ export default function Home() {
                             </div>
                         </div>
                         <div className="relative items-center justify-center w-32 h-32 flex lg:hidden">
-                            <div className="absolute bg-gradient-to-br from-vibrant to-muted rounded-lg">
+                            <div className="absolute bg-linear-to-br from-vibrant to-muted rounded-lg">
                                 <SpinningText radius={4} className="absolute">
                                     about me • about me • about me •
                                 </SpinningText>
@@ -441,7 +441,7 @@ export default function Home() {
                             </p>
                         </div>
                         <div className="relative items-center justify-center w-48 h-48 hidden lg:flex">
-                            <div className="absolute bg-gradient-to-br from-vibrant to-muted rounded-lg">
+                            <div className="absolute bg-linear-to-br from-vibrant to-muted rounded-lg">
                                 <SpinningText radius={10} className="absolute">
                                     about me • about me • about me • about me • about me •
                                 </SpinningText>
