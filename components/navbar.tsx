@@ -1,6 +1,6 @@
 "use client";
 
-import {useEffect, useState} from "react";
+import {ReactElement, useEffect, useState} from "react";
 import NextLink from "next/link";
 import {siteConfig} from "@/config/site";
 import {ThemeSwitch} from "@/components/theme-switch";
@@ -8,7 +8,6 @@ import {
     GithubIcon,
     DiscordIcon,
     HeartFilledIcon,
-    Logo,
 } from "@/components/icons";
 import {Button} from "@/components/ui/button";
 import {Menu, X} from "lucide-react";
@@ -16,7 +15,7 @@ import {Menu, X} from "lucide-react";
 export const Navbar = ({
                            navbarData, accentColors
                        }: {
-    navbarData: { title: string, icon: string, navItems: { href: string; label: string }[] };
+    navbarData: { title: string, icon: ReactElement, navItems: { href: string; label: string }[] };
     accentColors: string[];
 }) => {
     const [activeSection, setActiveSection] = useState("");
@@ -80,7 +79,7 @@ export const Navbar = ({
                         if (element) element.scrollIntoView({behavior: "smooth"});
                         else window.location.href = "/";
                     }}>
-                        <img src={navbarData.icon} alt={navbarData.title} className="h-10 w-auto"/>
+                        {navbarData.icon}
                         <p className="font-bold text-inherit">{navbarData.title}</p>
                     </div>
                     <div className="hidden sm:flex gap-4 justify-start ml-2">

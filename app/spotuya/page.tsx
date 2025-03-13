@@ -20,7 +20,6 @@ export default function SpoTuyaPage() {
     return (
         <>
             <Navbar navbarData={siteConfig.pages.spotuya} accentColors={["#1db954", "#a2e59e"]}/>
-
             <main className="container mx-auto px-6 max-w-7xl grow h-full">
                 <Particles
                         className="absolute inset-0 z-0"
@@ -60,6 +59,45 @@ export default function SpoTuyaPage() {
                                 </RippleButton>
                             </div>
                         </div>
+                    </div>
+                </section>
+                <section
+                    className="flex flex-col items-center justify-evenly bg-background min-h-screen"
+                    id="about">
+                    <div className="flex flex-col max-w-5xl justify-center gap-5">
+                        <h1 className="text-left justify-start text-[#1db954] font-bold lg:text-6xl text-5xl">
+                            What is SpoTuya?
+                        </h1>
+                        <p className="text-md md:text-lg lg:text-xl text-left">
+                            SpoTuya is a tool to help anyone get one step closer to smart home without the need to buy
+                            extra hardware. We leverage the Tuya Cloud API to control your lights based on the music you
+                            listen to on Spotify. Just setup the service and forget about it. SpoTuya will take care of
+                            the rest. Host it somewhere in the cloud or run it on your local machine. The choice is
+                            yours.
+                        </p>
+                    </div>
+                    <div className="flex flex-col max-w-5xl justify-center gap-5">
+                        <h1 className="text-left justify-start text-[#1db954] font-bold lg:text-6xl text-5xl">
+                            What do I need to get started?
+                        </h1>
+                        <p className="text-md md:text-lg lg:text-xl text-left">
+                            Just head to the <a href="/spotuya/download" className="underline hover:text-[#a2e59e]">download</a> page and grab the latest release. You will need a Tuya account
+                            with all your lights setup and connected to the Tuya Cloud. You will also need a Spotify
+                            account and a Spotify Developer account to create an application to get the necessary
+                            credentials to run SpoTuya. Once you have all that, you can start the service, go
+                            through the setup process and you're good to go.
+                        </p>
+                    </div>
+                    <div className="flex flex-col max-w-5xl justify-center gap-5">
+                        <h1 className="text-left justify-start text-[#1db954] font-bold lg:text-6xl text-5xl">
+                            How much does it cost?
+                        </h1>
+                        <p className="text-md md:text-lg lg:text-xl text-left">
+                            SpoTuya is open source and free to use. You can host it on your own server or run it on your
+                            local machine. You can also contribute to the project by submitting a pull request or
+                            opening an issue on the <a href="/spotuya/github" className="underline hover:text-[#a2e59e]">GitHub repository</a>.
+                            If you like the project, consider <a href="/sponsor" className="underline hover:text-[#a2e59e]">donating</a> to help keep the project alive.
+                        </p>
                     </div>
                 </section>
             </main>

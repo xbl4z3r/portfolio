@@ -23,8 +23,10 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "axios": "^1.8.3",
+    "bufferutil": "^4.0.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "discord.js": "^14.18.0",
     "dotenv": "^16.4.7",
     "framer-motion": "^12.5.0",
     "intl-messageformat": "^10.5.0",
@@ -37,7 +39,8 @@
     "react-dom": "^19.0.0",
     "react-use-measure": "^2.1.7",
     "tailwind-merge": "^3.0.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
     "@react-types/shared": "3.28.0",
@@ -53,7 +56,9 @@
   },
   "trustedDependencies": [
     "@vercel/speed-insights",
+    "bufferutil",
     "esbuild",
-    "sharp"
+    "sharp",
+    "zlib-sync"
   ]
 }

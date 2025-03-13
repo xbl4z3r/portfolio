@@ -41,6 +41,11 @@ const nextConfig = {
                 source: '/spotuya/download',
                 destination: 'https://github.com/xbl4z3r/spotuya/releases',
                 permanent: true,
+            },
+            {
+                source: '/spotuya/github',
+                destination: 'https://github.com/xbl4z3r/spotuya',
+                permanent: true,
             }
         ];
     }

@@ -1,3 +1,5 @@
+import {SpoTuyaLogo} from "@/components/icons";
+
 export const siteConfig = {
     url: "https://xbl4z3r.me",
     name: "xbl4z3r's development",
@@ -5,7 +7,7 @@ export const siteConfig = {
     pages: {
         portfolio: {
             title: "xbl4z3r",
-            icon: "/favicon.ico",
+            icon: <img src="/favicon.ico" alt="logo" className="h-10 w-auto"/>,
             navItems:
                 [
                     {
@@ -28,19 +30,19 @@ export const siteConfig = {
         },
         hyperbot: {
             title: "HyperBot",
-            icon: "/hyperbot.png",
+            icon: <img src="/hyperbot.png" alt="logo" className="h-10 w-auto"/>,
             navItems: [
                 {
                     label: "Home",
                     href: "/hyperbot#home",
                 },
                 {
-                    label: "Features",
-                    href: "/hyperbot/#features",
-                },
-                {
                     label: "About",
                     href: "/hyperbot/#about",
+                },
+                {
+                    label: "Features",
+                    href: "/hyperbot/#features",
                 },
                 {
                     label: "Invite",
@@ -50,7 +52,7 @@ export const siteConfig = {
         },
         hyperclient: {
             title: "HyperClient",
-            icon: "/hyperclient.png",
+            icon: <img src="/hyperclient.png" alt="logo" className="h-10 w-auto"/>,
             navItems: [
                 {
                     label: "Home",
@@ -68,7 +70,7 @@ export const siteConfig = {
         },
         spotuya: {
             title: "Spotuya",
-            icon: "/spotuya.png",
+            icon: <SpoTuyaLogo className="h-10 w-auto stroke-[#1db954]"/>,
             navItems: [
                 {
                     label: "Home",
@@ -80,7 +82,7 @@ export const siteConfig = {
                 },
                 {
                     label: "Download",
-                    href: "/spotuya/#download",
+                    href: "/spotuya/download",
                 },
             ],
         }
