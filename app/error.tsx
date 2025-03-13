@@ -25,7 +25,7 @@ export default function Error({
 
     return (
         <>
-            <Navbar navbarData={{title: "xbl4z3r", icon: "favicon.ico", navItems: []}} accentColors={["#FF0000"]}/>
+            <Navbar navbarData={{title: "xbl4z3r", icon: <img src="/favicon.ico" alt="logo" className="h-10 w-auto"/>, navItems: []}} accentColors={["#FF0000"]}/>
             <main className="container mx-auto max-w-7xl pt-6 px-6 grow h-[calc(100vh-9rem)] items-center justify-center">
             <div className="flex flex-col items-center justify-evenly h-full">
                 <div className="flex flex-col gap-4">
