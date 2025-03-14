@@ -17,6 +17,7 @@ import {BentoGrid} from "@/components/magicui/bento-grid";
 import {Particles} from "@/components/magicui/particles";
 
 export default function SpoTuyaPage() {
+    // TODO: Add a feature carousel like https://www.cult-ui.com/docs/components/feature-carousel
     return (
         <>
             <Navbar navbarData={siteConfig.pages.spotuya} accentColors={["#1db954", "#a2e59e"]}/>
