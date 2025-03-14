@@ -309,7 +309,7 @@ export default function HyperBotPage() {
                         Invite Hyper Bot
                     </InteractiveHoverButton>
                     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-                        <Marquee className="[--duration:20s] pt-20 lg:pt-30">
+                        <Marquee pauseOnHover className="[--duration:20s] pt-20 lg:pt-30">
                             {reviews.map((review) => (
                                 <ReviewCard key={review.username} {...review} />
                             ))}
