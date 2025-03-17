@@ -165,6 +165,7 @@ export default function HyperBotPage() {
 
         if (ratingInput && ratingText) {
             const updateRatingText = () => {
+                // @ts-ignore
                 const value = parseFloat(ratingInput.value);
                 if (value >= 5) ratingText.innerText = 'Excellent';
                 else if (value >= 4) ratingText.innerText = 'Very Good';
