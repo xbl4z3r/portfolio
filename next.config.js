@@ -49,14 +49,6 @@ const nextConfig = {
             }
         ];
     },
-    webpack: (config, { isServer }) => {
-    // This is needed for binary modules like zlib-sync
-    if (isServer) {
-      config.externals.push('zlib-sync');
-    }
-
-    return config;
-  },
 };
 
 module.exports = nextConfig;

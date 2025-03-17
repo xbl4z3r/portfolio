@@ -11,15 +11,26 @@ import {useTheme} from "next-themes";
 import {InteractiveHoverButton} from "@/components/magicui/interactive-hover-button";
 import {RippleButton} from "@/components/magicui/ripple-button";
 import {VelocityScroll} from "@/components/magicui/scroll-based-velocity";
-import {BitcoinIcon, GaugeIcon, HammerIcon, MessageCircleHeartIcon, MusicIcon} from "lucide-react";
+import {BitcoinIcon, GaugeIcon, HammerIcon, MessageCircleHeartIcon, MusicIcon, Star} from "lucide-react";
 import {FeatureCard} from "@/components/magicui/feature-card";
 import {BentoGrid} from "@/components/magicui/bento-grid";
 import {Card, CardContent} from "@/components/ui/card";
 import {ShineBorder} from "@/components/magicui/shine-border";
-import {Progress} from "@/components/ui/progress";
 import {AnimatedNumber} from "@/components/animated-number";
 import {Marquee} from "@/components/magicui/marquee";
 import {ReviewCard} from "@/components/magicui/review-card";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription, DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger
+} from "@/components/ui/dialog";
+import {Button} from "@/components/ui/button";
+import Form from "next/form";
+import {Input} from "@/components/ui/input";
+import {ReviewForm} from "@/components/review-form";
 
 const features = [
     {
@@ -78,30 +89,42 @@ const reviews = [
         username: "@luke333z",
         body: "One of the best bots I've ever used. It has everything you need and more.",
         img: "https://cdn.discordapp.com/avatars/332867444505051137/33665ea742cf78997be9a6c7189945ae.webp?size=256",
+        rating: 5,
     },
     {
         name: "!Sk1te_.",
         username: "@sk1te_.",
         body: "Love your bot , it has many usefull features and isn't buggy, unlike other bots i have tried for my discord server! I recommend it to all of you !<3",
         img: "https://cdn.discordapp.com/avatars/494527944547631114/94fc93c28d80760fd5a364c77a5917e3.webp?size=256",
+        rating: 5,
     },
     {
         name: "Bogz",
         username: "@bogz06",
         body: "good bot! i like it",
         img: "https://cdn.discordapp.com/avatars/449945364825374731/a00763f606165f2c167273c5722fb112.webp?size=100",
+        rating: 4
     },
     {
         name: "Antoke",
         username: "@mihaigoodman",
         body: "great overall bot, has a lot of features and is very easy to use, would recommend",
         img: "https://cdn.discordapp.com/avatars/739200196990337114/856f50b4803bf82c4f52f8f3134fddd4.webp?size=100",
+        rating: 4.5
+    },
+    {
+        name: "Vlod",
+        username: "@vlod_",
+        body: "easy to use my members love itt",
+        img: "https://avatars.githubusercontent.com/u/93938455?v=4",
+        rating: 5,
     },
     {
         name: "razvan",
         username: "@razvan_24",
         body: "Great bot, has a lot of features and is very easy to use. Would recommend.",
         img: "https://cdn.discordapp.com/avatars/520724292712005672/6b41f165d318b39b05b3fff6a8acc99f.webp?size=100",
+        rating: 4.5,
     }
 ];
 
@@ -132,6 +155,46 @@ export default function HyperBotPage() {
         observer.observe(document.getElementById("userCountCard")!);
         return () => observer.disconnect();
     }, []);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        // Add script to update rating text based on current value
+        const ratingInput = document.getElementById('rating');
+        const ratingText = document.getElementById('rating-text');
+
+        if (ratingInput && ratingText) {
+            const updateRatingText = () => {
+                const value = parseFloat(ratingInput.value);
+                if (value >= 5) ratingText.innerText = 'Excellent';
+                else if (value >= 4) ratingText.innerText = 'Very Good';
+                else if (value >= 3) ratingText.innerText = 'Good';
+                else if (value >= 2) ratingText.innerText = 'Fair';
+                else ratingText.innerText = 'Poor';
+            };
+
+            // Monitor changes to rating input
+            const observer = new MutationObserver(() => updateRatingText());
+            observer.observe(ratingInput, {attributes: true});
+
+            // Initial update
+            updateRatingText();
+
+            return () => observer.disconnect();
+        }
+    }, []);
+
+    // Function to update the rating text
+    const updateRatingText = (value: number) => {
+        const ratingText = document.getElementById('rating-text');
+        if (ratingText) {
+            if (value >= 5) ratingText.innerText = 'Excellent';
+            else if (value >= 4) ratingText.innerText = 'Very Good';
+            else if (value >= 3) ratingText.innerText = 'Good';
+            else if (value >= 2) ratingText.innerText = 'Fair';
+            else ratingText.innerText = 'Poor';
+        }
+    };
 
     return (
         <>
@@ -309,15 +372,22 @@ export default function HyperBotPage() {
                         Invite Hyper Bot
                     </InteractiveHoverButton>
                     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-                        <Marquee pauseOnHover className="[--duration:20s] pt-20 lg:pt-30">
+                        <Marquee className="[--duration:20s] pt-20 lg:pt-30">
                             {reviews.map((review) => (
-                                <ReviewCard key={review.username} {...review} />
+                                <ReviewCard key={review.username} {...review} ratingColor={"#c754fb"}/>
                             ))}
                         </Marquee>
                         <div
                             className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"/>
                         <div
                             className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"/>
+                        <div className="mt-4">
+                            <ReviewForm
+                                productName="Hyper Bot"
+                                color="#c754fb"
+                                submitEndpoint="/api/hyperbot/review"
+                            />
+                        </div>
                     </div>
                 </section>
             </main>
