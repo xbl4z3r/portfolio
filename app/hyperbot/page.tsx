@@ -156,47 +156,6 @@ export default function HyperBotPage() {
         return () => observer.disconnect();
     }, []);
 
-    useEffect(() => {
-        if (typeof window === "undefined") return;
-
-        // Add script to update rating text based on current value
-        const ratingInput = document.getElementById('rating');
-        const ratingText = document.getElementById('rating-text');
-
-        if (ratingInput && ratingText) {
-            const updateRatingText = () => {
-                // @ts-ignore
-                const value = parseFloat(ratingInput.value);
-                if (value >= 5) ratingText.innerText = 'Excellent';
-                else if (value >= 4) ratingText.innerText = 'Very Good';
-                else if (value >= 3) ratingText.innerText = 'Good';
-                else if (value >= 2) ratingText.innerText = 'Fair';
-                else ratingText.innerText = 'Poor';
-            };
-
-            // Monitor changes to rating input
-            const observer = new MutationObserver(() => updateRatingText());
-            observer.observe(ratingInput, {attributes: true});
-
-            // Initial update
-            updateRatingText();
-
-            return () => observer.disconnect();
-        }
-    }, []);
-
-    // Function to update the rating text
-    const updateRatingText = (value: number) => {
-        const ratingText = document.getElementById('rating-text');
-        if (ratingText) {
-            if (value >= 5) ratingText.innerText = 'Excellent';
-            else if (value >= 4) ratingText.innerText = 'Very Good';
-            else if (value >= 3) ratingText.innerText = 'Good';
-            else if (value >= 2) ratingText.innerText = 'Fair';
-            else ratingText.innerText = 'Poor';
-        }
-    };
-
     return (
         <>
             <Navbar navbarData={siteConfig.pages.hyperbot} accentColors={["#c754fb", "#db7dfa"]}/>
@@ -383,11 +342,7 @@ export default function HyperBotPage() {
                         <div
                             className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"/>
                         <div className="mt-4">
-                            <ReviewForm
-                                productName="Hyper Bot"
-                                color="#c754fb"
-                                submitEndpoint="/api/hyperbot/review"
-                            />
+                            <ReviewForm />
                         </div>
                     </div>
                 </section>
