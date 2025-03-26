@@ -1,5 +1,5 @@
 import {cn} from "@/lib/utils";
-import {Star, StarHalf} from "lucide-react"; // Make sure you have lucide-react installed
+import {Star} from "lucide-react";
 
 interface ReviewCardProps {
     img: string;
@@ -14,7 +14,6 @@ const StarRating = ({rating = 0, ratingColor = "#FFD700"}: { rating: number, rat
     // Ensure rating is between 0 and 5
     const safeRating = Math.min(5, Math.max(0, rating));
     const fullStars = Math.floor(safeRating);
-    const hasHalfStar = safeRating % 1 >= 0.5;
 
     return (
         <div className="flex items-center gap-0.5">
@@ -26,8 +25,6 @@ const StarRating = ({rating = 0, ratingColor = "#FFD700"}: { rating: number, rat
                 }>
           {i < fullStars ? (
               <Star className="h-3.5 w-3.5 fill-current"/>
-          ) : i === fullStars && hasHalfStar ? (
-              <StarHalf className="h-3.5 w-3.5 fill-current"/>
           ) : (
               <Star className="h-3.5 w-3.5 text-gray-300 dark:text-gray-600"/>
           )}

@@ -46,7 +46,7 @@ export const siteConfig = {
                 },
                 {
                     label: "Invite",
-                    href: "/hyperbot/#invite",
+                    href: "/hyperbot/invite",
                 },
             ],
         },

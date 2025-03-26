@@ -19,18 +19,6 @@ import {ShineBorder} from "@/components/magicui/shine-border";
 import {AnimatedNumber} from "@/components/animated-number";
 import {Marquee} from "@/components/magicui/marquee";
 import {ReviewCard} from "@/components/magicui/review-card";
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription, DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger
-} from "@/components/ui/dialog";
-import {Button} from "@/components/ui/button";
-import Form from "next/form";
-import {Input} from "@/components/ui/input";
-import {ReviewForm} from "@/components/review-form";
 
 const features = [
     {
@@ -103,14 +91,14 @@ const reviews = [
         username: "@bogz06",
         body: "good bot! i like it",
         img: "https://cdn.discordapp.com/avatars/449945364825374731/a00763f606165f2c167273c5722fb112.webp?size=100",
-        rating: 4
+        rating: 4,
     },
     {
         name: "Antoke",
         username: "@mihaigoodman",
         body: "great overall bot, has a lot of features and is very easy to use, would recommend",
         img: "https://cdn.discordapp.com/avatars/739200196990337114/856f50b4803bf82c4f52f8f3134fddd4.webp?size=100",
-        rating: 4.5
+        rating: 4,
     },
     {
         name: "Vlod",
@@ -124,7 +112,7 @@ const reviews = [
         username: "@razvan_24",
         body: "Great bot, has a lot of features and is very easy to use. Would recommend.",
         img: "https://cdn.discordapp.com/avatars/520724292712005672/6b41f165d318b39b05b3fff6a8acc99f.webp?size=100",
-        rating: 4.5,
+        rating: 4,
     }
 ];
 
@@ -341,9 +329,6 @@ export default function HyperBotPage() {
                             className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"/>
                         <div
                             className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"/>
-                        <div className="mt-4">
-                            <ReviewForm />
-                        </div>
                     </div>
                 </section>
             </main>

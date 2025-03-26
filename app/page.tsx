@@ -66,7 +66,7 @@ const projects = [
                 <img
                     src="/stock_discord.webp"
                     className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
-                    alt="Discord"
+                    alt="Discord on mobile phone"
                 />
             </div>
         ),
@@ -83,7 +83,7 @@ const projects = [
             <img
                 src="https://www.techhive.com/wp-content/uploads/2023/04/philips-hue-spotify-image-2-100901041-orig.jpeg?quality=50&strip=all"
                 className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
-                alt="Discord"
+                alt="Man dancing around colorful lights"
             />
         </div>,
         category: "IOT Utility",
@@ -94,12 +94,12 @@ const projects = [
     {
         name: "Hyper Client",
         description: "Minecraft client with advanced features and performance optimizations",
-        className: "lg:row-start-2 lg:row-end-3 lg:col-start-2 lg:col-end-3",
+        className: "lg:row-start-3 lg:row-end-3 lg:col-start-1 lg:col-end-3",
         background: <div className="absolute inset-0 rounded-lg bg-black">
             <img
                 src="https://i.ytimg.com/vi/VOL1PHXM-Kg/maxresdefault.jpg"
                 className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
-                alt="Discord"
+                alt="Minecraft PvP scene"
             />
         </div>,
         category: "Advanced Minecraft Client",
@@ -108,14 +108,30 @@ const projects = [
         cta: "Learn more"
     },
     {
+        name: "TBD",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+        className: "lg:row-start-2 lg:row-end-4 lg:col-start-3 lg:col-end-3",
+        background: <div className="absolute inset-0 rounded-lg bg-black">
+            <img
+                src="/stock_tbd.jpg"
+                className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
+                alt="TBD"
+            />
+        </div>,
+        category: "Web App",
+        tooltip: "Credits to TBD for the thumbnail",
+        href: "/#projects",
+        cta: "Learn more"
+    },
+    {
         name: "RoadPlanner",
         description: "Java application designed to help FTC teams plan their autonomous paths",
-        className: "lg:row-start-2 lg:row-end-3 lg:col-start-3 lg:col-end-4",
+        className: "lg:row-start-2 lg:row-end-2 lg:col-start-2 lg:col-end-3",
         background: <div className="absolute inset-0 rounded-lg bg-black">
             <img
                 src="https://www.firstinspires.org/sites/all/themes/first/assets/images/2020/ftc/event-experience.jpg"
                 className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
-                alt="Discord"
+                alt="FTC Match"
             />
         </div>,
         category: "FTC Utility",

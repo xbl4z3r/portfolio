@@ -95,6 +95,10 @@ export const Navbar = ({
                                         style={isActive ? getGradientTextStyle() : {}}
                                         onClick={(e) => {
                                             e.preventDefault();
+                                            if(!id) {
+                                                window.location.href = item.href;
+                                                return;
+                                            }
                                             const element = document.getElementById(id);
                                             if (element) {
                                                 element.scrollIntoView({behavior: "smooth"});
@@ -208,6 +212,10 @@ export const Navbar = ({
                                     onClick={(e) => {
                                         e.preventDefault();
                                         setIsMenuOpen(false);
+                                        if(!id) {
+                                            window.location.href = item.href;
+                                            return;
+                                        }
                                         const element = document.getElementById(id);
                                         if (element) {
                                             element.scrollIntoView({behavior: "smooth"});
