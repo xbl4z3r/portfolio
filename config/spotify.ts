@@ -15,7 +15,13 @@ const refresh_token = process.env.WEB_SPOTIFY_REFRESH_TOKEN;
 let access_token: string | null = null;
 
 export async function getNowPlayingItem(force: boolean = false): Promise<NowPlaying> {
-    const response = await getNowPlaying();
+    let response: AxiosResponse;
+    try {
+        response = await getNowPlaying(force);
+    } catch (err) {
+        await getAccessToken(true);
+        return getNowPlayingItem(true);
+    }
 
     if (response.status === 401) {
         await getAccessToken(true);

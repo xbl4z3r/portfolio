@@ -4,31 +4,33 @@ import React, {useEffect, useState} from "react";
 
 import {siteConfig} from "@/config/site";
 import {Navbar} from "@/components/navbar";
-import {AnimatedGridPattern} from "@/components/magicui/animated-grid-pattern";
-import {cn} from "@/lib/utils";
-import {LineShadowText} from "@/components/magicui/line-shadow-text";
-import {useTheme} from "next-themes";
 import {InteractiveHoverButton} from "@/components/magicui/interactive-hover-button";
 import {RippleButton} from "@/components/magicui/ripple-button";
-import {VelocityScroll} from "@/components/magicui/scroll-based-velocity";
-import {BitcoinIcon, GaugeIcon, HammerIcon, MessageCircleHeartIcon, MusicIcon} from "lucide-react";
-import {FeatureCard} from "@/components/magicui/feature-card";
-import {BentoGrid} from "@/components/magicui/bento-grid";
 import {Particles} from "@/components/magicui/particles";
+import {TypingAnimation} from "@/components/magicui/typing-animation";
+import {AnimatedSpan, Terminal} from "@/components/magicui/terminal";
 
 export default function SpoTuyaPage() {
     // TODO: Add a feature carousel like https://www.cult-ui.com/docs/components/feature-carousel
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) return null; // Evită render-ul până când componenta e pe client
+
     return (
         <>
             <Navbar navbarData={siteConfig.pages.spotuya} accentColors={["#1db954", "#a2e59e"]}/>
             <main className="container mx-auto px-6 max-w-7xl grow h-full">
                 <Particles
-                        className="absolute inset-0 z-0"
-                        quantity={100}
-                        ease={80}
-                        color={"#1db954"}
-                        refresh
-                    />
+                    className="absolute inset-0 z-0"
+                    quantity={100}
+                    ease={80}
+                    color={"#1db954"}
+                    refresh
+                />
                 <section
                     className="relative flex flex-col items-center justify-evenly min-h-screen"
                     id="home"
@@ -53,14 +55,62 @@ export default function SpoTuyaPage() {
                                 </InteractiveHoverButton>
                                 <RippleButton rippleColor="#1db954"
                                               className="hover:scale-105 transition duration-300 bg-muted"
-                                                onClick={() => {
-                                                    document.getElementById("about")?.scrollIntoView({behavior: "smooth"});
-                                                }}>
+                                              onClick={() => {
+                                                  document.getElementById("about")?.scrollIntoView({behavior: "smooth"});
+                                              }}>
                                     Learn More
                                 </RippleButton>
                             </div>
                         </div>
                     </div>
+                </section>
+                <section
+                    className="relative flex flex-col items-center min-h-full"
+                    id="about1">
+                    <Terminal className="bg-muted bg-opacity-90 text-white p-4 rounded-lg w-3/4 h-full">
+                        <TypingAnimation>&gt; npm install spotuya</TypingAnimation>
+
+                        <AnimatedSpan delay={1500} className="text-green-500">
+                            <span>✔ Preflight checks.</span>
+                        </AnimatedSpan>
+
+                        <AnimatedSpan delay={2000} className="text-green-500">
+                            <span>✔ Verifying framework. Found Next.js.</span>
+                        </AnimatedSpan>
+
+                        <AnimatedSpan delay={2500} className="text-green-500">
+                            <span>✔ Validating Tailwind CSS.</span>
+                        </AnimatedSpan>
+
+                        <AnimatedSpan delay={3000} className="text-green-500">
+                            <span>✔ Validating import alias.</span>
+                        </AnimatedSpan>
+
+                        <AnimatedSpan delay={3500} className="text-green-500">
+                            <span>✔ Writing components.json.</span>
+                        </AnimatedSpan>
+
+                        <AnimatedSpan delay={4000} className="text-green-500">
+                            <span>✔ Checking registry.</span>
+                        </AnimatedSpan>
+
+                        <AnimatedSpan delay={4500} className="text-green-500">
+                            <span>✔ Updating tailwind.config.ts</span>
+                        </AnimatedSpan>
+
+                        <AnimatedSpan delay={5000} className="text-green-500">
+                            <span>✔ Updating app/globals.css</span>
+                        </AnimatedSpan>
+
+                        <AnimatedSpan delay={5500} className="text-green-500">
+                            <span>✔ Installing dependencies.</span>
+                        </AnimatedSpan>
+
+                        <AnimatedSpan delay={6000} className="text-blue-500">
+                            <span>ℹ Updated 1 file:</span>
+                            <span className="pl-2">- lib/utils.ts</span>
+                        </AnimatedSpan>
+                    </Terminal>
                 </section>
                 <section
                     className="flex flex-col items-center justify-evenly bg-background min-h-screen"
@@ -70,7 +120,7 @@ export default function SpoTuyaPage() {
                             What is SpoTuya?
                         </h1>
                         <p className="text-md md:text-lg lg:text-xl text-left">
-                            SpoTuya is a tool to help anyone get one step closer to smart home without the need to buy
+                            SpoTuya is a tool to help anyone get one step closer to a smart home without the need to buy
                             extra hardware. We leverage the Tuya Cloud API to control your lights based on the music you
                             listen to on Spotify. Just setup the service and forget about it. SpoTuya will take care of
                             the rest. Host it somewhere in the cloud or run it on your local machine. The choice is
@@ -82,7 +132,9 @@ export default function SpoTuyaPage() {
                             What do I need to get started?
                         </h1>
                         <p className="text-md md:text-lg lg:text-xl text-left">
-                            Just head to the <a href="/spotuya/download" className="underline hover:text-[#a2e59e]">download</a> page and grab the latest release. You will need a Tuya account
+                            Just head to the <a href="/spotuya/download"
+                                                className="underline hover:text-[#a2e59e]">download</a> page and grab
+                            the latest release. You will need a Tuya account
                             with all your lights setup and connected to the Tuya Cloud. You will also need a Spotify
                             account and a Spotify Developer account to create an application to get the necessary
                             credentials to run SpoTuya. Once you have all that, you can start the service, go
@@ -96,8 +148,11 @@ export default function SpoTuyaPage() {
                         <p className="text-md md:text-lg lg:text-xl text-left">
                             SpoTuya is open source and free to use. You can host it on your own server or run it on your
                             local machine. You can also contribute to the project by submitting a pull request or
-                            opening an issue on the <a href="/spotuya/github" className="underline hover:text-[#a2e59e]">GitHub repository</a>.
-                            If you like the project, consider <a href="/sponsor" className="underline hover:text-[#a2e59e]">donating</a> to help keep the project alive.
+                            opening an issue on the <a href="/spotuya/github"
+                                                       className="underline hover:text-[#a2e59e]">GitHub repository</a>.
+                            If you like the project, consider <a href="/sponsor"
+                                                                 className="underline hover:text-[#a2e59e]">donating</a> to
+                            help keep the project alive.
                         </p>
                     </div>
                 </section>

@@ -7,7 +7,6 @@ import {Navbar} from "@/components/navbar";
 import {LineShadowText} from "@/components/magicui/line-shadow-text";
 import {useTheme} from "next-themes";
 import {Ripple} from "@/components/magicui/ripple";
-import {AuroraText} from "@/components/magicui/aurora-text";
 import {TextReveal} from "@/components/magicui/text-reveal";
 import {BentoGrid} from "@/components/magicui/bento-grid";
 import {GaugeIcon, PackageIcon, PaintbrushIcon} from "lucide-react";
@@ -64,8 +63,7 @@ export default function HyperClientPage() {
                         </h1>
                         <div className="flex flex-wrap items-center justify-center">
                         <span className="text-lg md:text-xl lg:text-2xl">
-                            A <AuroraText colors={["#3398db", "#49b8e4", "#71d2ef", "#8be3f9", "#a3f4ff"]}
-                                          className="text-lg md:text-xl lg:text-2xl">modern</AuroraText> and{" "}
+                            A <LineShadowText className="italic" shadowColor={shadowColor}>modern</LineShadowText> and{" "}
                             <LineShadowText className="italic" shadowColor={shadowColor}>powerful</LineShadowText>{" "}
                             Minecraft client.
                         </span>
