@@ -15,7 +15,7 @@ import {Menu, X} from "lucide-react";
 export const Navbar = ({
                            navbarData, accentColors
                        }: {
-    navbarData: { title: string, icon: ReactElement, navItems: { href: string; label: string }[] };
+    navbarData: { title: string, icon?: ReactElement, navItems: { href: string; label: string }[] };
     accentColors: string[];
 }) => {
     const [activeSection, setActiveSection] = useState("");
