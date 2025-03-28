@@ -2,6 +2,7 @@ import querystring from "querystring";
 
 import axios, {AxiosResponse} from "axios";
 import {config} from "dotenv";
+import {NowPlaying} from "@/types";
 
 config();
 
@@ -32,7 +33,7 @@ export async function getNowPlayingItem(force: boolean = false): Promise<NowPlay
         return {
             initialized: true,
             error: "Spotify API Error - " + response.status,
-            isPlaying: false,
+            is_playing: false,
             track: {
                 name: "Not Playing",
                 artists: [{name: "No Artist", url: ""}],
@@ -58,7 +59,7 @@ export async function getNowPlayingItem(force: boolean = false): Promise<NowPlay
         return {
             initialized: true,
             error: null,
-            isPlaying: false,
+            is_playing: false,
             track: {
                 name: recentlyPlayedSong.items[0].track.name,
                 artists: recentlyPlayedSong.items[0].track.artists.map((_artist: { name: any, external_urls: any }) => ({
@@ -83,7 +84,7 @@ export async function getNowPlayingItem(force: boolean = false): Promise<NowPlay
         return {
             initialized: true,
             error: null,
-            isPlaying: song.is_playing,
+            is_playing: song.is_playing,
             track: {
                 name: song.item.name,
                 artists: [{name: song.item.show.publisher, url: song.item.show.external_urls.spotify}],
@@ -101,7 +102,7 @@ export async function getNowPlayingItem(force: boolean = false): Promise<NowPlay
     return {
         initialized: true,
         error: null,
-        isPlaying: song.is_playing,
+        is_playing: song.is_playing,
         track: {
             name: song.item.name,
             artists: song.item.artists.map((_artist: { name: any, external_urls: any }) => ({
@@ -174,26 +175,3 @@ const getAccessToken = async (force: boolean = false) => {
 
     return {access_token};
 };
-
-export interface NowPlaying {
-    initialized: boolean;
-    error: string | null;
-    isPlaying: boolean;
-    track: {
-        name: string;
-        artists: {
-            name: string;
-            url: string;
-        }[];
-        album: {
-            name: string;
-            url: string;
-        };
-        duration: number;
-        artUrl: string;
-        url: string;
-    };
-    progress: number;
-    played_at: string;
-    type: "track" | "episode" | "unknown";
-}
