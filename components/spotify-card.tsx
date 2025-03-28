@@ -4,6 +4,7 @@ import {Progress} from "@/components/ui/progress";
 import {Vibrant} from "node-vibrant/browser";
 import {ShineBorder} from "@/components/magicui/shine-border";
 import {useColor} from "@/hooks/useColor";
+import {NowPlaying} from "@/config/spotify";
 
 const SERVER_REFRESH_INTERVAL = 10000;
 const REFRESH_INTERVAL = 1000;
@@ -15,18 +16,21 @@ const formatTime = (ms: number) => {
 };
 
 export const SpotifyCard = () => {
-    const [result, setResult] = useState({
+    const [result, setResult] = useState<NowPlaying>({
         initialized: false,
+        error: null,
         isPlaying: false,
         track: {
-            title: "Not Playing",
-            artist: [{name: "No Artist", url: ""}],
+            name: "Not Playing",
+            artists: [{name: "No Artist", url: ""}],
             album: {name: "No Album", url: ""},
             duration: 1,
             artUrl: "https://placehold.co/200",
             url: "",
         },
         progress: 0,
+        played_at: Date.now().toString(),
+        type: "unknown",
     });
     const [isArtistHovered, setIsArtistHovered] = useState(false);
     const [isTitleHovered, setIsTitleHovered] = useState(false);
@@ -58,8 +62,8 @@ export const SpotifyCard = () => {
         const fetchSpotifyData = async () => {
             try {
                 const response = await fetch("/api/spotify");
-                const data = await response.json();
-                if (data.track.title == result.track.title) return;
+                const data: NowPlaying = await response.json();
+                if (data.track.name == result.track.name) return;
                 setResult(data);
                 if(!loaded) setLoaded(true);
                 Vibrant.from(data.track.artUrl).getPalette().then((palette) => {
@@ -150,7 +154,7 @@ export const SpotifyCard = () => {
 
                             <img
                                 src={result.track.artUrl}
-                                alt={`${result.track.title} album art`}
+                                alt={`${result.track.name} album art`}
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                             />
 
@@ -184,18 +188,18 @@ export const SpotifyCard = () => {
                                onMouseLeave={() => setIsTitleHovered(false)}>
                                 <h3 className="font-bold text-xl md:text-2xl lg:text-3xl line-clamp-1 transition-colors"
                                     style={isTitleHovered ? {color: colors.vibrant} : {}}>
-                                    {result.track.title}
+                                    {result.track.name}
                                 </h3>
                             </a>
                             <div className="mt-2 space-y-1">
-                                <a href={result.track.artist[0].url}
+                                <a href={result.track.artists[0].url}
                                    target="_blank"
                                    rel="noreferrer"
                                    className="text-sm md:text-base lg:text-lg text-muted-foreground transition-colors"
                                    onMouseEnter={() => setIsArtistHovered(true)}
                                    onMouseLeave={() => setIsArtistHovered(false)}
                                    style={isArtistHovered ? {color: colors.vibrant} : {}}>
-                                    {result.track.artist[0].name}
+                                    {result.track.artists[0].name}
                                 </a>
                                 <p className="text-xs md:text-sm text-muted-foreground/70 block">
                                     {result.track.album.name}

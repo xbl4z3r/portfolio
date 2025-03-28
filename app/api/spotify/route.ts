@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 
-import { getNowPlayingItem } from "@/config/spotify";
+import {getNowPlayingItem, NowPlaying} from "@/config/spotify";
 
 export const dynamic = "force-dynamic";
 
-export async function GET() {
+export async function GET(): Promise<NextResponse<NowPlaying>> {
   return NextResponse.json(await getNowPlayingItem());
 }

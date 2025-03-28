@@ -31,32 +31,37 @@ export async function getNowPlayingItem(force: boolean = false): Promise<NowPlay
     if (response.status > 400) {
         return {
             initialized: true,
-            error: true,
+            error: "Spotify API Error - " + response.status,
             isPlaying: false,
             track: {
-                title: "Not Playing",
-                artist: [{name: "No Artist", url: ""}],
+                name: "Not Playing",
+                artists: [{name: "No Artist", url: ""}],
                 album: {name: "No Album", url: ""},
                 duration: 0,
                 artUrl: "https://placehold.co/200",
                 url: "",
             },
             progress: 0,
+            played_at: Date.now().toString(),
+            type: "unknown",
         };
     }
 
     const song = await response.data;
 
-    if (response.status === 204 || song.currently_playing_type !== "track") {
+    if (response.status === 204 ||
+        song.currently_playing_type === "unknown" ||
+        song.item === null
+    ) {
         const recentlyPlayed = await getRecentlyPlayed();
         const recentlyPlayedSong = await recentlyPlayed.data;
         return {
             initialized: true,
-            error: false,
+            error: null,
             isPlaying: false,
             track: {
-                title: recentlyPlayedSong.items[0].track.name,
-                artist: recentlyPlayedSong.items[0].track.artists.map((_artist: { name: any, external_urls: any }) => ({
+                name: recentlyPlayedSong.items[0].track.name,
+                artists: recentlyPlayedSong.items[0].track.artists.map((_artist: { name: any, external_urls: any }) => ({
                     name: _artist.name,
                     url: _artist.external_urls.spotify,
                 })),
@@ -69,16 +74,37 @@ export async function getNowPlayingItem(force: boolean = false): Promise<NowPlay
                 url: recentlyPlayedSong.items[0].track.external_urls.spotify,
             },
             progress: recentlyPlayedSong.items[0].track.duration_ms,
+            played_at: recentlyPlayedSong.items[0].played_at,
+            type: recentlyPlayedSong.items[0].track.type,
         }
+    }
+
+    if (song.currently_playing_type === "episode") {
+        return {
+            initialized: true,
+            error: null,
+            isPlaying: song.is_playing,
+            track: {
+                name: song.item.name,
+                artists: [{name: song.item.show.publisher, url: song.item.show.external_urls.spotify}],
+                album: {name: song.item.show.name, url: song.item.show.external_urls.spotify},
+                duration: song.item.duration_ms,
+                artUrl: song.item.images[0].url,
+                url: song.item.external_urls.spotify
+            },
+            progress: song.progress_ms,
+            played_at: new Date(song.timestamp).toString(),
+            type: song.currently_playing_type
+        };
     }
 
     return {
         initialized: true,
-        error: false,
+        error: null,
         isPlaying: song.is_playing,
         track: {
-            title: song.item.name,
-            artist: song.item.artists.map((_artist: { name: any, external_urls: any }) => ({
+            name: song.item.name,
+            artists: song.item.artists.map((_artist: { name: any, external_urls: any }) => ({
                 name: _artist.name,
                 url: _artist.external_urls.spotify,
             })),
@@ -88,6 +114,8 @@ export async function getNowPlayingItem(force: boolean = false): Promise<NowPlay
             url: song.item.external_urls.spotify,
         },
         progress: song.progress_ms,
+        played_at: new Date(song.timestamp).toString(),
+        type: song.currently_playing_type,
     };
 }
 
@@ -97,7 +125,7 @@ const getNowPlaying = async (
     const {access_token} = await getAccessToken(force);
 
     try {
-        return axios(NOW_PLAYING_ENDPOINT, {
+        return axios(NOW_PLAYING_ENDPOINT + "?additional_types=episode", {
             headers: {
                 Authorization: `Bearer ${access_token}`,
             },
@@ -147,17 +175,25 @@ const getAccessToken = async (force: boolean = false) => {
     return {access_token};
 };
 
-export type NowPlaying = {
+export interface NowPlaying {
     initialized: boolean;
-    error: boolean;
+    error: string | null;
     isPlaying: boolean;
     track: {
-        title: string;
-        artist: { name: string; url: string }[];
-        album: { name: string; url: string };
+        name: string;
+        artists: {
+            name: string;
+            url: string;
+        }[];
+        album: {
+            name: string;
+            url: string;
+        };
         duration: number;
         artUrl: string;
         url: string;
     };
     progress: number;
-};
+    played_at: string;
+    type: "track" | "episode" | "unknown";
+}
