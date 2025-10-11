@@ -147,7 +147,7 @@ export const SpotifyCard = () => {
                 <div className="flex flex-col md:flex-row">
                     <div className="p-4 flex items-center justify-center">
                         <div
-                            className="relative w-48 h-48 md:w-52 md:h-52 lg:w-64 lg:h-64 xl:w-72 xl:h-72 rounded-lg overflow-hidden shrink-0 group">
+                            className="relative w-36 h-36 md:w-48 md:h-48 lg:w-52 lg:h-52 xl:w-64 xl:h-64 rounded-lg overflow-hidden shrink-0 group">
                             <div
                                 className="absolute inset-0 z-10 bg-linear-to-r from-black/30 via-transparent to-transparent md:bg-linear-to-b md:from-transparent md:via-black/30 md:to-black/80"
                                 aria-hidden="true"/>

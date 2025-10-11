@@ -129,7 +129,7 @@ const projects = [
         className: "lg:row-start-2 lg:row-end-2 lg:col-start-2 lg:col-end-3",
         background: <div className="absolute inset-0 rounded-lg bg-black">
             <img
-                src="https://www.firstinspires.org/sites/all/themes/first/assets/images/2020/ftc/event-experience.jpg"
+                src="https://static.wixstatic.com/media/695840_7aa99dafe27e40e0ac1dc49baa9d41a5~mv2.jpg/v1/fill/w_980,h_653,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/695840_7aa99dafe27e40e0ac1dc49baa9d41a5~mv2.jpg"
                 className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
                 alt="FTC Match"
             />
