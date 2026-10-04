@@ -37,11 +37,15 @@ export const siteConfig = {
                 },
                 {
                     label: "About",
-                    href: "/hyperbot/#about",
+                    href: "/hyperbot#about",
                 },
                 {
                     label: "Features",
-                    href: "/hyperbot/#features",
+                    href: "/hyperbot#features",
+                },
+                {
+                    label: "Commands",
+                    href: "/hyperbot#commands",
                 },
                 {
                     label: "Invite",
@@ -82,6 +86,28 @@ export const siteConfig = {
                 {
                     label: "Download",
                     href: "/spotuya/download",
+                },
+            ],
+        },
+        sink: {
+            title: "Sink",
+            icon: <img src="/sink.png" alt="Sink logo" className="h-10 w-auto rounded-lg"/>,
+            navItems: [
+                {
+                    label: "Home",
+                    href: "/sink#home",
+                },
+                {
+                    label: "Performance",
+                    href: "/sink#performance",
+                },
+                {
+                    label: "Features",
+                    href: "/sink#features",
+                },
+                {
+                    label: "Get Notified",
+                    href: "/sink#notify",
                 },
             ],
         }

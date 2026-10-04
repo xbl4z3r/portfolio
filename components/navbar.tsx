@@ -94,13 +94,10 @@ export const Navbar = ({
                                         href={item.href}
                                         style={isActive ? getGradientTextStyle() : {}}
                                         onClick={(e) => {
-                                            e.preventDefault();
-                                            if(!id) {
-                                                window.location.href = item.href;
-                                                return;
-                                            }
+                                            if (!id) return;
                                             const element = document.getElementById(id);
                                             if (element) {
+                                                e.preventDefault();
                                                 element.scrollIntoView({behavior: "smooth"});
                                             }
                                         }}
@@ -206,18 +203,15 @@ export const Navbar = ({
                         return (
                             <div key={`${item.href}-${index}`} className="py-2">
                                 <NextLink
-                                    href="#"
+                                    href={item.href}
                                     className={"block px-2 py-1 text-lg font-medium relative transition-all duration-300"}
                                     style={isActive ? getGradientTextStyle() : {}}
                                     onClick={(e) => {
-                                        e.preventDefault();
                                         setIsMenuOpen(false);
-                                        if(!id) {
-                                            window.location.href = item.href;
-                                            return;
-                                        }
+                                        if (!id) return;
                                         const element = document.getElementById(id);
                                         if (element) {
+                                            e.preventDefault();
                                             element.scrollIntoView({behavior: "smooth"});
                                         }
                                     }}

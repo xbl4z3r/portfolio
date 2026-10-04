@@ -10,6 +10,7 @@ import {TextAnimate} from "@/components/magicui/text-animate";
 import {useColor} from "@/hooks/useColor";
 import {Meteors} from "@/components/magicui/meteors";
 import {BentoGrid} from "@/components/magicui/bento-grid";
+import {ProjectCard} from "@/components/project-card";
 import {
     BookHeartIcon,
     Code2Icon, ComputerIcon,
@@ -34,8 +35,8 @@ import {
     SiGithub, SiGithubactions,
     SiGradle, SiJetbrains, SiMongodb,
     SiNextdotjs, SiNodedotjs, SiOpengl,
-    SiReact, SiShadcnui, SiSocketdotio, SiTailwindcss,
-    SiTypescript, SiUnity, SiUnrealengine, SiX
+    SiReact, SiRust, SiShadcnui, SiSocketdotio, SiTailwindcss,
+    SiTauri, SiTypescript, SiUnity, SiUnrealengine, SiX
 } from "@icons-pack/react-simple-icons";
 import {ShineBorder} from "@/components/magicui/shine-border";
 import {PopoverContent, PopoverTrigger, Popover} from "@/components/ui/popover";
@@ -58,94 +59,147 @@ const TaglineAnimation = memo(() => (
 
 const projects = [
     {
-        name: "Hyper Bot",
-        description: "Discord bot with moderation, utility, and fun commands for your server",
-        className: "lg:row-start-1 lg:row-end-3 lg:col-start-1 lg:col-end-2",
+        name: "Sink",
+        description: "Native cross-platform desktop Spotify client built with Tauri v2, Rust librespot core, and React 19 with 32-bit float audio DSP.",
+        className: "col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-2",
+        category: "Spotify Client",
+        tags: ["Tauri v2", "Rust", "React 19", "Audio DSP"],
+        glowClass: "hover:shadow-[0_0_35px_-5px_rgba(133,193,174,0.35)]",
         background: (
-            <div className="absolute inset-0 rounded-lg bg-black">
-                <img
-                    src="/stock_discord.webp"
-                    className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
-                    alt="Discord on mobile phone"
-                />
+            <div className="absolute inset-0 bg-gradient-to-br from-zinc-950 via-[#071914] to-black flex items-center justify-between overflow-hidden">
+                {/* Ambient radial lighting flares matching Sink sage green palette */}
+                <div className="absolute -right-16 -top-16 w-96 h-96 rounded-full bg-[#85c1ae]/20 blur-3xl pointer-events-none" />
+                <div className="absolute right-32 -bottom-20 w-80 h-80 rounded-full bg-[#5a9583]/15 blur-3xl pointer-events-none" />
+
+                {/* Right showcase: Glassmorphic desktop player mockup preview */}
+                <div className="absolute right-6 sm:right-10 top-1/2 -translate-y-1/2 mr-20 flex items-center gap-5 transition-transform duration-500 group-hover:scale-105 pointer-events-none select-none">
+                    <div className="relative group/icon">
+                        <div className="absolute -inset-2.5 rounded-3xl bg-gradient-to-r from-[#85c1ae] to-[#5a9583] opacity-45 blur-lg group-hover:opacity-75 transition duration-500" />
+                        <img
+                            src="/sink.png"
+                            className="relative w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-2xl shadow-2xl"
+                            alt="Sink Desktop Spotify Client"
+                        />
+                    </div>
+                </div>
             </div>
         ),
-        category: "Multipurpose Discord Application",
-        tooltip: "Credits to Shutterstock for the thumbnail",
-        href: "/hyperbot",
-        cta: "Learn more"
+        tooltip: "Sink logo design, Paraphernalia DSP & desktop UI assets © xbl4z3r",
+        href: "/sink",
+        cta: "Explore Sink"
     },
     {
         name: "SpoTuya",
-        description: "Tuya smart home integration with Spotify to sync your lights with your music and live the music",
-        className: "lg:row-start-1 lg:row-end-2 lg:col-start-2 lg:col-end-4",
-        background: <div className="absolute inset-0 rounded-lg bg-black">
-            <img
-                src="https://www.techhive.com/wp-content/uploads/2023/04/philips-hue-spotify-image-2-100901041-orig.jpeg?quality=50&strip=all"
-                className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
-                alt="Man dancing around colorful lights"
-            />
-        </div>,
-        category: "IOT Utility",
+        description: "IoT automation service syncing Tuya smart lights with Spotify album artwork and audio palettes in real time.",
+        className: "col-span-1 md:col-span-1 lg:col-span-1 lg:row-span-1 lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2",
+        category: "IoT Automation",
+        tags: ["Node.js", "Tuya Cloud", "Spotify API"],
+        glowClass: "hover:shadow-[0_0_35px_-5px_rgba(36,200,100,0.3)]",
+        background: (
+            <div className="absolute inset-0 bg-black overflow-hidden">
+                <img
+                    src="/spotuya.jpg"
+                    className="w-full h-full object-cover opacity-75 transition-transform duration-700 group-hover:scale-110"
+                    alt="SpoTuya IoT Light Sync"
+                />
+                <div className="absolute top-4 right-14 w-8 h-8 rounded-full bg-emerald-500/20 blur-md pointer-events-none" />
+            </div>
+        ),
         tooltip: "Credits to Tech Hive for the thumbnail",
         href: "/spotuya",
-        cta: "Learn more"
+        cta: "Explore SpoTuya"
     },
     {
-        name: "Hyper Client",
-        description: "Minecraft client with advanced features and performance optimizations",
-        className: "lg:row-start-3 lg:row-end-3 lg:col-start-1 lg:col-end-3",
-        background: <div className="absolute inset-0 rounded-lg bg-black">
-            <img
-                src="https://i.ytimg.com/vi/VOL1PHXM-Kg/maxresdefault.jpg"
-                className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
-                alt="Minecraft PvP scene"
-            />
-        </div>,
-        category: "Advanced Minecraft Client",
-        tooltip: "Credits to zKevsh for the thumbnail",
-        href: "/hyperclient",
-        cta: "Learn more"
-    },
-    {
-        name: "TBD",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
-        className: "lg:row-start-2 lg:row-end-4 lg:col-start-3 lg:col-end-3",
-        background: <div className="absolute inset-0 rounded-lg bg-black">
-            <img
-                src="/stock_tbd.jpg"
-                className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
-                alt="TBD"
-            />
-        </div>,
-        category: "Web App",
-        tooltip: "Credits to TBD for the thumbnail",
-        href: "/#projects",
-        cta: "Learn more"
+        name: "Hyper Bot",
+        description: "Sharded multipurpose Discord bot with low-latency music playback, server economy, leveling, and moderation commands.",
+        className: "col-span-1 md:col-span-1 lg:col-span-1 lg:row-span-2 lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:row-end-4",
+        category: "Discord Application",
+        tags: ["Discord.js", "TypeScript", "MongoDB"],
+        glowClass: "hover:shadow-[0_0_35px_-5px_rgba(88,101,242,0.35)]",
+        background: (
+            <div className="absolute inset-0 bg-black overflow-hidden flex flex-col justify-between">
+                <img
+                    src="/stock_discord.webp"
+                    className="w-full h-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105"
+                    alt="Hyper Bot Discord Application"
+                />
+            </div>
+        ),
+        tooltip: "Credits to Shutterstock for the thumbnail",
+        href: "/hyperbot",
+        cta: "Explore Bot"
     },
     {
         name: "RoadPlanner",
-        description: "Java application designed to help FTC teams plan their autonomous paths",
-        className: "lg:row-start-2 lg:row-end-2 lg:col-start-2 lg:col-end-3",
-        background: <div className="absolute inset-0 rounded-lg bg-black">
-            <img
-                src="https://static.wixstatic.com/media/695840_7aa99dafe27e40e0ac1dc49baa9d41a5~mv2.jpg/v1/fill/w_980,h_653,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/695840_7aa99dafe27e40e0ac1dc49baa9d41a5~mv2.jpg"
-                className="w-full h-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
-                alt="FTC Match"
-            />
-        </div>,
-        category: "FTC Utility",
+        description: "Visual path generator for FTC robotics autonomous programs using Road Runner v1.0 bezier splines.",
+        className: "col-span-1 md:col-span-1 lg:col-span-1 lg:row-span-1 lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
+        category: "FTC Robotics Tool",
+        tags: ["Java", "Road Runner 1.0", "Splines"],
+        glowClass: "hover:shadow-[0_0_35px_-5px_rgba(245,158,11,0.35)]",
+        background: (
+            <div className="absolute inset-0 bg-black overflow-hidden">
+                <img
+                    src="/roadplanner.jpg"
+                    className="w-full h-full object-cover opacity-85 transition-transform duration-700 group-hover:scale-105"
+                    alt="RoadPlanner FTC Path Generator"
+                />
+            </div>
+        ),
         tooltip: "Credits to FIRST Inspires for the thumbnail",
-        href: "/roadplanner",
-        cta: "Learn more"
+        href: "https://github.com/xbl4z3r/RoadPlanner",
+        cta: "View on GitHub"
+    },
+    {
+        name: "Paper Plane Sim",
+        description: "Unity 3D paper plane flight simulation featuring aerodynamic lift, drag, dynamic wind forces, and Cinemachine tracking.",
+        className: "col-span-1 md:col-span-1 lg:col-span-1 lg:row-span-1 lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-3",
+        category: "Unity 3D Simulation",
+        tags: ["Unity 3D", "C#", "Cinemachine"],
+        glowClass: "hover:shadow-[0_0_35px_-5px_rgba(56,189,248,0.35)]",
+        background: (
+            <div className="absolute inset-0 bg-black overflow-hidden">
+                <img
+                    src="/paperplane.png"
+                    className="w-full h-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105"
+                    alt="Paper Plane Simulator in Unity 3D"
+                />
+            </div>
+        ),
+        tooltip: "Thumbnail is taken inside the simulation",
+        href: "https://github.com/xbl4z3r/paper-plane-simulator",
+        cta: "View on GitHub"
+    },
+    {
+        name: "Hyper Client",
+        description: "Minecraft PvP client with multi-version Fabric architecture (1.8.9 - 1.20+), custom C# launcher, and FPS optimizations.",
+        className: "col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 lg:col-start-2 lg:col-end-4 lg:row-start-3 lg:row-end-4",
+        category: "Minecraft Client & Launcher",
+        tags: ["Fabric", "Java", "C# .NET"],
+        glowClass: "hover:shadow-[0_0_35px_-5px_rgba(36,200,219,0.35)]",
+        background: (
+            <div className="absolute inset-0 bg-black overflow-hidden">
+                <img
+                    src="/hyperclient_bg.jpg"
+                    className="w-full h-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105"
+                    alt="Hyper Client Minecraft PvP"
+                />
+            </div>
+        ),
+        tooltip: "Credits to zKevsh for the thumbnail",
+        href: "/hyperclient",
+        cta: "Explore Client"
     }
-]
+];
 
 const skillsData = [
     {
         category: "Languages",
         icon: Code2Icon,
         badges: [
+            {
+                text: "Rust",
+                icon: SiRust,
+            },
             {
                 text: "C#",
                 icon: SiDotnet,
@@ -165,12 +219,9 @@ const skillsData = [
         ],
         detailed: <p>
             I believe that learning new languages is a great way to expand your horizons and improve your
-            problem-solving
-            as every language has its own unique features and quirks to suit different use cases. I'm most proficient in
-            C# and Java, as I've used them the most in my projects. I've also had my fair share of projects done in
-            TypeScript and JavaScript, especially in the frontend and backend web development space. I've also dabbled
-            in
-            C++ for game development and systems programming.
+            problem-solving as every language has its own unique features and quirks. I love systems programming
+            in Rust for high-performance native desktop applications (like Sink) and C# / Java for robust enterprise
+            and game clients. I also build extensively in TypeScript across modern full-stack web architectures.
         </p>
     },
     {
@@ -265,6 +316,10 @@ const skillsData = [
         icon: WorkflowIcon,
         badges: [
             {
+                text: "Tauri",
+                icon: SiTauri
+            },
+            {
                 text: "Git",
                 icon: SiGit
             },
@@ -318,118 +373,13 @@ const skillsData = [
             for new opportunities to learn and grow.
         </p>
     }
-]
-
-const ProjectCard = ({
-                         name,
-                         className,
-                         background,
-                         description,
-                         category,
-                         tooltip,
-                         href,
-                         cta,
-                         ...props
-                     }: {
-    name: string;
-    className: string;
-    background: React.ReactNode;
-    description: string;
-    category: string;
-    tooltip: string;
-    href: string;
-    cta: string;
-}) => {
-    const [isTooltipVisible, setTooltipVisible] = useState(false);
-    const [tooltipTimer, setTooltipTimer] = useState<NodeJS.Timeout | null>(null);
-
-    const handleTooltipClick = () => {
-        setTooltipVisible(!isTooltipVisible);
-    };
-
-    const handleMouseEnter = () => {
-        const timer = setTimeout(() => {
-            setTooltipVisible(true);
-        }, 300);
-        setTooltipTimer(timer);
-    };
-
-    const handleMouseLeave = () => {
-        if (tooltipTimer) {
-            clearTimeout(tooltipTimer);
-            setTooltipTimer(null);
-        }
-        setTooltipVisible(false);
-    };
-
-    return (
-        <div
-            key={name}
-            className={cn(
-                "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl cursor-pointer",
-                "bg-background [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
-                "transform-gpu dark:bg-background dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
-                className,
-            )}
-            onClick={() => window.location.href = href}
-            {...props}
-        >
-            <div>{background}</div>
-            <div className="absolute p-3 flex flex-wrap w-full justify-between items-center z-10">
-                <div className="flex flex-col gap-1">
-                    <p className="text-xs font-semibold text-white/70">
-                        {(category || "").toUpperCase()}
-                    </p>
-                    <p className="text-4xl font-semibold text-white">
-                        {name}
-                    </p>
-                </div>
-                {tooltip && (
-                    <div className="mr-3">
-                        <TooltipProvider>
-                            <Tooltip open={isTooltipVisible}>
-                                <TooltipTrigger
-                                    onClick={handleTooltipClick}
-                                    onMouseEnter={handleMouseEnter}
-                                    onMouseLeave={handleMouseLeave}
-                                >
-                                    <Info color="#BBBBBB"/>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    <p>{tooltip}</p>
-                                </TooltipContent>
-                            </Tooltip>
-                        </TooltipProvider>
-                    </div>
-                )}
-            </div>
-            <div
-                className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
-                <p className="max-w-lg text-white/90">{description}</p>
-            </div>
-
-            <div
-                className={cn(
-                    "pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100",
-                )}
-            >
-                <Button variant="ghost" asChild size="sm" className="pointer-events-auto">
-                    <a href={href} className="text-white/90">
-                        {cta}
-                        <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180"/>
-                    </a>
-                </Button>
-            </div>
-            <div
-                className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03] dark:group-hover:bg-neutral-800/10"/>
-        </div>
-    );
-};
+];
 
 export default function Home() {
     const {colors} = useColor();
     const [isOpen, setIsOpen] = useState(false);
     const [isHovering, setIsHovering] = useState(false);
+
 
     useEffect(() => {
         if (isHovering) {
@@ -662,7 +612,7 @@ export default function Home() {
                     </div>
                 </section>
                 <section
-                    className="flex flex-col items-left justify-evenly bg-background min-h-full py-16 gap-y-8 my-36"
+                    className="flex flex-col items-left justify-evenly bg-background min-h-full py-16 gap-y-8 my-24"
                     id="projects"
                 >
                     <div className="flex flex-row items-left justify-left gap-4">
@@ -674,7 +624,9 @@ export default function Home() {
                         >•</h2>
                         <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-left justify-center">Projects</h2>
                     </div>
-                    <BentoGrid className="gap-4 w-full">
+
+                    {/* Bento Box Grid */}
+                    <BentoGrid className="w-full">
                         {projects.map((project) => (
                             <ProjectCard key={project.name} {...project} />
                         ))}

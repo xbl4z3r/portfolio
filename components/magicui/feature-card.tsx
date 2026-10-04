@@ -2,12 +2,12 @@ import React from "react";
 import {cn} from "@/lib/utils";
 
 export const FeatureCard = ({
-                         name,
-                         className,
-                         background,
-                         description,
-                         icon,
-                     }: {
+    name,
+    className,
+    background,
+    description,
+    icon,
+}: {
     name: string;
     className: string;
     background: React.ReactNode;
@@ -18,29 +18,29 @@ export const FeatureCard = ({
         <div
             key={name}
             className={cn(
-                "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl",
-                "bg-background [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
-                "transform-gpu dark:bg-background dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
+                "group relative flex flex-col justify-between overflow-hidden rounded-2xl p-6 md:p-8 min-h-[220px]",
+                "bg-card/50 backdrop-blur-sm border border-border/60 hover:border-purple-500/40",
+                "shadow-sm hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300",
                 className,
             )}
         >
-            <div>{background}</div>
-            <div className="absolute p-6 flex flex-wrap w-full justify-between items-center z-10">
-                <div className="flex flex-row gap-2 items-center">
-                    <div className="h-12 w-12 flex items-center justify-center rounded-lg bg-primary/10">
+            <div className="absolute inset-0 pointer-events-none">{background}</div>
+            
+            <div className="relative z-10 flex flex-col gap-4">
+                <div className="flex items-center gap-3">
+                    <div className="h-11 w-11 shrink-0 flex items-center justify-center rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400">
                         {icon}
                     </div>
-                    <p className="text-3xl lg:text-4xl font-semibold">
+                    <h3 className="text-xl md:text-2xl font-bold tracking-tight text-foreground">
                         {name}
-                    </p>
+                    </h3>
                 </div>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                    {description}
+                </p>
             </div>
-            <div
-                className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300">
-                <p className="max-w-lg text-primary/90">{description}</p>
-            </div>
-            <div
-                className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03] dark:group-hover:bg-neutral-800/10"/>
+
+            <div className="pointer-events-none absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100 bg-gradient-to-t from-purple-500/5 to-transparent" />
         </div>
     );
 };

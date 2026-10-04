@@ -48,8 +48,8 @@ export default function RootLayout({
           <div className="relative flex flex-col min-h-screen">
             <ColorProvider>
               {children}
+              <Footer/>
             </ColorProvider>
-            <Footer/>
             <SpeedInsights />
             <Analytics />
           </div>

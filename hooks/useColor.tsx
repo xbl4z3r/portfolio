@@ -48,7 +48,10 @@ export const useColor = () => {
     const context = useContext(ColorContext);
 
     if (context === undefined) {
-        throw new Error('useColor must be used within a ColorProvider');
+        return {
+            colors: defaultColors,
+            updateColors: () => {},
+        };
     }
 
     return context;
