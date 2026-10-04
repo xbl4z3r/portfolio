@@ -1,0 +1,1278 @@
+{
+  "semester": {
+    "startDate": "2026-09-28",
+    "faculty": "Facultatea de Automatică și Calculatoare",
+    "specialization": "Calculatoare (I CA)",
+    "academicYear": "2026 – 2027",
+    "semesterNum": 1,
+    "title": "Orar Anul I CA - Semestrul I"
+  },
+  "groups": [
+    "311 CA",
+    "312 CA",
+    "313 CA",
+    "314 CA",
+    "315 CA"
+  ],
+  "semigroups": [
+    "1",
+    "2"
+  ],
+  "days": [
+    "Luni",
+    "Marți",
+    "Miercuri",
+    "Joi",
+    "Vineri"
+  ],
+  "items": [
+    {
+      "id": "c-pl-luni",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 12,
+      "endHour": 14,
+      "timeStr": "12:00 - 14:00",
+      "title": "Proiectare Logică (PL)",
+      "shortName": "PL (c)",
+      "type": "course",
+      "room": "PR 001",
+      "professor": "Prof. C. CHIRU",
+      "parity": "all",
+      "semigroup": "all"
+    },
+    {
+      "id": "c-amat-luni",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 16,
+      "endHour": 18,
+      "timeStr": "16:00 - 18:00",
+      "title": "Analiză Matematică (AMat)",
+      "shortName": "AMat (c)",
+      "type": "course",
+      "room": "EC 105",
+      "professor": "Lect. Al. NEGRESCU",
+      "parity": "odd",
+      "description": "Săptămâni impare",
+      "semigroup": "all"
+    },
+    {
+      "id": "c-uso-marti",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Marți",
+      "dayIndex": 1,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "Utilizarea Sistemelor de Operare (USO)",
+      "shortName": "USO (c)",
+      "type": "course",
+      "room": "EC 105",
+      "professor": "Prof. R. RUGHINIȘ",
+      "parity": "all",
+      "semigroup": "all"
+    },
+    {
+      "id": "c-amat-marti",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Marți",
+      "dayIndex": 1,
+      "startHour": 14,
+      "endHour": 16,
+      "timeStr": "14:00 - 16:00",
+      "title": "Analiză Matematică (AMat)",
+      "shortName": "AMat (c)",
+      "type": "course",
+      "room": "PR 001",
+      "professor": "Lect. Al. NEGRESCU",
+      "parity": "all",
+      "semigroup": "all"
+    },
+    {
+      "id": "c-pclp1-marti",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Marți",
+      "dayIndex": 1,
+      "startHour": 16,
+      "endHour": 18,
+      "timeStr": "16:00 - 18:00",
+      "title": "Programarea Calculatoarelor și Limbaje de Programare 1 (PCLP 1)",
+      "shortName": "PCLP 1 (c)",
+      "type": "course",
+      "room": "A02 Leu",
+      "professor": "Prof. F. POP",
+      "parity": "odd",
+      "semigroup": "all"
+    },
+    {
+      "id": "c-pclp-miercuri",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Miercuri",
+      "dayIndex": 2,
+      "startHour": 8,
+      "endHour": 10,
+      "timeStr": "08:00 - 10:00",
+      "title": "Programarea Calculatoarelor și Limbaje de Programare 1 (PCLP)",
+      "shortName": "PCLP (c)",
+      "type": "course",
+      "room": "PR 001",
+      "professor": "Prof. F. POP",
+      "parity": "all",
+      "semigroup": "all"
+    },
+    {
+      "id": "c-algaed-joi",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 8,
+      "endHour": 10,
+      "timeStr": "08:00 - 10:00",
+      "title": "Algebră Liniară, Geometrie Analitică și Ecuații Diferențiale (ALGAED)",
+      "shortName": "ALGAED (c)",
+      "type": "course",
+      "room": "EC 105",
+      "professor": "Conf. Alina NIȚĂ",
+      "parity": "even",
+      "description": "Săptămâni pare",
+      "semigroup": "all"
+    },
+    {
+      "id": "c-pl-joi",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 14,
+      "endHour": 16,
+      "timeStr": "14:00 - 16:00",
+      "title": "Proiectare Logică (PL)",
+      "shortName": "PL (c)",
+      "type": "course",
+      "room": "AN 034",
+      "professor": "Prof. C. CHIRU",
+      "parity": "odd",
+      "semigroup": "all"
+    },
+    {
+      "id": "c-algaed-vineri",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Vineri",
+      "dayIndex": 4,
+      "startHour": 9,
+      "endHour": 11,
+      "timeStr": "09:00 - 11:00",
+      "title": "Algebră Liniară, Geometrie Analitică și Ecuații Diferențiale (ALGAED)",
+      "shortName": "ALGAED (c)",
+      "type": "course",
+      "room": "A02 Leu",
+      "professor": "Conf. Alina NIȚĂ",
+      "parity": "all",
+      "semigroup": "all"
+    },
+    {
+      "id": "312-lun-uso-sg2",
+      "groups": [
+        "312 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 8,
+      "endHour": 10,
+      "timeStr": "08:00 - 10:00",
+      "title": "Utilizarea Sistemelor de Operare (USO)",
+      "shortName": "USO (l)",
+      "type": "lab",
+      "room": "EG 208",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "312-lun-algaed-s",
+      "groups": [
+        "312 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "Algebră Liniară, Geometrie Analitică și Ecuații Diferențiale (ALGAED)",
+      "shortName": "ALGAED (s)",
+      "type": "seminar",
+      "room": "EC 002",
+      "parity": "all",
+      "semigroup": "all"
+    },
+    {
+      "id": "312-lun-pl-sg2",
+      "groups": [
+        "312 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 14,
+      "endHour": 16,
+      "timeStr": "14:00 - 16:00",
+      "title": "Proiectare Logică (PL)",
+      "shortName": "PL (l)",
+      "type": "lab",
+      "room": "EG 311",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "312-lun-pclp-sg1",
+      "groups": [
+        "312 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 18,
+      "endHour": 20,
+      "timeStr": "18:00 - 20:00",
+      "title": "Programarea Calculatoarelor și Limbaje de Programare 1 (PCLP 1)",
+      "shortName": "PCLP 1 (l)",
+      "type": "lab",
+      "room": "ED 120",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "312-mar-uso-sg1",
+      "groups": [
+        "312 CA"
+      ],
+      "day": "Marți",
+      "dayIndex": 1,
+      "startHour": 8,
+      "endHour": 10,
+      "timeStr": "08:00 - 10:00",
+      "title": "Utilizarea Sistemelor de Operare (USO)",
+      "shortName": "USO (l)",
+      "type": "lab",
+      "room": "EG 306",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "312-mar-pclp-sg2",
+      "groups": [
+        "312 CA"
+      ],
+      "day": "Marți",
+      "dayIndex": 1,
+      "startHour": 8,
+      "endHour": 10,
+      "timeStr": "08:00 - 10:00",
+      "title": "Programarea Calculatoarelor și Limbaje de Programare 1 (PCLP 1)",
+      "shortName": "PCLP 1 (l)",
+      "type": "lab",
+      "room": "EG 105",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "312-mar-pl-sg1",
+      "groups": [
+        "312 CA"
+      ],
+      "day": "Marți",
+      "dayIndex": 1,
+      "startHour": 18,
+      "endHour": 20,
+      "timeStr": "18:00 - 20:00",
+      "title": "Proiectare Logică (PL)",
+      "shortName": "PL (l)",
+      "type": "lab",
+      "room": "EG 403",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "312-joi-sport",
+      "groups": [
+        "312 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "Educație Fizică",
+      "shortName": "Educație Fizică",
+      "type": "sport",
+      "room": "Baza Sportivă",
+      "parity": "odd",
+      "description": "Săptămâni impare",
+      "semigroup": "all"
+    },
+    {
+      "id": "312-joi-amat-s",
+      "groups": [
+        "312 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 12,
+      "endHour": 14,
+      "timeStr": "12:00 - 14:00",
+      "title": "Analiză Matematică (AMat)",
+      "shortName": "AMat (s)",
+      "type": "seminar",
+      "room": "EG 303a",
+      "parity": "all",
+      "semigroup": "all"
+    },
+    {
+      "id": "312-vin-engl-s",
+      "groups": [
+        "312 CA"
+      ],
+      "day": "Vineri",
+      "dayIndex": 4,
+      "startHour": 12,
+      "endHour": 14,
+      "timeStr": "12:00 - 14:00",
+      "title": "Limba Engleză (Engl)",
+      "shortName": "Engl (s)",
+      "type": "seminar",
+      "room": "EC 102",
+      "parity": "even",
+      "description": "Săptămâni pare",
+      "semigroup": "all"
+    },
+    {
+      "id": "311-lun-pl-sg2",
+      "groups": [
+        "311 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 8,
+      "endHour": 10,
+      "timeStr": "08:00 - 10:00",
+      "title": "Proiectare Logică (PL)",
+      "shortName": "PL (l)",
+      "type": "lab",
+      "room": "EG 311",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "311-lun-uso-sg2",
+      "groups": [
+        "311 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "Utilizarea Sistemelor de Operare (USO)",
+      "shortName": "USO (l)",
+      "type": "lab",
+      "room": "ED 011",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "311-lun-amat-s",
+      "groups": [
+        "311 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 14,
+      "endHour": 16,
+      "timeStr": "14:00 - 16:00",
+      "title": "Analiză Matematică (AMat)",
+      "shortName": "AMat (s)",
+      "type": "seminar",
+      "room": "AN 210",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "311-lun-uso-sg1",
+      "groups": [
+        "311 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 18,
+      "endHour": 20,
+      "timeStr": "18:00 - 20:00",
+      "title": "Utilizarea Sistemelor de Operare (USO)",
+      "shortName": "USO (l)",
+      "type": "lab",
+      "room": "EG 306",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "311-mar-sport",
+      "groups": [
+        "311 CA"
+      ],
+      "day": "Marți",
+      "dayIndex": 1,
+      "startHour": 12,
+      "endHour": 14,
+      "timeStr": "12:00 - 14:00",
+      "title": "Educație Fizică",
+      "shortName": "Educație Fizică",
+      "type": "sport",
+      "room": "Baza Sportivă",
+      "parity": "odd",
+      "semigroup": "all"
+    },
+    {
+      "id": "311-mar-pl-sg1",
+      "groups": [
+        "311 CA"
+      ],
+      "day": "Marți",
+      "dayIndex": 1,
+      "startHour": 18,
+      "endHour": 20,
+      "timeStr": "18:00 - 20:00",
+      "title": "Proiectare Logică (PL)",
+      "shortName": "PL (l)",
+      "type": "lab",
+      "room": "EG 311",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "311-joi-pclp-sg2",
+      "groups": [
+        "311 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "Programarea Calculatoarelor (PCLP)",
+      "shortName": "PCLP (l)",
+      "type": "lab",
+      "room": "EG 205",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "311-joi-pclp-sg1",
+      "groups": [
+        "311 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 12,
+      "endHour": 14,
+      "timeStr": "12:00 - 14:00",
+      "title": "Programarea Calculatoarelor (PCLP)",
+      "shortName": "PCLP (l)",
+      "type": "lab",
+      "room": "EG 205",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "311-vin-engl-s",
+      "groups": [
+        "311 CA"
+      ],
+      "day": "Vineri",
+      "dayIndex": 4,
+      "startHour": 12,
+      "endHour": 14,
+      "timeStr": "12:00 - 14:00",
+      "title": "Limba Engleză (Engl)",
+      "shortName": "Engl (s)",
+      "type": "seminar",
+      "room": "EC 102",
+      "parity": "odd",
+      "semigroup": "all"
+    },
+    {
+      "id": "311-vin-algaed-s",
+      "groups": [
+        "311 CA"
+      ],
+      "day": "Vineri",
+      "dayIndex": 4,
+      "startHour": 14,
+      "endHour": 16,
+      "timeStr": "14:00 - 16:00",
+      "title": "Algebră Liniară, Geometrie Analitică și Ecuații Diferențiale (ALGAED)",
+      "shortName": "ALGAED (s)",
+      "type": "seminar",
+      "room": "EC 002",
+      "parity": "even",
+      "semigroup": "all"
+    },
+    {
+      "id": "313-lun-algaed-s",
+      "groups": [
+        "313 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 8,
+      "endHour": 10,
+      "timeStr": "08:00 - 10:00",
+      "title": "ALGAED (s)",
+      "shortName": "ALGAED (s)",
+      "type": "seminar",
+      "room": "EC 002",
+      "parity": "all",
+      "semigroup": "all"
+    },
+    {
+      "id": "313-lun-amat-s",
+      "groups": [
+        "313 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "AMat (s)",
+      "shortName": "AMat (s)",
+      "type": "seminar",
+      "room": "AN 210",
+      "parity": "all",
+      "semigroup": "all"
+    },
+    {
+      "id": "313-lun-pclp-sg1",
+      "groups": [
+        "313 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 18,
+      "endHour": 20,
+      "timeStr": "18:00 - 20:00",
+      "title": "PCLP 1 (l)",
+      "shortName": "PCLP 1 (l)",
+      "type": "lab",
+      "room": "EG 105",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "313-mar-pl-sg1",
+      "groups": [
+        "313 CA"
+      ],
+      "day": "Marți",
+      "dayIndex": 1,
+      "startHour": 8,
+      "endHour": 10,
+      "timeStr": "08:00 - 10:00",
+      "title": "PL (l)",
+      "shortName": "PL (l)",
+      "type": "lab",
+      "room": "EG 403",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "313-mie-pl-sg2",
+      "groups": [
+        "313 CA"
+      ],
+      "day": "Miercuri",
+      "dayIndex": 2,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "PL (l)",
+      "shortName": "PL (l)",
+      "type": "lab",
+      "room": "EG 311",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "313-joi-engl-s",
+      "groups": [
+        "313 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "Engl (s)",
+      "shortName": "Engl (s)",
+      "type": "seminar",
+      "room": "AN 210",
+      "parity": "odd",
+      "semigroup": "all"
+    },
+    {
+      "id": "313-joi-sport",
+      "groups": [
+        "313 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "Educație Fizică",
+      "shortName": "Educație Fizică",
+      "type": "sport",
+      "room": "Baza Sportivă",
+      "parity": "even",
+      "semigroup": "all"
+    },
+    {
+      "id": "313-vin-uso-sg1",
+      "groups": [
+        "313 CA"
+      ],
+      "day": "Vineri",
+      "dayIndex": 4,
+      "startHour": 12,
+      "endHour": 14,
+      "timeStr": "12:00 - 14:00",
+      "title": "USO (l)",
+      "shortName": "USO (l)",
+      "type": "lab",
+      "room": "EG 106",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "313-vin-pclp-sg2",
+      "groups": [
+        "313 CA"
+      ],
+      "day": "Vineri",
+      "dayIndex": 4,
+      "startHour": 12,
+      "endHour": 14,
+      "timeStr": "12:00 - 14:00",
+      "title": "PCLP (l)",
+      "shortName": "PCLP (l)",
+      "type": "lab",
+      "room": "ED 120",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "313-vin-uso-sg2",
+      "groups": [
+        "313 CA"
+      ],
+      "day": "Vineri",
+      "dayIndex": 4,
+      "startHour": 14,
+      "endHour": 16,
+      "timeStr": "14:00 - 16:00",
+      "title": "USO (l)",
+      "shortName": "USO (l)",
+      "type": "lab",
+      "room": "EG 106",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "314-lun-uso-sg1",
+      "groups": [
+        "314 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "USO (l)",
+      "shortName": "USO (l)",
+      "type": "lab",
+      "room": "EG 208",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "314-mar-amat-s",
+      "groups": [
+        "314 CA"
+      ],
+      "day": "Marți",
+      "dayIndex": 1,
+      "startHour": 18,
+      "endHour": 20,
+      "timeStr": "18:00 - 20:00",
+      "title": "AMat (s)",
+      "shortName": "AMat (s)",
+      "type": "seminar",
+      "room": "AN 210",
+      "parity": "all",
+      "semigroup": "all"
+    },
+    {
+      "id": "314-mie-sport",
+      "groups": [
+        "314 CA"
+      ],
+      "day": "Miercuri",
+      "dayIndex": 2,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "Educație Fizică",
+      "shortName": "Educație Fizică",
+      "type": "sport",
+      "room": "Baza Sportivă",
+      "parity": "odd",
+      "semigroup": "all"
+    },
+    {
+      "id": "314-mie-engl-s",
+      "groups": [
+        "314 CA"
+      ],
+      "day": "Miercuri",
+      "dayIndex": 2,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "Engl (s)",
+      "shortName": "Engl (s)",
+      "type": "seminar",
+      "room": "BN 027",
+      "parity": "even",
+      "semigroup": "all"
+    },
+    {
+      "id": "314-mie-algaed-s",
+      "groups": [
+        "314 CA"
+      ],
+      "day": "Miercuri",
+      "dayIndex": 2,
+      "startHour": 14,
+      "endHour": 16,
+      "timeStr": "14:00 - 16:00",
+      "title": "ALGAED (s)",
+      "shortName": "ALGAED (s)",
+      "type": "seminar",
+      "room": "EG 303a",
+      "parity": "all",
+      "semigroup": "all"
+    },
+    {
+      "id": "314-mie-pl-sg1",
+      "groups": [
+        "314 CA"
+      ],
+      "day": "Miercuri",
+      "dayIndex": 2,
+      "startHour": 16,
+      "endHour": 18,
+      "timeStr": "16:00 - 18:00",
+      "title": "PL (l)",
+      "shortName": "PL (l)",
+      "type": "lab",
+      "room": "EG 311",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "314-mie-pclp-sg2",
+      "groups": [
+        "314 CA"
+      ],
+      "day": "Miercuri",
+      "dayIndex": 2,
+      "startHour": 16,
+      "endHour": 18,
+      "timeStr": "16:00 - 18:00",
+      "title": "PCLP (l)",
+      "shortName": "PCLP (l)",
+      "type": "lab",
+      "room": "ED 120",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "314-mie-pclp-sg1",
+      "groups": [
+        "314 CA"
+      ],
+      "day": "Miercuri",
+      "dayIndex": 2,
+      "startHour": 18,
+      "endHour": 20,
+      "timeStr": "18:00 - 20:00",
+      "title": "PCLP (l)",
+      "shortName": "PCLP (l)",
+      "type": "lab",
+      "room": "ED 120",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "314-joi-pl-sg2",
+      "groups": [
+        "314 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "PL (l)",
+      "shortName": "PL (l)",
+      "type": "lab",
+      "room": "EG 311",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "314-vin-uso-sg2",
+      "groups": [
+        "314 CA"
+      ],
+      "day": "Vineri",
+      "dayIndex": 4,
+      "startHour": 16,
+      "endHour": 18,
+      "timeStr": "16:00 - 18:00",
+      "title": "USO (l)",
+      "shortName": "USO (l)",
+      "type": "lab",
+      "room": "EG 106",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "315-lun-pl-sg1",
+      "groups": [
+        "315 CA"
+      ],
+      "day": "Luni",
+      "dayIndex": 0,
+      "startHour": 8,
+      "endHour": 10,
+      "timeStr": "08:00 - 10:00",
+      "title": "PL (l)",
+      "shortName": "PL (l)",
+      "type": "lab",
+      "room": "EG 403",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "315-mar-pl-sg2",
+      "groups": [
+        "315 CA"
+      ],
+      "day": "Marți",
+      "dayIndex": 1,
+      "startHour": 8,
+      "endHour": 10,
+      "timeStr": "08:00 - 10:00",
+      "title": "PL (l)",
+      "shortName": "PL (l)",
+      "type": "lab",
+      "room": "EG 311",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "315-mar-sport",
+      "groups": [
+        "315 CA"
+      ],
+      "day": "Marți",
+      "dayIndex": 1,
+      "startHour": 16,
+      "endHour": 18,
+      "timeStr": "16:00 - 18:00",
+      "title": "Educație Fizică",
+      "shortName": "Educație Fizică",
+      "type": "sport",
+      "room": "Baza Sportivă",
+      "parity": "even",
+      "semigroup": "all"
+    },
+    {
+      "id": "315-mie-uso-sg1",
+      "groups": [
+        "315 CA"
+      ],
+      "day": "Miercuri",
+      "dayIndex": 2,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "USO (l)",
+      "shortName": "USO (l)",
+      "type": "lab",
+      "room": "EG 208",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "315-mie-uso-sg2",
+      "groups": [
+        "315 CA"
+      ],
+      "day": "Miercuri",
+      "dayIndex": 2,
+      "startHour": 12,
+      "endHour": 14,
+      "timeStr": "12:00 - 14:00",
+      "title": "USO (l)",
+      "shortName": "USO (l)",
+      "type": "lab",
+      "room": "EG 208",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "315-mie-pclp-sg2",
+      "groups": [
+        "315 CA"
+      ],
+      "day": "Miercuri",
+      "dayIndex": 2,
+      "startHour": 14,
+      "endHour": 16,
+      "timeStr": "14:00 - 16:00",
+      "title": "PCLP (l)",
+      "shortName": "PCLP (l)",
+      "type": "lab",
+      "room": "ED 120",
+      "parity": "all",
+      "semigroup": "2"
+    },
+    {
+      "id": "315-joi-amat-s",
+      "groups": [
+        "315 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "AMat (s)",
+      "shortName": "AMat (s)",
+      "type": "seminar",
+      "room": "EG 303a",
+      "parity": "all",
+      "semigroup": "all"
+    },
+    {
+      "id": "315-joi-engl-s",
+      "groups": [
+        "315 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 12,
+      "endHour": 14,
+      "timeStr": "12:00 - 14:00",
+      "title": "Engl (s)",
+      "shortName": "Engl (s)",
+      "type": "seminar",
+      "room": "PR 106",
+      "parity": "even",
+      "semigroup": "all"
+    },
+    {
+      "id": "315-vin-algaed-s",
+      "groups": [
+        "315 CA"
+      ],
+      "day": "Vineri",
+      "dayIndex": 4,
+      "startHour": 12,
+      "endHour": 14,
+      "timeStr": "12:00 - 14:00",
+      "title": "ALGAED (s)",
+      "shortName": "ALGAED (s)",
+      "type": "seminar",
+      "room": "EC 002",
+      "parity": "all",
+      "semigroup": "all"
+    },
+    {
+      "id": "315-vin-pclp-sg1",
+      "groups": [
+        "315 CA"
+      ],
+      "day": "Vineri",
+      "dayIndex": 4,
+      "startHour": 14,
+      "endHour": 16,
+      "timeStr": "14:00 - 16:00",
+      "title": "PCLP 1 (l)",
+      "shortName": "PCLP 1 (l)",
+      "type": "lab",
+      "room": "ED 120",
+      "parity": "all",
+      "semigroup": "1"
+    },
+    {
+      "id": "opt-tc-curs",
+      "optionalKey": "tc",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 16,
+      "endHour": 18,
+      "timeStr": "16:00 - 18:00",
+      "title": "Tehnici de Comunicare (TC)",
+      "shortName": "TC (c)",
+      "type": "optional",
+      "room": "AN 034",
+      "professor": "Conf. Beatrice BALGIU",
+      "parity": "odd",
+      "semigroup": "all"
+    },
+    {
+      "id": "opt-if-curs",
+      "optionalKey": "if",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 16,
+      "endHour": 18,
+      "timeStr": "16:00 - 18:00",
+      "title": "Istoria Filosofiei (IF)",
+      "shortName": "IF (c)",
+      "type": "optional",
+      "room": "A04 Leu",
+      "professor": "Lect. Paula TOMI",
+      "parity": "odd",
+      "semigroup": "all"
+    },
+    {
+      "id": "opt-ant-curs",
+      "optionalKey": "ant",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 16,
+      "endHour": 18,
+      "timeStr": "16:00 - 18:00",
+      "title": "Antropologie (Ant)",
+      "shortName": "Ant (c)",
+      "type": "optional",
+      "room": "AN 030",
+      "professor": "Conf. Ramona ARDELEANU",
+      "parity": "odd",
+      "semigroup": "all"
+    },
+    {
+      "id": "opt-log-curs",
+      "optionalKey": "log",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 16,
+      "endHour": 18,
+      "timeStr": "16:00 - 18:00",
+      "title": "Logică (Log)",
+      "shortName": "Log (c)",
+      "type": "optional",
+      "room": "A04 Leu",
+      "professor": "Lect. Paula TOMI",
+      "parity": "even",
+      "semigroup": "all"
+    },
+    {
+      "id": "opt-ifr-curs",
+      "optionalKey": "ifr",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Vineri",
+      "dayIndex": 4,
+      "startHour": 16,
+      "endHour": 18,
+      "timeStr": "16:00 - 18:00",
+      "title": "Istoria și Filosofia Religiilor (IFR)",
+      "shortName": "IFR (c)",
+      "type": "optional",
+      "room": "EG 301",
+      "professor": "Conf. I. COJOCARU",
+      "parity": "even",
+      "semigroup": "all"
+    },
+    {
+      "id": "opt-idst-curs",
+      "optionalKey": "idst",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Miercuri",
+      "dayIndex": 2,
+      "startHour": 18,
+      "endHour": 20,
+      "timeStr": "18:00 - 20:00",
+      "title": "Istoria Dezvoltării Științei și Tehnicii (IDST)",
+      "shortName": "IDST (c)",
+      "type": "optional",
+      "room": "AN 034",
+      "professor": "Conf. M. CHIROIU",
+      "parity": "even",
+      "semigroup": "all",
+      "startDate": "2026-10-21"
+    },
+    {
+      "id": "opt-psiho-curs",
+      "optionalKey": "psiho",
+      "groups": [
+        "311 CA",
+        "312 CA",
+        "313 CA",
+        "314 CA",
+        "315 CA"
+      ],
+      "day": "Joi",
+      "dayIndex": 3,
+      "startHour": 10,
+      "endHour": 12,
+      "timeStr": "10:00 - 12:00",
+      "title": "Psihologia Educației (facultativ)",
+      "shortName": "Psiho (c)",
+      "type": "optional",
+      "room": "A04 Leu",
+      "professor": "Lect. Ana Voichița TEBEANU",
+      "parity": "all",
+      "semigroup": "all"
+    }
+  ],
+  "optionals": [
+    {
+      "key": "none",
+      "name": "Fără opțional"
+    },
+    {
+      "key": "tc",
+      "name": "TC (Tehnici de Comunicare)"
+    },
+    {
+      "key": "if",
+      "name": "IF (Istoria Filosofiei)"
+    },
+    {
+      "key": "ant",
+      "name": "Ant (Antropologie)"
+    },
+    {
+      "key": "log",
+      "name": "Log (Logică)"
+    },
+    {
+      "key": "ifr",
+      "name": "IFR (Istoria și Filosofia Religiilor)"
+    },
+    {
+      "key": "idst",
+      "name": "IDST (Istoria Dezvoltării Științei)"
+    },
+    {
+      "key": "psiho",
+      "name": "Psihologia Educației (facultativ)"
+    }
+  ]
+}

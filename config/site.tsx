@@ -110,6 +110,19 @@ export const siteConfig = {
         },
       ],
     },
+    orar: {
+      title: "Orar CTI",
+      navItems: [
+        {
+          label: "Acasă",
+          href: "/#home",
+        },
+        {
+          label: "Orar",
+          href: "/cti/orar/1/1",
+        },
+      ],
+    },
   },
   links: {
     github: "/github",
