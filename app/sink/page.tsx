@@ -101,6 +101,7 @@ const FEATURES = [
 export default function SinkPage() {
   // Email waitlist form state
   const [email, setEmail] = useState("")
+  const [honeypot, setHoneypot] = useState("")
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [subscribing, setSubscribing] = useState(false)
   const [subscribeError, setSubscribeError] = useState<string | null>(null)
@@ -115,7 +116,7 @@ export default function SinkPage() {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, honeypot }),
       })
       const data = await res.json()
 
@@ -359,6 +360,20 @@ export default function SinkPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} className="space-y-3">
+                  {/* Honeypot field for bot protection (invisible to humans and screen readers) */}
+                  <div className="hidden" aria-hidden="true" style={{ display: "none" }}>
+                    <label htmlFor="website_hp">Leave this empty</label>
+                    <input
+                      type="text"
+                      id="website_hp"
+                      name="website_hp"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+
                   <div className="flex flex-col sm:flex-row items-center gap-2.5 max-w-md mx-auto">
                     <div className="relative w-full">
                       <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
