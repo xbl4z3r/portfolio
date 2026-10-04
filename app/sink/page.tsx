@@ -338,7 +338,7 @@ export default function SinkPage() {
                 Closed Beta Release
               </span>
 
-              <div className="space-y-2">
+              <div className="space-y-2 mt-6">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
                   Get Notified When Sink Launches
                 </h2>
