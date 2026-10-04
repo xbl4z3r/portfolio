@@ -1,6 +1,6 @@
 "use client"
 
-import {useState, createContext, useContext, ReactNode} from 'react';
+import {useState, useCallback, createContext, useContext, ReactNode} from 'react';
 
 interface Colors {
     vibrant: string;
@@ -30,12 +30,12 @@ const ColorContext = createContext<ColorContextProps | undefined>(undefined);
 export const ColorProvider = ({children}: { children: ReactNode }) => {
     const [colors, setColors] = useState<Colors>(defaultColors);
 
-    const updateColors = (newColors: Partial<Colors>) => {
+    const updateColors = useCallback((newColors: Partial<Colors>) => {
         setColors((prevColors) => ({
             ...prevColors,
             ...newColors,
         }));
-    };
+    }, []);
 
     return (
         <ColorContext.Provider value={{colors, updateColors}}>

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import {Card, CardContent} from "@/components/ui/card";
 import {Progress} from "@/components/ui/progress";
 import {Vibrant} from "node-vibrant/browser";
@@ -7,7 +7,7 @@ import {useColor} from "@/hooks/useColor";
 import {NowPlaying} from "@/types";
 
 const SERVER_REFRESH_INTERVAL = 10000;
-const REFRESH_INTERVAL = 1000;
+const PROGRESS_TICK_INTERVAL = 1000;
 
 const formatTime = (ms: number) => {
     const minutes = Math.floor(ms / 60000);
@@ -40,6 +40,9 @@ export const SpotifyCard = () => {
     const [opacity, setOpacity] = useState(0);
     const {colors, updateColors} = useColor();
 
+    // Track last known album art URL via ref so Vibrant only extracts on changes
+    const lastArtUrlRef = useRef<string>("");
+
     useEffect(() => {
         if (!loaded) return;
         const timer = setTimeout(() => {
@@ -58,60 +61,61 @@ export const SpotifyCard = () => {
         return () => window.removeEventListener('resize', updateGradientPosition);
     }, []);
 
-    useEffect(() => {
-        const fetchSpotifyData = async () => {
-            try {
-                const response = await fetch("/api/spotify");
-                const data: NowPlaying = await response.json();
-                if (data.track.name == result.track.name) return;
-                setResult(data);
-                if(!loaded) setLoaded(true);
+    const fetchSpotifyData = useCallback(async () => {
+        try {
+            const response = await fetch("/api/spotify");
+            if (!response.ok) return;
+            const data: NowPlaying = await response.json();
+            setResult(data);
+            setLoaded(true);
+
+            if (data.track.artUrl && data.track.artUrl !== lastArtUrlRef.current && !data.track.artUrl.includes("placehold.co")) {
+                lastArtUrlRef.current = data.track.artUrl;
                 Vibrant.from(data.track.artUrl).getPalette().then((palette) => {
-                    if (palette.Vibrant === null || palette.Muted === null || palette.LightVibrant === null || palette.LightMuted === null || palette.DarkVibrant === null || palette.DarkMuted === null) return;
+                    const {Vibrant: V, Muted: M, LightVibrant: LV, LightMuted: LM, DarkVibrant: DV, DarkMuted: DM} = palette;
+                    if (!V || !M || !LV || !LM || !DV || !DM) return;
                     updateColors({
-                        vibrant: palette.Vibrant.hex.toUpperCase(),
-                        muted: palette.Muted.hex.toUpperCase(),
-                        light_vibrant: palette.LightVibrant.hex.toUpperCase(),
-                        light_muted: palette.LightMuted.hex.toUpperCase(),
-                        dark_vibrant: palette.DarkVibrant.hex.toUpperCase(),
-                        dark_muted: palette.DarkMuted.hex.toUpperCase(),
+                        vibrant: V.hex.toUpperCase(),
+                        muted: M.hex.toUpperCase(),
+                        light_vibrant: LV.hex.toUpperCase(),
+                        light_muted: LM.hex.toUpperCase(),
+                        dark_vibrant: DV.hex.toUpperCase(),
+                        dark_muted: DM.hex.toUpperCase(),
                     });
                 }).catch((error) => {
-                    console.error("Failed to fetch artwork colors", error);
+                    console.error("Failed to extract artwork colors", error);
                 });
-            } catch (error) {
-                console.error("Failed to fetch Spotify data", error);
             }
-        };
+        } catch (error) {
+            console.error("Failed to fetch Spotify data", error);
+        }
+    }, [updateColors]);
 
-        fetchSpotifyData().then(() => {
-            const interval = setInterval(fetchSpotifyData, SERVER_REFRESH_INTERVAL);
-            return () => clearInterval(interval);
-        });
-    }, []);
+    // Correctly returns cleanup from useEffect — interval is always cleared on unmount
+    useEffect(() => {
+        fetchSpotifyData();
+        const interval = setInterval(fetchSpotifyData, SERVER_REFRESH_INTERVAL);
+        return () => clearInterval(interval);
+    }, [fetchSpotifyData]);
 
+    // Progress ticker uses functional updater — no stale deps, no need to re-create on result change
     useEffect(() => {
         const interval = setInterval(() => {
-            if (result.initialized && result.is_playing) {
-                setResult((prev) => ({
+            setResult((prev) => {
+                if (!prev.initialized || !prev.is_playing) return prev;
+                const newProgress = Math.min(prev.progress + PROGRESS_TICK_INTERVAL, prev.track.duration);
+                return {
                     ...prev,
-                    progress: prev.progress + REFRESH_INTERVAL,
-                }));
-
-                if (result.progress >= result.track.duration) {
-                    setResult((prev) => ({
-                        ...prev,
-                        progress: result.track.duration,
-                        isPlaying: false,
-                    }));
-                }
-            }
-        }, REFRESH_INTERVAL);
-
+                    progress: newProgress,
+                    is_playing: newProgress < prev.track.duration,
+                };
+            });
+        }, PROGRESS_TICK_INTERVAL);
         return () => clearInterval(interval);
-    }, [result]);
+    }, []);
 
     const safeDuration = Math.max(1, result.track.duration);
+    const artistList = result.track.artists;
 
     return (
         <Card
@@ -170,14 +174,20 @@ export const SpotifyCard = () => {
                     </div>
                     <div className="flex flex-col justify-between w-full p-4 md:py-6 md:px-8 lg:py-8 lg:px-10">
                         <div className="flex items-center space-x-2 mb-3">
-                            <svg className="w-5 h-5" style={{color: colors.vibrant}} viewBox="0 0 24 24"
+                            <svg className="w-5 h-5 shrink-0" style={{color: colors.vibrant}} viewBox="0 0 24 24"
                                  fill="currentColor">
                                 <path
                                     d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.8-.179-.92-.6-.12-.421.18-.8.6-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.48.659.24 1.08zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
                             </svg>
+                            {result.is_playing && (
+                                <span className="relative flex h-2 w-2" aria-label="Playing">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{backgroundColor: colors.vibrant}}/>
+                                    <span className="relative inline-flex rounded-full h-2 w-2" style={{backgroundColor: colors.vibrant}}/>
+                                </span>
+                            )}
                             <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                        {result.is_playing ? "Currently Playing" : "Recently Played"}
-                    </span>
+                                {result.is_playing ? "Currently Playing" : "Recently Played"}
+                            </span>
                         </div>
                         <div className="grow">
                             <a href={result.track.url}
@@ -192,15 +202,28 @@ export const SpotifyCard = () => {
                                 </h3>
                             </a>
                             <div className="mt-2 space-y-1">
-                                <a href={result.track.artists[0].url}
-                                   target="_blank"
-                                   rel="noreferrer"
-                                   className="text-sm md:text-base lg:text-lg text-muted-foreground transition-colors"
-                                   onMouseEnter={() => setIsArtistHovered(true)}
-                                   onMouseLeave={() => setIsArtistHovered(false)}
-                                   style={isArtistHovered ? {color: colors.vibrant} : {}}>
-                                    {result.track.artists[0].name}
-                                </a>
+                                <div
+                                    className="text-sm md:text-base lg:text-lg text-muted-foreground"
+                                    onMouseEnter={() => setIsArtistHovered(true)}
+                                    onMouseLeave={() => setIsArtistHovered(false)}
+                                >
+                                    {artistList.map((artist, i) => (
+                                        <React.Fragment key={artist.url || artist.name}>
+                                            <a
+                                                href={artist.url}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="transition-colors hover:underline"
+                                                style={isArtistHovered ? {color: colors.vibrant} : {}}
+                                            >
+                                                {artist.name}
+                                            </a>
+                                            {i < artistList.length - 1 && (
+                                                <span className="text-muted-foreground/60">, </span>
+                                            )}
+                                        </React.Fragment>
+                                    ))}
+                                </div>
                                 <p className="text-xs md:text-sm text-muted-foreground/70 block">
                                     {result.track.album.name}
                                 </p>
