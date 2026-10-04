@@ -103,15 +103,32 @@ export default function SinkPage() {
   const [email, setEmail] = useState("")
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [subscribing, setSubscribing] = useState(false)
+  const [subscribeError, setSubscribeError] = useState<string | null>(null)
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email || !email.includes("@")) return
     setSubscribing(true)
-    setTimeout(() => {
-      setSubscribing(false)
+    setSubscribeError(null)
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      })
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to subscribe. Please try again.")
+      }
+
       setIsSubscribed(true)
-    }, 600)
+    } catch (err) {
+      setSubscribeError((err as Error).message || "Something went wrong.")
+    } finally {
+      setSubscribing(false)
+    }
   }
 
   return (
@@ -369,6 +386,9 @@ export default function SinkPage() {
                       )}
                     </button>
                   </div>
+                  {subscribeError && (
+                    <p className="text-xs text-red-400 text-center font-medium">{subscribeError}</p>
+                  )}
                   <p className="text-[11px] text-zinc-500">
                     Closed-source private release. No spam, ever. Unsubscribe at any time.
                   </p>
