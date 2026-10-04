@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
 
@@ -63,8 +63,7 @@
   --animate-pulse-hover: pulse-hover 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-meteor: meteor 5s linear infinite;
   --animate-rippling: rippling var(--duration) ease-out;
-  --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s)
-    infinite;
+  --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s) infinite;
 
   --spacing-container: 1280px;
 
@@ -260,7 +259,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -286,7 +285,7 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
 
@@ -331,20 +330,40 @@
 }
 
 @keyframes soundwave-1 {
-  0%, 100% { height: 4px; }
-  50% { height: 16px; }
+  0%,
+  100% {
+    height: 4px;
+  }
+  50% {
+    height: 16px;
+  }
 }
 @keyframes soundwave-2 {
-  0%, 100% { height: 14px; }
-  50% { height: 6px; }
+  0%,
+  100% {
+    height: 14px;
+  }
+  50% {
+    height: 6px;
+  }
 }
 @keyframes soundwave-3 {
-  0%, 100% { height: 8px; }
-  50% { height: 18px; }
+  0%,
+  100% {
+    height: 8px;
+  }
+  50% {
+    height: 18px;
+  }
 }
 @keyframes soundwave-4 {
-  0%, 100% { height: 16px; }
-  50% { height: 4px; }
+  0%,
+  100% {
+    height: 16px;
+  }
+  50% {
+    height: 4px;
+  }
 }
 
 .animate-soundwave-1 {

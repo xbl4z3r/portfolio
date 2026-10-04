@@ -1,28 +1,28 @@
-import { SVGProps } from "react";
+import { SVGProps } from "react"
 
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
-  size?: number;
-};
+  size?: number
+}
 
 export interface NowPlaying {
-  initialized: boolean;
-  error: string | null;
-  is_playing: boolean;
+  initialized: boolean
+  error: string | null
+  is_playing: boolean
   track: {
-    name: string;
+    name: string
     artists: {
-      name: string;
-      url: string;
-    }[];
+      name: string
+      url: string
+    }[]
     album: {
-      name: string;
-      url: string;
-    };
-    duration: number;
-    artUrl: string;
-    url: string;
-  };
-  progress: number;
-  played_at: string;
-  type: "track" | "episode" | "unknown";
+      name: string
+      url: string
+    }
+    duration: number
+    artUrl: string
+    url: string
+  }
+  progress: number
+  played_at: string
+  type: "track" | "episode" | "unknown"
 }

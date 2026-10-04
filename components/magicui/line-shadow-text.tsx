@@ -1,13 +1,12 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import { motion, MotionProps } from "motion/react";
+import { cn } from "@/lib/utils"
+import { motion, MotionProps } from "motion/react"
 
 interface LineShadowTextProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>,
-    MotionProps {
-  shadowColor?: string;
-  as?: React.ElementType;
+  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>, MotionProps {
+  shadowColor?: string
+  as?: React.ElementType
 }
 
 export function LineShadowText({
@@ -17,11 +16,11 @@ export function LineShadowText({
   as: Component = "span",
   ...props
 }: LineShadowTextProps) {
-  const MotionComponent = motion.create(Component);
-  const content = typeof children === "string" ? children : null;
+  const MotionComponent = motion.create(Component)
+  const content = typeof children === "string" ? children : null
 
   if (!content) {
-    throw new Error("LineShadowText only accepts string content");
+    throw new Error("LineShadowText only accepts string content")
   }
 
   return (
@@ -33,12 +32,12 @@ export function LineShadowText({
         "after:bg-[linear-gradient(45deg,transparent_45%,var(--shadow-color)_45%,var(--shadow-color)_55%,transparent_0)]",
         "after:-z-10 after:bg-[length:0.06em_0.06em] after:bg-clip-text after:text-transparent",
         "after:animate-line-shadow",
-        className,
+        className
       )}
       data-text={content}
       {...props}
     >
       {content}
     </MotionComponent>
-  );
+  )
 }

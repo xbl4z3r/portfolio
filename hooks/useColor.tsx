@@ -1,58 +1,54 @@
 "use client"
 
-import {useState, useCallback, createContext, useContext, ReactNode} from 'react';
+import { useState, useCallback, createContext, useContext, ReactNode } from "react"
 
 interface Colors {
-    vibrant: string;
-    muted: string;
-    light_vibrant: string;
-    light_muted: string;
-    dark_vibrant: string;
-    dark_muted: string;
+  vibrant: string
+  muted: string
+  light_vibrant: string
+  light_muted: string
+  dark_vibrant: string
+  dark_muted: string
 }
 
 const defaultColors: Colors = {
-    vibrant: '#000000',
-    muted: '#000000',
-    light_vibrant: '#000000',
-    light_muted: '#000000',
-    dark_vibrant: '#000000',
-    dark_muted: '#000000',
-};
-
-interface ColorContextProps {
-    colors: Colors;
-    updateColors: (newColors: Partial<Colors>) => void;
+  vibrant: "#000000",
+  muted: "#000000",
+  light_vibrant: "#000000",
+  light_muted: "#000000",
+  dark_vibrant: "#000000",
+  dark_muted: "#000000",
 }
 
-const ColorContext = createContext<ColorContextProps | undefined>(undefined);
+interface ColorContextProps {
+  colors: Colors
+  updateColors: (newColors: Partial<Colors>) => void
+}
 
-export const ColorProvider = ({children}: { children: ReactNode }) => {
-    const [colors, setColors] = useState<Colors>(defaultColors);
+const ColorContext = createContext<ColorContextProps | undefined>(undefined)
 
-    const updateColors = useCallback((newColors: Partial<Colors>) => {
-        setColors((prevColors) => ({
-            ...prevColors,
-            ...newColors,
-        }));
-    }, []);
+export const ColorProvider = ({ children }: { children: ReactNode }) => {
+  const [colors, setColors] = useState<Colors>(defaultColors)
 
-    return (
-        <ColorContext.Provider value={{colors, updateColors}}>
-            {children}
-        </ColorContext.Provider>
-    );
-};
+  const updateColors = useCallback((newColors: Partial<Colors>) => {
+    setColors((prevColors) => ({
+      ...prevColors,
+      ...newColors,
+    }))
+  }, [])
+
+  return <ColorContext.Provider value={{ colors, updateColors }}>{children}</ColorContext.Provider>
+}
 
 export const useColor = () => {
-    const context = useContext(ColorContext);
+  const context = useContext(ColorContext)
 
-    if (context === undefined) {
-        return {
-            colors: defaultColors,
-            updateColors: () => {},
-        };
+  if (context === undefined) {
+    return {
+      colors: defaultColors,
+      updateColors: () => {},
     }
+  }
 
-    return context;
-};
+  return context
+}

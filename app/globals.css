@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
 
@@ -61,8 +61,7 @@
   --animate-pulse-hover: pulse-hover 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-meteor: meteor 5s linear infinite;
   --animate-rippling: rippling var(--duration) ease-out;
-  --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s)
-    infinite;
+  --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s) infinite;
 
   --spacing-container: 1280px;
 
@@ -253,23 +252,11 @@
 }
 
 @utility fade-x {
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 25%,
-    black 75%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(to right, transparent 0%, black 25%, black 75%, transparent 100%);
 }
 
 @utility fade-y {
-  mask-image: linear-gradient(
-    to top,
-    transparent 0%,
-    black 25%,
-    black 75%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(to top, transparent 0%, black 25%, black 75%, transparent 100%);
 }
 
 @utility fade-top {
