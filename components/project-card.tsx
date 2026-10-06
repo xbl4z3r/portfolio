@@ -62,28 +62,14 @@ export const ProjectCard = ({
       {/* Dark Gradient Scrim: preserves artwork vibrancy while guaranteeing razor-sharp text legibility */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/15 pointer-events-none z-[1]" />
 
-      {/* Top Header: Category, Minimal Tags, Title & Tooltip */}
+      {/* Top Header: Category, Title & Tooltip */}
       <div className="relative p-5 sm:p-6 flex flex-wrap w-full justify-between items-start z-10">
         <div className="flex flex-col gap-1.5 max-w-[85%]">
-          <div className="flex items-center flex-wrap gap-2">
-            {category && (
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-white/70">
-                {category}
-              </span>
-            )}
-            {tags && tags.length > 0 && (
-              <div className="flex items-center gap-1.5 flex-wrap">
-                {tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-white/10 text-white/90 border border-white/15 backdrop-blur-md shadow-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
+          {category && (
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-white/70">
+              {category}
+            </span>
+          )}
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight group-hover:text-white transition-colors drop-shadow-md">
             {name}
           </h3>
@@ -121,8 +107,20 @@ export const ProjectCard = ({
         )}
       </div>
 
-      {/* Bottom Content: Description */}
-      <div className="relative z-10 flex transform-gpu flex-col gap-1 p-5 sm:p-6 transition-all duration-300 group-hover:-translate-y-8">
+      {/* Bottom Content: Tags & Description */}
+      <div className="relative z-10 flex transform-gpu flex-col gap-2 p-5 sm:p-6 transition-all duration-300 group-hover:-translate-y-8">
+        {tags && tags.length > 0 && (
+          <div className="flex items-center gap-1.5 flex-wrap">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-white/10 text-white/90 border border-white/15 backdrop-blur-md shadow-sm"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
         <p className="max-w-lg text-xs sm:text-sm text-zinc-200/90 leading-relaxed drop-shadow-sm font-normal">
           {description}
         </p>
