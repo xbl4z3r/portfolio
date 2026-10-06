@@ -4,22 +4,8 @@ import React, { useState, useTransition, useMemo } from "react"
 import { Navbar } from "@/components/navbar"
 import { siteConfig } from "@/config/site"
 import { Badge } from "@/components/ui/badge"
-import {
-  TimetableData,
-  ScheduleItem,
-  ActivityType,
-  getAcademicWeekInfo,
-} from "@/lib/orar"
-import {
-  Clock,
-  MapPin,
-  User,
-  GraduationCap,
-  Moon,
-  Coffee,
-  Sun,
-  BookOpen,
-} from "lucide-react"
+import { TimetableData, ScheduleItem, ActivityType, getAcademicWeekInfo } from "@/lib/orar"
+import { Clock, MapPin, User, GraduationCap, Moon, Coffee, Sun, BookOpen } from "lucide-react"
 
 interface OrarClientProps {
   year?: string
@@ -117,14 +103,12 @@ export default function OrarClient({
   const [selectedGroup, setSelectedGroup] = useState(initialGroup)
   const [selectedSemigroup, setSelectedSemigroup] = useState(initialSemigroup)
   const [selectedOptional, setSelectedOptional] = useState(initialOptional)
-  
+
   // Parity is 100% automated based on current date & time ('odd' | 'even')
   const autoParity = initialWeekInfo.parity
 
   // Active day defaults automatically to the target day (today, or tomorrow if past 20:00)
-  const [activeDayIndex, setActiveDayIndex] = useState<number | "all">(
-    initialWeekInfo.dayIndex
-  )
+  const [activeDayIndex, setActiveDayIndex] = useState<number | "all">(initialWeekInfo.dayIndex)
   const [, startTransition] = useTransition()
 
   // Save selection seamlessly into cookies
@@ -161,11 +145,9 @@ export default function OrarClient({
       // 1. Group match
       const groupMatch = item.groups.includes(selectedGroup)
       // 2. Semigroup match
-      const sgMatch =
-        item.semigroup === "all" || item.semigroup === selectedSemigroup
+      const sgMatch = item.semigroup === "all" || item.semigroup === selectedSemigroup
       // 3. Parity match
-      const parityMatch =
-        item.parity === "all" || item.parity === autoParity
+      const parityMatch = item.parity === "all" || item.parity === autoParity
       // 4. Optional course match
       if (item.type === "optional" && item.optionalKey) {
         if (selectedOptional === "none" || selectedOptional !== item.optionalKey) {
@@ -265,7 +247,6 @@ export default function OrarClient({
       />
 
       <div className="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10 flex flex-col gap-6">
-        
         {/* Header Bar */}
         <section className="relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-r from-card/90 via-card/50 to-card/90 p-5 sm:p-6 backdrop-blur-xl shadow-lg flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="space-y-1">
@@ -467,9 +448,7 @@ export default function OrarClient({
                 {/* Day Header */}
                 <div className="flex items-center justify-between border-b border-border/30 pb-3">
                   <div className="flex items-center gap-2.5">
-                    <h2 className="text-lg sm:text-xl font-bold tracking-tight">
-                      {dayName}
-                    </h2>
+                    <h2 className="text-lg sm:text-xl font-bold tracking-tight">{dayName}</h2>
                     {isTargetDay && (
                       <Badge
                         variant="secondary"
@@ -482,9 +461,7 @@ export default function OrarClient({
                   <span className="text-xs text-muted-foreground font-medium">
                     {dayClassCount === 0
                       ? "Zi liberă"
-                      : `${dayClassCount} ${
-                          dayClassCount === 1 ? "activitate" : "activități"
-                        }`}
+                      : `${dayClassCount} ${dayClassCount === 1 ? "activitate" : "activități"}`}
                   </span>
                 </div>
 
@@ -515,7 +492,10 @@ export default function OrarClient({
                             <div className="w-full flex items-center justify-between px-3.5 py-2 rounded-xl bg-muted/20 border border-dashed border-border/60 text-xs text-muted-foreground">
                               <div className="flex items-center gap-2 font-medium">
                                 <Coffee className="h-3.5 w-3.5 text-amber-500/80" />
-                                <span>Pauză / Fereastră ({block.durationHours} {block.durationHours === 1 ? "oră" : "ore"})</span>
+                                <span>
+                                  Pauză / Fereastră ({block.durationHours}{" "}
+                                  {block.durationHours === 1 ? "oră" : "ore"})
+                                </span>
                               </div>
                               <span className="font-semibold text-foreground/70">
                                 {block.timeStr}
@@ -530,10 +510,7 @@ export default function OrarClient({
                       const cfg = TYPE_CONFIG[item.type]
 
                       return (
-                        <div
-                          key={item.id}
-                          className="relative flex items-start gap-4"
-                        >
+                        <div key={item.id} className="relative flex items-start gap-4">
                           {/* Timeline Node Dot */}
                           <div className="absolute -left-6 sm:-left-8 mt-4 flex items-center justify-center w-4 sm:w-6">
                             <span
@@ -573,9 +550,7 @@ export default function OrarClient({
                                 {item.title}
                               </h3>
                               {item.description && (
-                                <p className="text-xs text-muted-foreground">
-                                  {item.description}
-                                </p>
+                                <p className="text-xs text-muted-foreground">{item.description}</p>
                               )}
                             </div>
 

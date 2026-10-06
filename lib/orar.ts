@@ -99,7 +99,9 @@ export function getAcademicWeekInfo(targetDate: Date = new Date()) {
     0,
     0
   )
-  const diffDays = Math.floor((normEffective.getTime() - semesterStart.getTime()) / (1000 * 60 * 60 * 24))
+  const diffDays = Math.floor(
+    (normEffective.getTime() - semesterStart.getTime()) / (1000 * 60 * 60 * 24)
+  )
   const weekNumber = Math.max(1, Math.floor(diffDays / 7) + 1)
   const isOdd = weekNumber % 2 !== 0
   const parity: Parity = isOdd ? "odd" : "even"

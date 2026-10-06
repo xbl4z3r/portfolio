@@ -1,7 +1,7 @@
 import { SpoTuyaLogo } from "@/components/icons"
 
 export const siteConfig = {
-  url: "https://xbl4z3r.me",
+  url: "https://xbl.is-a.dev",
   name: "xbl4z3r's development",
   description: "Make better software, together.",
   pages: {
