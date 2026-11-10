@@ -60,6 +60,14 @@ const nextConfig = {
           destination: `${updateServer}/api/v1/:path*`,
         },
         {
+          source: "/sink/admin",
+          destination: `${updateServer}/admin/sink`,
+        },
+        {
+          source: "/sink/admin/:path*",
+          destination: `${updateServer}/admin/sink/:path*`,
+        },
+        {
           source: "/admin/sink",
           destination: `${updateServer}/admin/sink`,
         },
