@@ -59,12 +59,12 @@ const nextConfig = {
         destination: `${updateServer}/api/v1/:path*`,
       },
       {
-        source: "/admin/sink/:path*",
-        destination: `${updateServer}/admin/sink/:path*`,
+        source: "/admin/sink",
+        destination: `${updateServer}/admin/sink/`,
       },
       {
-        source: "/admin/sink",
-        destination: `${updateServer}/admin/sink`,
+        source: "/admin/sink/:path*",
+        destination: `${updateServer}/admin/sink/:path*`,
       },
       {
         source: "/sink/changelog",
