@@ -53,24 +53,28 @@ const nextConfig = {
     const updateServer = (
       process.env.UPDATE_SERVER_URL || "https://sink-update-server.vercel.app"
     ).replace(/\/+$/, "")
-    return [
-      {
-        source: "/api/v1/:path*",
-        destination: `${updateServer}/api/v1/:path*`,
-      },
-      {
-        source: "/admin/sink",
-        destination: `${updateServer}/admin/sink/`,
-      },
-      {
-        source: "/admin/sink/:path*",
-        destination: `${updateServer}/admin/sink/:path*`,
-      },
-      {
-        source: "/sink/changelog",
-        destination: `${updateServer}/sink/changelog`,
-      },
-    ]
+    return {
+      beforeFiles: [
+        {
+          source: "/api/v1/:path*",
+          destination: `${updateServer}/api/v1/:path*`,
+        },
+        {
+          source: "/admin/sink",
+          destination: `${updateServer}/admin/sink`,
+        },
+        {
+          source: "/admin/sink/:path*",
+          destination: `${updateServer}/admin/sink/:path*`,
+        },
+        {
+          source: "/sink/changelog",
+          destination: `${updateServer}/sink/changelog`,
+        },
+      ],
+      afterFiles: [],
+      fallback: [],
+    }
   },
 }
 
