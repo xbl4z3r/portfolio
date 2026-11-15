@@ -7,6 +7,7 @@ export const siteConfig = {
   pages: {
     portfolio: {
       title: "xbl4z3r",
+      icon: <img src="/logo.png" alt="xbl4z3r logo" className="h-8 w-auto object-contain" />,
       navItems: [
         {
           label: "Home",

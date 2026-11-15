@@ -22,7 +22,7 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
       <Navbar
         navbarData={{
           title: "xbl4z3r",
-          icon: <img src="/favicon.ico" alt="logo" className="h-10 w-auto" />,
+          icon: <img src="/logo.png" alt="xbl4z3r logo" className="h-8 w-auto object-contain" />,
           navItems: [],
         }}
         accentColors={["#FF0000"]}
