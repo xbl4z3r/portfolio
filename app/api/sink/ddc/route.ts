@@ -11,9 +11,9 @@ export async function GET(request: Request) {
   let results = ddcList
 
   if (query) {
-    results = ddcList.filter((item: { name: string; filename: string }) =>
-      item.name.toLowerCase().includes(query) ||
-      item.filename.toLowerCase().includes(query)
+    results = ddcList.filter(
+      (item: { name: string; filename: string }) =>
+        item.name.toLowerCase().includes(query) || item.filename.toLowerCase().includes(query)
     )
   }
 

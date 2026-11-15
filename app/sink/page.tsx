@@ -247,14 +247,18 @@ export default function SinkPage() {
 
                 <div className="space-y-2.5 mb-4">
                   <div className="flex items-baseline justify-between">
-                    <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Sink</span>
+                    <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                      Sink
+                    </span>
                     <span className="text-2xl sm:text-3xl font-extrabold text-[#0A6F69] dark:text-[#14b8ad] font-mono">
                       {item.sink}
                     </span>
                   </div>
                   <div className="flex items-baseline justify-between text-xs text-muted-foreground pt-1.5 border-t border-border/30">
                     <span>Standard Client</span>
-                    <span className="font-mono text-zinc-500 dark:text-zinc-400">{item.official}</span>
+                    <span className="font-mono text-zinc-500 dark:text-zinc-400">
+                      {item.official}
+                    </span>
                   </div>
                 </div>
 
@@ -280,7 +284,9 @@ export default function SinkPage() {
                 {BENCHMARKS.map((b) => (
                   <tr key={b.metric} className="hover:bg-muted/10 transition-colors">
                     <td className="p-4 sm:p-5 font-sans font-medium text-foreground">{b.metric}</td>
-                    <td className="p-4 sm:p-5 font-bold text-[#0A6F69] dark:text-[#14b8ad] bg-[#0A6F69]/5 dark:bg-[#14b8ad]/5">{b.sink}</td>
+                    <td className="p-4 sm:p-5 font-bold text-[#0A6F69] dark:text-[#14b8ad] bg-[#0A6F69]/5 dark:bg-[#14b8ad]/5">
+                      {b.sink}
+                    </td>
                     <td className="p-4 sm:p-5 text-muted-foreground">{b.official}</td>
                     <td className="p-4 sm:p-5 font-sans text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
                       {b.highlight}
@@ -354,8 +360,8 @@ export default function SinkPage() {
                     <Check className="w-5 h-5" /> You're on the early access list!
                   </div>
                   <p className="text-xs text-muted-foreground">
-                    We've saved <strong className="text-zinc-900 dark:text-white">{email}</strong>. We'll send an
-                    invite the moment beta testing opens.
+                    We've saved <strong className="text-zinc-900 dark:text-white">{email}</strong>.
+                    We'll send an invite the moment beta testing opens.
                   </p>
                 </div>
               ) : (
@@ -416,10 +422,12 @@ export default function SinkPage() {
                   <Check className="h-3.5 w-3.5 text-[#0A6F69] dark:text-[#14b8ad]" /> macOS (.dmg)
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <Check className="h-3.5 w-3.5 text-[#0A6F69] dark:text-[#14b8ad]" /> Windows (.msi)
+                  <Check className="h-3.5 w-3.5 text-[#0A6F69] dark:text-[#14b8ad]" /> Windows
+                  (.msi)
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <Check className="h-3.5 w-3.5 text-[#0A6F69] dark:text-[#14b8ad]" /> Linux (.AppImage)
+                  <Check className="h-3.5 w-3.5 text-[#0A6F69] dark:text-[#14b8ad]" /> Linux
+                  (.AppImage)
                 </span>
               </div>
             </div>
