@@ -134,13 +134,13 @@ export default function SinkPage() {
 
   return (
     <>
-      <Navbar navbarData={siteConfig.pages.sink} accentColors={["#85c1ae", "#5a9583"]} />
+      <Navbar navbarData={siteConfig.pages.sink} accentColors={["#0A6F69", "#075a58"]} />
       <main className="container mx-auto px-4 sm:px-6 max-w-7xl grow h-full relative space-y-4">
         <Particles
           className="absolute inset-0 z-0 pointer-events-none"
           quantity={60}
           ease={80}
-          color={"#85c1ae"}
+          color={"#0A6F69"}
           refresh={false}
         />
 
@@ -151,14 +151,14 @@ export default function SinkPage() {
         >
           <div className="flex flex-col items-center max-w-4xl space-y-6">
             {/* Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#85c1ae]/10 text-[#85c1ae] border border-[#85c1ae]/30 backdrop-blur-md shadow-sm">
-              <span className="h-2 w-2 rounded-full bg-[#85c1ae] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#0A6F69]/10 text-[#0A6F69] dark:text-[#14b8ad] border border-[#0A6F69]/30 dark:border-[#14b8ad]/30 backdrop-blur-md shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-[#0A6F69] dark:bg-[#14b8ad] animate-pulse" />
               <span>Spotify Client • Closed Beta Waitlist</span>
             </div>
 
             {/* App Icon with Glow */}
             <div className="relative group my-1">
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-[#85c1ae] via-[#98c9b9] to-[#5a9583] opacity-40 blur-2xl group-hover:opacity-70 transition duration-500" />
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-[#0A6F69] via-[#14b8ad] to-[#075a58] opacity-40 blur-2xl group-hover:opacity-70 transition duration-500" />
               <img
                 src="/sink.png"
                 alt="Sink App Icon"
@@ -167,11 +167,11 @@ export default function SinkPage() {
             </div>
 
             <div className="space-y-3">
-              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-white">
+              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-zinc-900 dark:text-white">
                 Sink
               </h1>
 
-              <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-foreground/90 max-w-2xl leading-relaxed">
+              <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-zinc-700 dark:text-zinc-300 max-w-2xl leading-relaxed">
                 The high-performance desktop Spotify client rebuilt from scratch.
               </p>
             </div>
@@ -184,7 +184,7 @@ export default function SinkPage() {
             {/* Actions */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-3 w-full max-w-md">
               <InteractiveHoverButton
-                className="bg-[#85c1ae] text-zinc-950 font-semibold w-full sm:w-auto shadow-lg shadow-[#85c1ae]/25"
+                className="bg-[#0A6F69] text-zinc-950 font-semibold w-full sm:w-auto shadow-lg shadow-[#0A6F69]/25"
                 onClick={() => {
                   document.getElementById("notify")?.scrollIntoView({ behavior: "smooth" })
                 }}
@@ -199,9 +199,9 @@ export default function SinkPage() {
                 onClick={() => {
                   document.getElementById("performance")?.scrollIntoView({ behavior: "smooth" })
                 }}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-border/80 bg-background/60 hover:bg-muted font-medium text-sm transition-colors backdrop-blur-md w-full sm:w-auto text-zinc-200 cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-border/80 bg-background/60 hover:bg-muted font-medium text-sm transition-colors backdrop-blur-md w-full sm:w-auto text-zinc-700 dark:text-zinc-300 cursor-pointer"
               >
-                <Gauge className="h-4 w-4 text-[#85c1ae]" /> View Benchmarks
+                <Gauge className="h-4 w-4 text-[#0A6F69] dark:text-[#14b8ad]" /> View Benchmarks
               </button>
             </div>
 
@@ -216,7 +216,7 @@ export default function SinkPage() {
         {/* 2. Performance & Benchmarks Section (#performance) */}
         <section id="performance" className="py-16 sm:py-24 border-t border-border/60">
           <div className="flex flex-col space-y-3 mb-12 text-center max-w-3xl mx-auto">
-            <Badge className="bg-[#85c1ae]/10 text-[#85c1ae] border-[#85c1ae]/30 mx-auto mb-1">
+            <Badge className="bg-[#0A6F69]/10 text-[#0A6F69] dark:text-[#14b8ad] border-[#0A6F69]/30 dark:border-[#14b8ad]/30 mx-auto mb-1">
               Engineered for Speed
             </Badge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
@@ -234,27 +234,27 @@ export default function SinkPage() {
             {BENCHMARKS.slice(0, 3).map((item) => (
               <div
                 key={item.metric}
-                className="p-6 rounded-2xl border border-white/10 bg-background/60 backdrop-blur-md relative overflow-hidden group hover:border-[#85c1ae]/40 hover:shadow-xl hover:shadow-[#85c1ae]/5 transition-all duration-300"
+                className="p-6 rounded-2xl border border-border/30 bg-background/60 backdrop-blur-md relative overflow-hidden group hover:border-[#0A6F69]/40 dark:hover:border-[#14b8ad]/40 hover:shadow-xl hover:shadow-[#0A6F69]/5 dark:hover:shadow-[#14b8ad]/5 transition-all duration-300"
               >
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     {item.metric}
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#85c1ae]/15 text-[#85c1ae] border border-[#85c1ae]/30">
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#0A6F69]/15 text-[#0A6F69] dark:text-[#14b8ad] border border-[#0A6F69]/30 dark:border-[#14b8ad]/30">
                     {item.highlight}
                   </span>
                 </div>
 
                 <div className="space-y-2.5 mb-4">
                   <div className="flex items-baseline justify-between">
-                    <span className="text-sm font-medium text-zinc-300">Sink</span>
-                    <span className="text-2xl sm:text-3xl font-extrabold text-[#85c1ae] font-mono">
+                    <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Sink</span>
+                    <span className="text-2xl sm:text-3xl font-extrabold text-[#0A6F69] dark:text-[#14b8ad] font-mono">
                       {item.sink}
                     </span>
                   </div>
-                  <div className="flex items-baseline justify-between text-xs text-muted-foreground pt-1.5 border-t border-white/5">
+                  <div className="flex items-baseline justify-between text-xs text-muted-foreground pt-1.5 border-t border-border/30">
                     <span>Standard Client</span>
-                    <span className="font-mono text-zinc-400">{item.official}</span>
+                    <span className="font-mono text-zinc-500 dark:text-zinc-400">{item.official}</span>
                   </div>
                 </div>
 
@@ -269,7 +269,7 @@ export default function SinkPage() {
               <thead className="border-b border-border/60 bg-muted/20 text-xs font-mono uppercase tracking-wider text-muted-foreground">
                 <tr>
                   <th className="p-4 sm:p-5">Metric</th>
-                  <th className="p-4 sm:p-5 text-[#85c1ae] font-bold bg-[#85c1ae]/10">
+                  <th className="p-4 sm:p-5 text-[#0A6F69] dark:text-[#14b8ad] font-bold bg-[#0A6F69]/10 dark:bg-[#14b8ad]/10">
                     Sink Native Client
                   </th>
                   <th className="p-4 sm:p-5">Standard Electron Client</th>
@@ -280,9 +280,9 @@ export default function SinkPage() {
                 {BENCHMARKS.map((b) => (
                   <tr key={b.metric} className="hover:bg-muted/10 transition-colors">
                     <td className="p-4 sm:p-5 font-sans font-medium text-foreground">{b.metric}</td>
-                    <td className="p-4 sm:p-5 font-bold text-[#85c1ae] bg-[#85c1ae]/5">{b.sink}</td>
+                    <td className="p-4 sm:p-5 font-bold text-[#0A6F69] dark:text-[#14b8ad] bg-[#0A6F69]/5 dark:bg-[#14b8ad]/5">{b.sink}</td>
                     <td className="p-4 sm:p-5 text-muted-foreground">{b.official}</td>
-                    <td className="p-4 sm:p-5 font-sans text-xs text-emerald-400 font-semibold">
+                    <td className="p-4 sm:p-5 font-sans text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
                       {b.highlight}
                     </td>
                   </tr>
@@ -295,7 +295,7 @@ export default function SinkPage() {
         {/* 3. Features Section (#features) - Clean, uniform 2x3 grid */}
         <section id="features" className="py-16 sm:py-24 border-t border-border/60">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-            <Badge className="bg-[#85c1ae]/10 text-[#85c1ae] border-[#85c1ae]/30 mx-auto">
+            <Badge className="bg-[#0A6F69]/10 text-[#0A6F69] dark:text-[#14b8ad] border-[#0A6F69]/30 dark:border-[#14b8ad]/30 mx-auto">
               Client Highlights
             </Badge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
@@ -311,12 +311,12 @@ export default function SinkPage() {
             {FEATURES.map((feature) => (
               <div
                 key={feature.title}
-                className="p-6 sm:p-7 rounded-2xl border border-border/80 bg-background/60 backdrop-blur-md hover:border-[#85c1ae]/40 hover:shadow-xl hover:shadow-[#85c1ae]/5 transition-all duration-300 space-y-3 group"
+                className="p-6 sm:p-7 rounded-2xl border border-border/80 bg-background/60 backdrop-blur-md hover:border-[#0A6F69]/40 dark:hover:border-[#14b8ad]/40 hover:shadow-xl hover:shadow-[#0A6F69]/5 dark:hover:shadow-[#14b8ad]/5 transition-all duration-300 space-y-3 group"
               >
-                <div className="h-11 w-11 rounded-xl bg-[#85c1ae]/10 text-[#85c1ae] flex items-center justify-center">
+                <div className="h-11 w-11 rounded-xl bg-[#0A6F69]/10 text-[#0A6F69] dark:text-[#14b8ad] flex items-center justify-center">
                   <feature.icon className="h-5 w-5" />
                 </div>
-                <h3 className="text-lg font-bold text-foreground group-hover:text-[#85c1ae] transition-colors">
+                <h3 className="text-lg font-bold text-foreground group-hover:text-[#0A6F69] dark:group-hover:text-[#14b8ad] transition-colors">
                   {feature.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
@@ -329,17 +329,17 @@ export default function SinkPage() {
 
         {/* 4. Notify Me / Waitlist Section (#notify) */}
         <section id="notify" className="py-16 sm:py-24 border-t border-border/60 text-center">
-          <div className="rounded-3xl border border-[#85c1ae]/30 bg-gradient-to-b from-[#85c1ae]/10 via-background to-background p-6 sm:p-12 md:p-16 backdrop-blur-xl relative overflow-hidden max-w-3xl mx-auto shadow-2xl">
-            <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-[#85c1ae]/20 blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-24 -left-24 h-48 w-48 rounded-full bg-[#5a9583]/20 blur-3xl pointer-events-none" />
+          <div className="rounded-3xl border border-[#0A6F69]/30 dark:border-[#14b8ad]/30 bg-gradient-to-b from-[#0A6F69]/10 dark:from-[#14b8ad]/10 via-background to-background p-6 sm:p-12 md:p-16 backdrop-blur-xl relative overflow-hidden max-w-3xl mx-auto shadow-2xl">
+            <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-[#0A6F69]/20 dark:bg-[#14b8ad]/20 blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 h-48 w-48 rounded-full bg-[#075a58]/20 dark:bg-[#14b8ad]/20 blur-3xl pointer-events-none" />
 
             <div className="relative z-10 space-y-6 max-w-xl mx-auto">
-              <span className="text-xs font-semibold uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-[#85c1ae]/40 bg-[#85c1ae]/10 text-[#85c1ae]">
+              <span className="text-xs font-semibold uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-[#0A6F69]/40 dark:border-[#14b8ad]/40 bg-[#0A6F69]/10 dark:bg-[#14b8ad]/10 text-[#0A6F69] dark:text-[#14b8ad]">
                 Closed Beta Release
               </span>
 
               <div className="space-y-2 mt-6">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 dark:text-white">
                   Get Notified When Sink Launches
                 </h2>
                 <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
@@ -349,12 +349,12 @@ export default function SinkPage() {
               </div>
 
               {isSubscribed ? (
-                <div className="p-6 rounded-2xl bg-[#85c1ae]/15 border border-[#85c1ae]/40 space-y-2 animate-in fade-in zoom-in-95 duration-300">
-                  <div className="flex items-center justify-center gap-2 text-[#85c1ae] font-bold text-lg">
+                <div className="p-6 rounded-2xl bg-[#0A6F69]/15 dark:bg-[#14b8ad]/15 border border-[#0A6F69]/40 dark:border-[#14b8ad]/40 space-y-2 animate-in fade-in zoom-in-95 duration-300">
+                  <div className="flex items-center justify-center gap-2 text-[#0A6F69] dark:text-[#14b8ad] font-bold text-lg">
                     <Check className="w-5 h-5" /> You're on the early access list!
                   </div>
                   <p className="text-xs text-muted-foreground">
-                    We've saved <strong className="text-white">{email}</strong>. We'll send an
+                    We've saved <strong className="text-zinc-900 dark:text-white">{email}</strong>. We'll send an
                     invite the moment beta testing opens.
                   </p>
                 </div>
@@ -376,20 +376,20 @@ export default function SinkPage() {
 
                   <div className="flex flex-col sm:flex-row items-center gap-2.5 max-w-md mx-auto">
                     <div className="relative w-full">
-                      <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
+                      <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 dark:text-zinc-400" />
                       <input
                         type="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email address..."
-                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-black/60 border border-white/15 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-[#85c1ae] focus:border-transparent transition-all"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/80 dark:bg-black/60 border border-border dark:border-white/15 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-[#0A6F69] dark:focus:ring-[#14b8ad] focus:border-transparent transition-all"
                       />
                     </div>
                     <button
                       type="submit"
                       disabled={subscribing}
-                      className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#85c1ae] hover:bg-[#98c9b9] text-zinc-950 font-bold text-sm transition-all duration-200 shadow-lg shadow-[#85c1ae]/25 shrink-0 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                      className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#0A6F69] hover:bg-[#14b8ad] text-zinc-950 font-bold text-sm transition-all duration-200 shadow-lg shadow-[#0A6F69]/25 shrink-0 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                     >
                       {subscribing ? (
                         <span>Subscribing...</span>
@@ -404,29 +404,29 @@ export default function SinkPage() {
                   {subscribeError && (
                     <p className="text-xs text-red-400 text-center font-medium">{subscribeError}</p>
                   )}
-                  <p className="text-[11px] text-zinc-500">
+                  <p className="text-[11px] text-zinc-500 dark:text-zinc-500">
                     Closed-source private release. No spam, ever. Unsubscribe at any time.
                   </p>
                 </form>
               )}
 
               {/* Compatibility Footnote */}
-              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-muted-foreground">
+              <div className="pt-4 border-t border-border/30 dark:border-white/10 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-muted-foreground">
                 <span className="flex items-center gap-1.5">
-                  <Check className="h-3.5 w-3.5 text-[#85c1ae]" /> macOS (.dmg)
+                  <Check className="h-3.5 w-3.5 text-[#0A6F69] dark:text-[#14b8ad]" /> macOS (.dmg)
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <Check className="h-3.5 w-3.5 text-[#85c1ae]" /> Windows (.msi)
+                  <Check className="h-3.5 w-3.5 text-[#0A6F69] dark:text-[#14b8ad]" /> Windows (.msi)
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <Check className="h-3.5 w-3.5 text-[#85c1ae]" /> Linux (.AppImage)
+                  <Check className="h-3.5 w-3.5 text-[#0A6F69] dark:text-[#14b8ad]" /> Linux (.AppImage)
                 </span>
               </div>
             </div>
           </div>
 
           {/* Disclaimer */}
-          <div className="max-w-2xl mx-auto pt-10 text-center text-xs text-zinc-500 leading-relaxed">
+          <div className="max-w-2xl mx-auto pt-10 text-center text-xs text-zinc-500 dark:text-zinc-500 leading-relaxed">
             <p>
               <strong>Disclaimer:</strong> Sink is an independent, third-party software application
               developed by xbl4z3r. Sink is not affiliated with, maintained, authorized, sponsored,

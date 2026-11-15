@@ -85,17 +85,17 @@ const projects = [
       "col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-2",
     category: "Spotify Client",
     tags: ["Tauri v2", "Rust", "React 19", "Audio DSP"],
-    glowClass: "hover:shadow-[0_0_35px_-5px_rgba(133,193,174,0.35)]",
+    glowClass: "hover:shadow-[0_0_35px_-5px_rgba(10,111,105,0.35)]",
     background: (
       <div className="absolute inset-0 bg-gradient-to-br from-zinc-950 via-[#071914] to-black flex items-center justify-between overflow-hidden">
         {/* Ambient radial lighting flares matching Sink sage green palette */}
-        <div className="absolute -right-16 -top-16 w-96 h-96 rounded-full bg-[#85c1ae]/20 blur-3xl pointer-events-none" />
-        <div className="absolute right-32 -bottom-20 w-80 h-80 rounded-full bg-[#5a9583]/15 blur-3xl pointer-events-none" />
+        <div className="absolute -right-16 -top-16 w-96 h-96 rounded-full bg-[#0A6F69]/20 blur-3xl pointer-events-none" />
+        <div className="absolute right-32 -bottom-20 w-80 h-80 rounded-full bg-[#075a58]/15 blur-3xl pointer-events-none" />
 
         {/* Right showcase: Glassmorphic desktop player mockup preview */}
         <div className="absolute right-6 sm:right-10 top-1/2 -translate-y-1/2 mr-20 flex items-center gap-5 transition-transform duration-500 group-hover:scale-105 pointer-events-none select-none">
           <div className="relative group/icon">
-            <div className="absolute -inset-2.5 rounded-3xl bg-gradient-to-r from-[#85c1ae] to-[#5a9583] opacity-45 blur-lg group-hover:opacity-75 transition duration-500" />
+            <div className="absolute -inset-2.5 rounded-3xl bg-gradient-to-r from-[#0A6F69] to-[#075a58] opacity-45 blur-lg group-hover:opacity-75 transition duration-500" />
             <img
               src="/sink.png"
               className="relative w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-2xl shadow-2xl"
